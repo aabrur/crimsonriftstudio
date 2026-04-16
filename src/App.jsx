@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import Home from './app/home/Home';
 import About from './app/about/about';
 import Services from './app/services/Services';
+import WebDev from './app/services/WebDev';
+import Design from './app/services/Design'; // <--- IMPORT HALAMAN BARU DI SINI
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/web-development" element={<WebDev />} />
+            <Route path="/services/logo-branding" element={<Design />} /> {/* <--- ROUTE BARU ---> */}
           </Routes>
         </main>
 

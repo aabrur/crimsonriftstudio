@@ -9,28 +9,31 @@ export default function Services() {
       icon: <Monitor size={36} />,
       description: 'Pembuatan segala jenis website (E-Commerce, Company Profile, Landing Page, dll) yang cepat, responsif, dan teroptimasi SEO.',
       features: ['Custom Website Development', 'Search Engine Optimization (SEO)', 'Performa Cepat & Mobile Friendly', 'Maintenance & Keamanan'],
-      link: '/services/web-development'
+      link: '/services/web-development' // Tersambung ke WebDev.jsx
     },
     {
       id: 'design',
       title: 'Logo Design & Branding',
       icon: <PenTool size={36} />,
       description: 'Menciptakan identitas visual yang kuat, unik, dan berkarakter untuk bisnis Anda. Merancang konsep awal hingga panduan branding utuh.',
-      features: ['Desain Logo Profesional', 'Pembuatan Brand Identity', 'Panduan Visual (Brand Guidelines)', 'Desain Materi Promosi']
+      features: ['Desain Logo Profesional', 'Pembuatan Brand Identity', 'Panduan Visual (Brand Guidelines)', 'Desain Materi Promosi'],
+      link: '/services/logo-branding' // <--- TERSAMBUNG KE DESIGN.JSX
     },
     {
       id: 'multimedia',
       title: 'Photography & Videography',
       icon: <Video size={36} />,
       description: 'Layanan dokumentasi visual lengkap. Menghasilkan foto produk berkualitas tinggi dan video sinematik untuk menyampaikan pesan brand Anda.',
-      features: ['Foto Produk & Profil Profesional', 'Dokumentasi Acara (Foto & Video)', 'Video Company Profile & Iklan', 'High-End Retouching & Color Grading']
+      features: ['Foto Produk & Profil Profesional', 'Dokumentasi Acara (Foto & Video)', 'Video Company Profile & Iklan', 'High-End Retouching & Color Grading'],
+      link: '/services/photography-videography' // Disiapkan untuk next page
     },
     {
       id: 'sosmed',
       title: 'Social Media & Ads Agency',
       icon: <Megaphone size={36} />,
       description: 'Serahkan urusan digital marketing kepada kami. Dari pengelolaan akun hingga optimasi iklan berbayar untuk meningkatkan penjualan.',
-      features: ['Manajemen Akun & Konten Planner', 'Meta, TikTok, Google & Shopee Ads', 'Interaksi & Handle Customer Care', 'Laporan Performa Berkala']
+      features: ['Manajemen Akun & Konten Planner', 'Meta, TikTok, Google & Shopee Ads', 'Interaksi & Handle Customer Care', 'Laporan Performa Berkala'],
+      link: '/services/social-media' // Disiapkan untuk next page
     }
   ];
 
@@ -43,14 +46,12 @@ export default function Services() {
 
   return (
     <div className="min-h-screen pt-24 pb-12 bg-[#0a0a0a] animate-fadeIn">
-      {/* Header Section */}
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 text-center mt-12 mb-20">
         <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Layanan Spesialis</h2>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Satu Solusi Untuk <br/><span className="text-red-600">Semua Kebutuhan Digital</span></h1>
         <p className="text-gray-400 max-w-2xl mx-auto text-lg">Dari membangun identitas visual, membuat sistem website, hingga mendatangkan pelanggan melalui iklan. Kami siap menskalakan bisnis Anda.</p>
       </div>
 
-      {/* Services Grid - Menjadi 2 kolom di tablet/desktop agar simetris (4 item) */}
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
         {servicesList.map((service) => (
           <div 
@@ -72,6 +73,7 @@ export default function Services() {
               ))}
             </ul>
 
+            {/* Tombol Lihat Detail untuk Semua Service */}
             {service.link && (
               <Link to={service.link} className="block w-full py-3 bg-red-600/10 hover:bg-red-600 text-red-500 hover:text-white text-center font-bold rounded-lg transition-colors border border-red-600/20">
                 Lihat Detail Harga
@@ -81,7 +83,6 @@ export default function Services() {
         ))}
       </div>
 
-      {/* Workflow Section */}
       <div className="bg-[#050505] py-24 border-y border-gray-900">
         <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
           <div className="text-center mb-16">
