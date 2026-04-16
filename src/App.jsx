@@ -6,7 +6,8 @@ import About from './app/about/about';
 import Services from './app/services/Services';
 import WebDev from './app/services/WebDev';
 import Design from './app/services/Design'; // <--- IMPORT HALAMAN BARU DI SINI
-
+import Multimedia from './app/services/Multimedia';
+import Sosmed from './app/services/Sosmed';
 function App() {
   return (
     <Router>
@@ -19,7 +20,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/web-development" element={<WebDev />} />
-            <Route path="/services/logo-branding" element={<Design />} /> {/* <--- ROUTE BARU ---> */}
+            <Route path="/services/logo-branding" element={<Design />} />
+            <Route path="/services/photography-videography" element={<Multimedia />} />
+            <Route path="/services/social-media" element={<Sosmed />} />
           </Routes>
         </main>
 
