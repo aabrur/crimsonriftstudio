@@ -1,14 +1,5 @@
-import { 
-  Monitor, 
-  PenTool, 
-  Camera, 
-  Video, 
-  Megaphone,
-  CheckCircle2,
-  MessageSquare,
-  Lightbulb,
-  Rocket
-} from 'lucide-react';
+import { Monitor, PenTool, Video, Megaphone, CheckCircle2, MessageSquare, Lightbulb, Rocket } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Services() {
   const servicesList = [
@@ -16,35 +7,29 @@ export default function Services() {
       id: 'web',
       title: 'Web Development & SEO',
       icon: <Monitor size={36} />,
-      description: 'Pembuatan segala jenis website (E-Commerce, Company Profile, Landing Page, dll) yang cepat, responsif, dan teroptimasi SEO agar bisnis Anda mendominasi halaman pertama pencarian.',
-      features: ['Custom Website Development', 'Search Engine Optimization (SEO)', 'Performa Cepat & Mobile Friendly', 'Maintenance & Keamanan']
+      description: 'Pembuatan segala jenis website (E-Commerce, Company Profile, Landing Page, dll) yang cepat, responsif, dan teroptimasi SEO.',
+      features: ['Custom Website Development', 'Search Engine Optimization (SEO)', 'Performa Cepat & Mobile Friendly', 'Maintenance & Keamanan'],
+      link: '/services/web-development'
     },
     {
       id: 'design',
       title: 'Logo Design & Branding',
       icon: <PenTool size={36} />,
-      description: 'Menciptakan identitas visual yang kuat, unik, dan berkarakter untuk bisnis Anda. Kami merancang dari konsep awal hingga menjadi panduan branding yang utuh.',
+      description: 'Menciptakan identitas visual yang kuat, unik, dan berkarakter untuk bisnis Anda. Merancang konsep awal hingga panduan branding utuh.',
       features: ['Desain Logo Profesional', 'Pembuatan Brand Identity', 'Panduan Visual (Brand Guidelines)', 'Desain Materi Promosi']
     },
     {
-      id: 'photo',
-      title: 'Professional Photography',
-      icon: <Camera size={36} />,
-      description: 'Dongkrak nilai jual brand Anda dengan visual yang memukau. Kami melayani berbagai kebutuhan fotografi dengan standar resolusi dan pencahayaan studio.',
-      features: ['Foto Produk Komersial', 'Foto Profil Profesional', 'Dokumentasi Acara / Event', 'Konsep Konten Visual']
-    },
-    {
-      id: 'video',
-      title: 'Videography Production',
+      id: 'multimedia',
+      title: 'Photography & Videography',
       icon: <Video size={36} />,
-      description: 'Sampaikan pesan brand Anda melalui gambar bergerak yang sinematik. Proses lengkap dari pra-produksi, pengambilan gambar, hingga post-produksi/editing.',
-      features: ['Video Company Profile', 'Dokumentasi Acara Kreatif', 'Video Iklan / Komersial', 'Video Konten Media Sosial']
+      description: 'Layanan dokumentasi visual lengkap. Menghasilkan foto produk berkualitas tinggi dan video sinematik untuk menyampaikan pesan brand Anda.',
+      features: ['Foto Produk & Profil Profesional', 'Dokumentasi Acara (Foto & Video)', 'Video Company Profile & Iklan', 'High-End Retouching & Color Grading']
     },
     {
       id: 'sosmed',
       title: 'Social Media & Ads Agency',
       icon: <Megaphone size={36} />,
-      description: 'Serahkan urusan digital marketing kepada kami. Dari pengelolaan akun, pembuatan konten harian, hingga optimasi iklan berbayar untuk meningkatkan penjualan Anda.',
+      description: 'Serahkan urusan digital marketing kepada kami. Dari pengelolaan akun hingga optimasi iklan berbayar untuk meningkatkan penjualan.',
       features: ['Manajemen Akun & Konten Planner', 'Meta, TikTok, Google & Shopee Ads', 'Interaksi & Handle Customer Care', 'Laporan Performa Berkala']
     }
   ];
@@ -52,7 +37,7 @@ export default function Services() {
   const workflow = [
     { step: '01', icon: <MessageSquare size={24} />, title: 'Konsultasi & Brief', desc: 'Mendiskusikan target, audiens, dan kebutuhan proyek.' },
     { step: '02', icon: <Lightbulb size={24} />, title: 'Strategi & Konsep', desc: 'Merancang rencana aksi dan konsep visual.' },
-    { step: '03', icon: <Monitor size={24} />, title: 'Produksi & Eksekusi', desc: 'Tim ahli kami memproduksi dan mendesain.' },
+    { step: '03', icon: <Monitor size={24} />, title: 'Produksi & Eksekusi', desc: 'Tim ahli kami mulai memproduksi dan mendesain.' },
     { step: '04', icon: <Rocket size={24} />, title: 'Review & Optimasi', desc: 'Penyempurnaan akhir dan peluncuran proyek.' }
   ];
 
@@ -65,8 +50,8 @@ export default function Services() {
         <p className="text-gray-400 max-w-2xl mx-auto text-lg">Dari membangun identitas visual, membuat sistem website, hingga mendatangkan pelanggan melalui iklan. Kami siap menskalakan bisnis Anda.</p>
       </div>
 
-      {/* Services Grid (Diperbaiki di sini) */}
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+      {/* Services Grid - Menjadi 2 kolom di tablet/desktop agar simetris (4 item) */}
+      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
         {servicesList.map((service) => (
           <div 
             key={service.id} 
@@ -78,7 +63,7 @@ export default function Services() {
             <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
             <p className="text-gray-400 mb-8 leading-relaxed flex-grow">{service.description}</p>
             
-            <ul className="space-y-3 mt-auto pt-6 border-t border-gray-800/50">
+            <ul className="space-y-3 mt-auto pt-6 border-t border-gray-800/50 mb-8">
               {service.features.map((feature, idx) => (
                 <li key={idx} className="flex items-start gap-3 text-gray-300">
                   <CheckCircle2 size={20} className="text-red-600 shrink-0 mt-0.5" />
@@ -86,6 +71,12 @@ export default function Services() {
                 </li>
               ))}
             </ul>
+
+            {service.link && (
+              <Link to={service.link} className="block w-full py-3 bg-red-600/10 hover:bg-red-600 text-red-500 hover:text-white text-center font-bold rounded-lg transition-colors border border-red-600/20">
+                Lihat Detail Harga
+              </Link>
+            )}
           </div>
         ))}
       </div>
@@ -103,7 +94,7 @@ export default function Services() {
 
             {workflow.map((item, idx) => (
               <div key={idx} className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-24 h-24 bg-[#111] border-2 border-gray-800 rounded-full flex flex-col items-center justify-center mb-6 group hover:border-red-600 transition-colors duration-300">
+                <div className="w-24 h-24 bg-[#111] border-2 border-gray-800 rounded-full flex flex-col items-center justify-center mb-6 group hover:border-red-600 transition-colors duration-300 shadow-xl">
                   <span className="text-gray-600 font-black text-2xl group-hover:text-red-600/20 absolute">{item.step}</span>
                   <div className="text-red-600 relative z-10">{item.icon}</div>
                 </div>
