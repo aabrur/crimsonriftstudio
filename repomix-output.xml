@@ -68,6 +68,347 @@ vite.config.js
 <files>
 This section contains the contents of the repository's files.
 
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>crimsonriftstudio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "crimsonriftstudio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "lucide-react": "^1.8.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.14.1",
+    "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "vite": "^8.0.4"
+  }
+}
+</file>
+
+<file path="README.md">
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+</file>
+
+<file path="src/app/home/Home.jsx">
+import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const LOGO_URL = "/logo/logo-crimson-rift-studio.png";
+
+export default function Home() {
+  return (
+    <div className="flex flex-col animate-fadeIn">
+      <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 text-center overflow-hidden pt-24 pb-12">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-[#0a0a0a] to-[#0a0a0a] z-0"></div>
+        <div className="z-10 flex flex-col items-center">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-red-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+            {/* Ukuran logo diperkecil di sini (h-24 md:h-32) */}
+            <img src={LOGO_URL} alt="Logo" className="relative w-auto h-54 md:h-72 object-contain mb-8 animate-[pulse_4s_ease-in-out_infinite]" />
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
+            DIGITAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">EXCELLENCE</span>
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+            Satu solusi untuk semua kebutuhan digital. Kami ahlinya dalam Website, Desain, Fotografi, Videografi, dan Manajemen Sosial Media.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-5">
+            <Link to="/services" className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all flex items-center justify-center gap-3 group">
+              Jelajahi Layanan <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="w-full bg-red-600 py-4 overflow-hidden flex whitespace-nowrap shadow-[0_0_20px_rgba(220,38,38,0.15)] relative z-10">
+        <div className="animate-marquee inline-block text-white font-black tracking-widest uppercase text-sm md:text-base">
+          {Array(6).fill("• WEBSITE & SEO • LOGO & BRANDING • PHOTOGRAPHY • VIDEOGRAPHY • SOSMED MANAGER • DIGITAL ADS ").map((text, i) => (
+            <span key={i} className="mx-4">{text}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/app/services/Design.jsx">
+import { useState } from 'react';
+import { CheckCircle2, ChevronLeft, PenTool, Palette, Diamond, Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export default function Design() {
+  const [activeTab, setActiveTab] = useState('logo');
+
+  const categories = [
+    { id: 'logo', label: 'Logo Design', icon: <PenTool size={20} /> },
+    { id: 'basicBranding', label: 'Logo + Basic Branding', icon: <Palette size={20} /> },
+    { id: 'fullBranding', label: 'Full Branding Package', icon: <Diamond size={20} /> }
+  ];
+
+  const pricingData = {
+    logo: {
+      target: "Target: Entry Level / Bisnis Baru / Kebutuhan Cepat",
+      packages: [
+        {
+          name: "BASIC LOGO", price: "Rp250.000", isPopular: false,
+          features: ["1 Konsep Logo Utama", "1 Alternatif Revisi Arah", "Style Sederhana (Text/Icon Basic)", "File PNG Transparan & JPG", "1 Warna + 1 Versi Hitam Putih", "Waktu Pengerjaan: 1–2 Hari", "Revisi: 2x"]
+        },
+        {
+          name: "STANDARD LOGO", price: "Rp500.000", isPopular: true,
+          features: ["2–3 Konsep Logo", "Eksplorasi Style (Icon + Typography)", "Pemilihan Warna Dasar", "File Lengkap (PNG, JPG, SVG/Vector)", "Versi Full Color, Hitam Putih, Icon", "Waktu Pengerjaan: 2–4 Hari", "Revisi: 3–5x"]
+        },
+        {
+          name: "PROFESSIONAL", price: "Mulai Rp900.000", isPopular: false,
+          features: ["3–5 Konsep Logo", "Riset Ringan Brand (Market + Vibe)", "Logo System (Primary, Secondary, Icon)", "Warna Brand (Basic Palette)", "File Lengkap Asli (AI/SVG/EPS)", "Mockup Preview (Baju/Kemasan/dll)", "Waktu Pengerjaan: 3–5 Hari", "Revisi: 5–7x"]
+        }
+      ]
+    },
+    basicBranding: {
+      target: "Target: Bisnis Berkembang / Re-branding",
+      packages: [
+        {
+          name: "STARTER BRAND", price: "Rp750.000", isPopular: false,
+          features: ["2–3 Konsep Logo", "Warna Brand (Primary + Secondary)", "Font Pairing (Judul + Isi)", "Logo Usage Basic", "File Lengkap Logo", "1 Desain (Kartu Nama / IG Profile)", "Revisi: 3–5x"]
+        },
+        {
+          name: "BRAND IDENTITY", price: "Rp1.500.000", isPopular: true,
+          features: ["3–5 Konsep Logo", "Logo System (Primary, Secondary, Icon)", "Color Palette Lengkap", "Typography System", "Mini Brand Guideline (PDF)", "3 Aplikasi (Kartu Nama, Feed IG, Banner)", "Mockup Branding", "Revisi: 5–7x"]
+        }
+      ]
+    },
+    fullBranding: {
+      target: "Target: Ekosistem Bisnis / Skala Menengah Atas",
+      packages: [
+        {
+          name: "BRAND PRO", price: "Mulai Rp2.500.000", isPopular: true,
+          features: ["Riset Brand & Positioning Ringan", "3–5 Konsep Logo & Logo System Lengkap", "Color System (Primary, Secondary, Accent)", "Typography Lengkap", "Brand Guideline (10–15 Halaman)", "Aplikasi: Kartu Nama, IG Template (3-6), Banner, Packaging Basic", "Mockup Profesional", "Revisi: 7x"]
+        },
+        {
+          name: "BRAND PREMIUM", price: "Mulai Rp4.000.000", isPopular: false,
+          features: ["Brand Strategy (Positioning + Tone)", "Logo System Advanced", "Visual Identity & Color Psychology", "Typography System Advanced", "Brand Guideline Lengkap (20+ Halaman)", "Aplikasi Lengkap (Socmed Kit, Packaging, Merch)", "Visual Direction (Style Guide)", "Revisi: 7–10x"]
+        }
+      ]
+    }
+  };
+
+  const addOns = [
+    "Logo Express 1 Hari (+Rp100.000)",
+    "Tambahan Konsep (+Rp100.000 / konsep)",
+    "Tambahan Revisi (+Rp50.000)",
+    "Social Media Kit 10 Post (Rp300k - Rp500k)",
+    "Packaging Design (Rp300k - Rp800k)",
+    "Brand Guideline Tambahan (Mulai Rp300k)"
+  ];
+
+  return (
+    <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+        
+        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-600 transition-colors mb-12 font-medium">
+          <ChevronLeft size={20} /> Kembali ke Layanan
+        </Link>
+
+        <div className="text-center mb-16">
+          <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Detail Harga Jasa</h2>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Logo Design <br/>& Branding</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Ciptakan identitas visual yang kuat dan profesional untuk meningkatkan nilai jual dan kepercayaan audiens terhadap bisnis Anda.</p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveTab(cat.id)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                activeTab === cat.id 
+                ? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]' 
+                : 'bg-[#111] text-gray-400 hover:bg-gray-800 border border-gray-800'
+              }`}
+            >
+              {cat.icon}
+              <span className="hidden sm:block">{cat.label}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className="animate-fadeIn">
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-1.5 bg-red-900/20 text-red-500 rounded-full text-sm font-semibold border border-red-900/50">
+              {pricingData[activeTab].target}
+            </span>
+          </div>
+
+          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8`}>
+            {pricingData[activeTab].packages.map((pkg, idx) => (
+              <div 
+                key={idx} 
+                className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${
+                  pkg.isPopular 
+                  ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' 
+                  : 'border border-gray-800 hover:border-gray-600'
+                }`}
+              >
+                {pkg.isPopular && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                    Paling Laris
+                  </div>
+                )}
+                <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
+                <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
+                
+                <ul className="space-y-4 mb-10 flex-grow">
+                  {pkg.features.map((feature, fIdx) => (
+                    <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                      <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${
+                  pkg.isPopular 
+                  ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' 
+                  : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'
+                }`}>
+                  Pilih Paket Ini
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
+            <div className="md:w-1/3">
+              <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Add-on)</h3>
+              <p className="text-gray-400">Sesuaikan paket desain dengan kebutuhan spesifik brand Anda saat ini.</p>
+            </div>
+            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {addOns.map((addon, idx) => (
+                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-xl border border-gray-800">
+                  <Plus size={18} className="text-red-500" />
+                  <span className="text-sm font-medium">{addon}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+</file>
+
 <file path="src/app/services/Multimedia.jsx">
 import { useState } from 'react';
 import { CheckCircle2, ChevronLeft, Camera, Video, Layers, Sparkles, Film, UserSquare, Plus, HeartHandshake } from 'lucide-react';
@@ -1019,534 +1360,6 @@ export default function Sosmed() {
 }
 </file>
 
-<file path=".gitignore">
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-</file>
-
-<file path="eslint.config.js">
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
-        sourceType: 'module',
-      },
-    },
-    rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-    },
-  },
-])
-</file>
-
-<file path="index.html">
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>crimsonriftstudio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
-</file>
-
-<file path="package.json">
-{
-  "name": "crimsonriftstudio",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.2.2",
-    "lucide-react": "^1.8.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router-dom": "^7.14.1",
-    "tailwindcss": "^4.2.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^9.39.4",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.4.0",
-    "vite": "^8.0.4"
-  }
-}
-</file>
-
-<file path="README.md">
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-</file>
-
-<file path="src/app/about/about.jsx">
-import { ChevronRight, Flame, Zap, Target, Crosshair, Hexagon, PenTool } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-const LOGO_URL = "/logo/logo-crimson-rift-studio.png";
-
-export default function About() {
-  return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn overflow-hidden">
-      
-      {/* 1. HERO SECTION */}
-      <section className="relative max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-        
-        <div className="flex flex-col items-center text-center z-10 relative">
-          <div className="relative group mb-10">
-            <div className="absolute -inset-4 bg-red-600/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-            <img 
-              src={LOGO_URL} 
-              alt="Crimson Rift Studio" 
-              className="relative w-full max-w-[200px] md:max-w-[280px] mx-auto drop-shadow-[0_0_40px_rgba(220,38,38,0.3)] animate-[pulse_4s_ease-in-out_infinite]" 
-            />
-          </div>
-          
-          <h2 className="text-sm font-bold text-red-600 tracking-[0.3em] uppercase mb-4">Di Balik Layar</h2>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-8 leading-tight">
-            Mendobrak Batas <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Kreativitas Digital.</span>
-          </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Kami bukan sekadar agensi. Kami adalah arsitek visual, pencerita digital, dan jembatan yang menghubungkan visi brand Anda dengan dunia yang tanpa batas.
-          </p>
-        </div>
-      </section>
-
-      {/* 2. THE STORY SECTION */}
-      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent border border-red-900/30 rounded-3xl -rotate-3 scale-105 -z-10"></div>
-            <div className="bg-[#111] border border-gray-800 p-8 md:p-12 rounded-3xl relative z-10 shadow-2xl">
-              <Crosshair className="text-red-600 w-12 h-12 mb-6" />
-              <h3 className="text-3xl font-bold text-white mb-6">Awal Mula Sebuah Epik</h3>
-              <div className="space-y-4 text-gray-400 leading-relaxed text-lg">
-                <p>
-                  Crimson Rift Studio lahir dari sebuah kegelisahan. Kami melihat begitu banyak bisnis dan individu yang memiliki potensi luar biasa, produk yang hebat, dan cerita yang inspiratif, namun terhalang oleh representasi visual yang "biasa-biasa saja".
-                </p>
-                <p>
-                  Di era di mana impresi pertama dibentuk dalam hitungan detik di layar kaca, menjadi biasa adalah sebuah kerugian. Dari situlah kami berkumpul—para desainer, fotografer, videografer, dan pengembang web—untuk menciptakan sebuah "Rift" (celah/portal).
-                </p>
-                <p>
-                  Sebuah portal yang membawa klien kami keluar dari keramaian kompetisi, menuju dimensi di mana brand mereka terlihat dominan, tak terlupakan, dan eksklusif.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="order-1 lg:order-2 flex flex-col justify-center">
-            <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Cerita Kami</h2>
-            <h3 className="text-4xl font-bold text-white mb-6">Lahir dari Hasrat <br/>Terhadap Kesempurnaan.</h3>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              Kami menolak untuk menghasilkan karya yang diproduksi massal secara asal. Setiap pixel, setiap frame video, dan setiap baris kode yang kami buat dikerjakan dengan presisi tingkat tinggi dan strategi yang matang.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-1 bg-red-600 rounded-full"></div>
-              <span className="text-white font-medium italic">We don't just create, we engineer legacies.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. NAME & PHILOSOPHY SECTION */}
-      <section className="bg-[#050505] py-32 border-y border-gray-900 relative">
-        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
-          <div className="text-center mb-20">
-            <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Identitas & Makna</h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-white">Filosofi <span className="text-red-600">Crimson Rift</span></h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {/* Crimson */}
-            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-bl-full -z-10 group-hover:bg-red-600/20 transition-colors"></div>
-              <Flame className="text-red-600 w-12 h-12 mb-6" />
-              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">CRIMSON.</h4>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                Melambangkan warna merah pekat yang identik dengan <strong>gairah, energi, dan keberanian</strong>. Kami tidak mendesain untuk main aman. Kami menciptakan karya yang berani tampil beda, mencuri perhatian, dan meninggalkan jejak emosional yang kuat di benak audiens Anda.
-              </p>
-            </div>
-
-            {/* Rift */}
-            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-bl-full -z-10 group-hover:bg-red-600/20 transition-colors"></div>
-              <Zap className="text-red-600 w-12 h-12 mb-6" />
-              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">RIFT.</h4>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                Sebuah rekahan, celah, atau <strong>portal menuju dimensi lain</strong>. Ini adalah janji kami: menjadi jembatan yang menarik brand Anda dari realitas konvensional, membawanya menembus batasan digital, menuju masa depan yang penuh dengan inovasi dan dominasi pasar.
-              </p>
-            </div>
-          </div>
-
-          {/* Logo Philosophy */}
-          <div className="bg-gradient-to-br from-[#111] to-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-red-900/30 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.05)]">
-            <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-red-600/10 blur-3xl rounded-full"></div>
-            <div className="md:w-1/3 flex justify-center relative z-10">
-              <img 
-                src={LOGO_URL} 
-                alt="Logo Crimson Rift" 
-                className="w-32 md:w-48 relative z-10 drop-shadow-[0_0_40px_rgba(220,38,38,0.4)]" 
-              />
-            </div>
-            <div className="md:w-2/3 relative z-10 text-center md:text-left">
-              <h4 className="text-2xl font-bold text-white mb-4">Makna Simbol Kami</h4>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                Simbol yang kami gunakan membawa makna dualitas yang mendalam. Bagian kiri membentuk <strong>belahan setengah bulan</strong> yang ditembus oleh kilatan <strong>petir (rift)</strong>, melambangkan energi, kreativitas yang mendobrak batasan, dan kemunculan visi baru. <br/><br/>
-                Sementara bagian kanan adalah <strong>potongan setengah dari pentagon</strong>, merepresentasikan struktur, rasionalitas, dan pondasi profesionalisme yang kokoh. Perpaduan ini mencerminkan identitas Crimson Rift: keseimbangan sempurna antara seni yang imajinatif dan strategi digital yang terstruktur.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. CORE VALUES SECTION */}
-      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 py-32">
-        <div className="text-center mb-16">
-          <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Nilai Inti Kami</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white">Prinsip yang Menggerakkan Kami</h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Aesthetic & Functional",
-              desc: "Karya yang kami buat tidak hanya indah dipandang, tetapi juga harus bekerja dengan baik, mengkonversi audiens, dan memberikan hasil nyata.",
-              icon: <PenTool size={32} />
-            },
-            {
-              title: "Uncompromising Quality",
-              desc: "Kami tidak percaya pada kompromi kualitas. Setiap detail, mulai dari resolusi foto hingga kecepatan website, diawasi dengan standar tertinggi.",
-              icon: <Target size={32} />
-            },
-            {
-              title: "Partnership & Growth",
-              desc: "Kami bukan sekadar vendor, kami adalah rekan pertumbuhan Anda. Keberhasilan project Anda adalah satu-satunya indikator kesuksesan kami.",
-              icon: <Crosshair size={32} />
-            }
-          ].map((val, idx) => (
-            <div key={idx} className="bg-[#111] p-10 rounded-2xl border border-gray-800 text-center hover:-translate-y-2 transition-transform duration-300">
-              <div className="w-16 h-16 bg-[#0a0a0a] border border-gray-800 rounded-xl flex items-center justify-center text-red-600 mx-auto mb-6 shadow-lg shadow-red-900/20">
-                {val.icon}
-              </div>
-              <h4 className="text-xl font-bold text-white mb-4">{val.title}</h4>
-              <p className="text-gray-500 leading-relaxed">{val.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. CTA SECTION */}
-      <section className="max-w-5xl mx-auto px-4 pb-12">
-        <div className="bg-gradient-to-r from-red-900/40 to-[#111] border border-red-900/50 p-12 rounded-3xl text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-transparent"></div>
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10">Siap Memulai Babak Baru?</h3>
-          <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto relative z-10">
-            Berhentilah menjadi sama dengan yang lain. Mari ciptakan portal kesuksesan digital Anda bersama Crimson Rift Studio hari ini.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
-            <Link to="/services" className="inline-flex px-8 py-4 bg-[#111] hover:bg-gray-800 text-white border border-gray-700 font-bold rounded-lg transition-all items-center justify-center gap-3 group">
-              Eksplorasi Layanan
-            </Link>
-            {/* Tombol WhatsApp Baru */}
-            <a 
-              href="https://wa.me/6281398621530" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all items-center justify-center gap-3 shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:-translate-y-1"
-            >
-              Hubungi Kami Sekarang <ChevronRight size={20} />
-            </a>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  );
-}
-</file>
-
-<file path="src/app/home/Home.jsx">
-import { ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-const LOGO_URL = "/logo/logo-crimson-rift-studio.png";
-
-export default function Home() {
-  return (
-    <div className="flex flex-col animate-fadeIn">
-      <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 text-center overflow-hidden pt-24 pb-12">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-[#0a0a0a] to-[#0a0a0a] z-0"></div>
-        <div className="z-10 flex flex-col items-center">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-red-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            {/* Ukuran logo diperkecil di sini (h-24 md:h-32) */}
-            <img src={LOGO_URL} alt="Logo" className="relative w-auto h-54 md:h-72 object-contain mb-8 animate-[pulse_4s_ease-in-out_infinite]" />
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
-            DIGITAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">EXCELLENCE</span>
-          </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            Satu solusi untuk semua kebutuhan digital. Kami ahlinya dalam Website, Desain, Fotografi, Videografi, dan Manajemen Sosial Media.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-5">
-            <Link to="/services" className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all flex items-center justify-center gap-3 group">
-              Jelajahi Layanan <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <div className="w-full bg-red-600 py-4 overflow-hidden flex whitespace-nowrap shadow-[0_0_20px_rgba(220,38,38,0.15)] relative z-10">
-        <div className="animate-marquee inline-block text-white font-black tracking-widest uppercase text-sm md:text-base">
-          {Array(6).fill("• WEBSITE & SEO • LOGO & BRANDING • PHOTOGRAPHY • VIDEOGRAPHY • SOSMED MANAGER • DIGITAL ADS ").map((text, i) => (
-            <span key={i} className="mx-4">{text}</span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-</file>
-
-<file path="src/app/services/Design.jsx">
-import { useState } from 'react';
-import { CheckCircle2, ChevronLeft, PenTool, Palette, Diamond, Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-export default function Design() {
-  const [activeTab, setActiveTab] = useState('logo');
-
-  const categories = [
-    { id: 'logo', label: 'Logo Design', icon: <PenTool size={20} /> },
-    { id: 'basicBranding', label: 'Logo + Basic Branding', icon: <Palette size={20} /> },
-    { id: 'fullBranding', label: 'Full Branding Package', icon: <Diamond size={20} /> }
-  ];
-
-  const pricingData = {
-    logo: {
-      target: "Target: Entry Level / Bisnis Baru / Kebutuhan Cepat",
-      packages: [
-        {
-          name: "BASIC LOGO", price: "Rp250.000", isPopular: false,
-          features: ["1 Konsep Logo Utama", "1 Alternatif Revisi Arah", "Style Sederhana (Text/Icon Basic)", "File PNG Transparan & JPG", "1 Warna + 1 Versi Hitam Putih", "Waktu Pengerjaan: 1–2 Hari", "Revisi: 2x"]
-        },
-        {
-          name: "STANDARD LOGO", price: "Rp500.000", isPopular: true,
-          features: ["2–3 Konsep Logo", "Eksplorasi Style (Icon + Typography)", "Pemilihan Warna Dasar", "File Lengkap (PNG, JPG, SVG/Vector)", "Versi Full Color, Hitam Putih, Icon", "Waktu Pengerjaan: 2–4 Hari", "Revisi: 3–5x"]
-        },
-        {
-          name: "PROFESSIONAL", price: "Mulai Rp900.000", isPopular: false,
-          features: ["3–5 Konsep Logo", "Riset Ringan Brand (Market + Vibe)", "Logo System (Primary, Secondary, Icon)", "Warna Brand (Basic Palette)", "File Lengkap Asli (AI/SVG/EPS)", "Mockup Preview (Baju/Kemasan/dll)", "Waktu Pengerjaan: 3–5 Hari", "Revisi: 5–7x"]
-        }
-      ]
-    },
-    basicBranding: {
-      target: "Target: Bisnis Berkembang / Re-branding",
-      packages: [
-        {
-          name: "STARTER BRAND", price: "Rp750.000", isPopular: false,
-          features: ["2–3 Konsep Logo", "Warna Brand (Primary + Secondary)", "Font Pairing (Judul + Isi)", "Logo Usage Basic", "File Lengkap Logo", "1 Desain (Kartu Nama / IG Profile)", "Revisi: 3–5x"]
-        },
-        {
-          name: "BRAND IDENTITY", price: "Rp1.500.000", isPopular: true,
-          features: ["3–5 Konsep Logo", "Logo System (Primary, Secondary, Icon)", "Color Palette Lengkap", "Typography System", "Mini Brand Guideline (PDF)", "3 Aplikasi (Kartu Nama, Feed IG, Banner)", "Mockup Branding", "Revisi: 5–7x"]
-        }
-      ]
-    },
-    fullBranding: {
-      target: "Target: Ekosistem Bisnis / Skala Menengah Atas",
-      packages: [
-        {
-          name: "BRAND PRO", price: "Mulai Rp2.500.000", isPopular: true,
-          features: ["Riset Brand & Positioning Ringan", "3–5 Konsep Logo & Logo System Lengkap", "Color System (Primary, Secondary, Accent)", "Typography Lengkap", "Brand Guideline (10–15 Halaman)", "Aplikasi: Kartu Nama, IG Template (3-6), Banner, Packaging Basic", "Mockup Profesional", "Revisi: 7x"]
-        },
-        {
-          name: "BRAND PREMIUM", price: "Mulai Rp4.000.000", isPopular: false,
-          features: ["Brand Strategy (Positioning + Tone)", "Logo System Advanced", "Visual Identity & Color Psychology", "Typography System Advanced", "Brand Guideline Lengkap (20+ Halaman)", "Aplikasi Lengkap (Socmed Kit, Packaging, Merch)", "Visual Direction (Style Guide)", "Revisi: 7–10x"]
-        }
-      ]
-    }
-  };
-
-  const addOns = [
-    "Logo Express 1 Hari (+Rp100.000)",
-    "Tambahan Konsep (+Rp100.000 / konsep)",
-    "Tambahan Revisi (+Rp50.000)",
-    "Social Media Kit 10 Post (Rp300k - Rp500k)",
-    "Packaging Design (Rp300k - Rp800k)",
-    "Brand Guideline Tambahan (Mulai Rp300k)"
-  ];
-
-  return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
-        
-        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-600 transition-colors mb-12 font-medium">
-          <ChevronLeft size={20} /> Kembali ke Layanan
-        </Link>
-
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Logo Design <br/>& Branding</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Ciptakan identitas visual yang kuat dan profesional untuk meningkatkan nilai jual dan kepercayaan audiens terhadap bisnis Anda.</p>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                activeTab === cat.id 
-                ? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]' 
-                : 'bg-[#111] text-gray-400 hover:bg-gray-800 border border-gray-800'
-              }`}
-            >
-              {cat.icon}
-              <span className="hidden sm:block">{cat.label}</span>
-            </button>
-          ))}
-        </div>
-
-        <div className="animate-fadeIn">
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 bg-red-900/20 text-red-500 rounded-full text-sm font-semibold border border-red-900/50">
-              {pricingData[activeTab].target}
-            </span>
-          </div>
-
-          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8`}>
-            {pricingData[activeTab].packages.map((pkg, idx) => (
-              <div 
-                key={idx} 
-                className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${
-                  pkg.isPopular 
-                  ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' 
-                  : 'border border-gray-800 hover:border-gray-600'
-                }`}
-              >
-                {pkg.isPopular && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
-                    Paling Laris
-                  </div>
-                )}
-                <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
-                <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
-                
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {pkg.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                      <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${
-                  pkg.isPopular 
-                  ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' 
-                  : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'
-                }`}>
-                  Pilih Paket Ini
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
-          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
-            <div className="md:w-1/3">
-              <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Add-on)</h3>
-              <p className="text-gray-400">Sesuaikan paket desain dengan kebutuhan spesifik brand Anda saat ini.</p>
-            </div>
-            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {addOns.map((addon, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-xl border border-gray-800">
-                  <Plus size={18} className="text-red-500" />
-                  <span className="text-sm font-medium">{addon}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-}
-</file>
-
 <file path="src/app/services/WebDev.jsx">
 import { useState } from 'react';
 import { CheckCircle2, ChevronLeft, LayoutTemplate, Layers, Building2, Store, Plus } from 'lucide-react';
@@ -1770,6 +1583,243 @@ export default function Footer() {
 }
 </file>
 
+<file path="src/index.css">
+@import "tailwindcss";
+
+@theme {
+  --animate-fadeIn: fadeIn 0.4s ease-out forwards;
+  --animate-marquee: marquee 20s linear infinite;
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+body {
+  background-color: #0a0a0a;
+  color: white;
+}
+</file>
+
+<file path="src/main.jsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+</file>
+
+<file path="vite.config.js">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+    react(),
+  ],
+})
+</file>
+
+<file path="src/app/about/about.jsx">
+import { ChevronRight, Flame, Zap, Target, Crosshair, Hexagon, PenTool } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const LOGO_URL = "/logo/logo-crimson-rift-studio.png";
+
+export default function About() {
+  return (
+    <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn overflow-hidden">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+        
+        <div className="flex flex-col items-center text-center z-10 relative">
+          <div className="relative group mb-10">
+            <div className="absolute -inset-4 bg-red-600/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
+            <img 
+              src={LOGO_URL} 
+              alt="Crimson Rift Studio" 
+              className="relative w-full max-w-[200px] md:max-w-[280px] mx-auto drop-shadow-[0_0_40px_rgba(220,38,38,0.3)] animate-[pulse_4s_ease-in-out_infinite]" 
+            />
+          </div>
+          
+          <h2 className="text-sm font-bold text-red-600 tracking-[0.3em] uppercase mb-4">Di Balik Layar</h2>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-8 leading-tight">
+            Mendobrak Batas <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Kreativitas Digital.</span>
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Kami bukan sekadar agensi. Kami adalah arsitek visual, pencerita digital, dan jembatan yang menghubungkan visi brand Anda dengan dunia yang tanpa batas.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. THE STORY SECTION */}
+      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent border border-red-900/30 rounded-3xl -rotate-3 scale-105 -z-10"></div>
+            <div className="bg-[#111] border border-gray-800 p-8 md:p-12 rounded-3xl relative z-10 shadow-2xl">
+              <Crosshair className="text-red-600 w-12 h-12 mb-6" />
+              <h3 className="text-3xl font-bold text-white mb-6">Awal Mula Sebuah Epik</h3>
+              <div className="space-y-4 text-gray-400 leading-relaxed text-lg">
+                <p>
+                  Crimson Rift Studio lahir dari sebuah kegelisahan. Kami melihat begitu banyak bisnis dan individu yang memiliki potensi luar biasa, produk yang hebat, dan cerita yang inspiratif, namun terhalang oleh representasi visual yang "biasa-biasa saja".
+                </p>
+                <p>
+                  Di era di mana impresi pertama dibentuk dalam hitungan detik di layar kaca, menjadi biasa adalah sebuah kerugian. Dari situlah kami berkumpul—para desainer, fotografer, videografer, dan pengembang web—untuk menciptakan sebuah "Rift" (celah/portal).
+                </p>
+                <p>
+                  Sebuah portal yang membawa klien kami keluar dari keramaian kompetisi, menuju dimensi di mana brand mereka terlihat dominan, tak terlupakan, dan eksklusif.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="order-1 lg:order-2 flex flex-col justify-center">
+            <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Cerita Kami</h2>
+            <h3 className="text-4xl font-bold text-white mb-6">Lahir dari Hasrat <br/>Terhadap Kesempurnaan.</h3>
+            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+              Kami menolak untuk menghasilkan karya yang diproduksi massal secara asal. Setiap pixel, setiap frame video, dan setiap baris kode yang kami buat dikerjakan dengan presisi tingkat tinggi dan strategi yang matang.
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-1 bg-red-600 rounded-full"></div>
+              <span className="text-white font-medium italic">We don't just create, we engineer legacies.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. NAME & PHILOSOPHY SECTION */}
+      <section className="bg-[#050505] py-32 border-y border-gray-900 relative">
+        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+          <div className="text-center mb-20">
+            <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Identitas & Makna</h2>
+            <h3 className="text-3xl md:text-5xl font-bold text-white">Filosofi <span className="text-red-600">Crimson Rift</span></h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Crimson */}
+            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-bl-full -z-10 group-hover:bg-red-600/20 transition-colors"></div>
+              <Flame className="text-red-600 w-12 h-12 mb-6" />
+              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">CRIMSON.</h4>
+              <p className="text-gray-400 leading-relaxed text-lg">
+                Melambangkan warna merah pekat yang identik dengan <strong>gairah, energi, dan keberanian</strong>. Kami tidak mendesain untuk main aman. Kami menciptakan karya yang berani tampil beda, mencuri perhatian, dan meninggalkan jejak emosional yang kuat di benak audiens Anda.
+              </p>
+            </div>
+
+            {/* Rift */}
+            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-bl-full -z-10 group-hover:bg-red-600/20 transition-colors"></div>
+              <Zap className="text-red-600 w-12 h-12 mb-6" />
+              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">RIFT.</h4>
+              <p className="text-gray-400 leading-relaxed text-lg">
+                Sebuah rekahan, celah, atau <strong>portal menuju dimensi lain</strong>. Ini adalah janji kami: menjadi jembatan yang menarik brand Anda dari realitas konvensional, membawanya menembus batasan digital, menuju masa depan yang penuh dengan inovasi dan dominasi pasar.
+              </p>
+            </div>
+          </div>
+
+          {/* Logo Philosophy */}
+          <div className="bg-gradient-to-br from-[#111] to-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-red-900/30 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.05)]">
+            <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-red-600/10 blur-3xl rounded-full"></div>
+            <div className="md:w-1/3 flex justify-center relative z-10">
+              <img 
+                src={LOGO_URL} 
+                alt="Logo Crimson Rift" 
+                className="w-32 md:w-48 relative z-10 drop-shadow-[0_0_40px_rgba(220,38,38,0.4)]" 
+              />
+            </div>
+            <div className="md:w-2/3 relative z-10 text-center md:text-left">
+              <h4 className="text-2xl font-bold text-white mb-4">Makna Simbol Kami</h4>
+              <p className="text-gray-400 leading-relaxed text-lg">
+                Simbol yang kami gunakan membawa makna dualitas yang mendalam. Bagian kiri membentuk <strong>belahan setengah bulan</strong> yang ditembus oleh kilatan <strong>petir (rift)</strong>, melambangkan energi, kreativitas yang mendobrak batasan, dan kemunculan visi baru. <br/><br/>
+                Sementara bagian kanan adalah <strong>potongan setengah dari pentagon</strong>, merepresentasikan struktur, rasionalitas, dan pondasi profesionalisme yang kokoh. Perpaduan ini mencerminkan identitas Crimson Rift: keseimbangan sempurna antara seni yang imajinatif dan strategi digital yang terstruktur.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CORE VALUES SECTION */}
+      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 py-32">
+        <div className="text-center mb-16">
+          <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Nilai Inti Kami</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-white">Prinsip yang Menggerakkan Kami</h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Aesthetic & Functional",
+              desc: "Karya yang kami buat tidak hanya indah dipandang, tetapi juga harus bekerja dengan baik, mengkonversi audiens, dan memberikan hasil nyata.",
+              icon: <PenTool size={32} />
+            },
+            {
+              title: "Uncompromising Quality",
+              desc: "Kami tidak percaya pada kompromi kualitas. Setiap detail, mulai dari resolusi foto hingga kecepatan website, diawasi dengan standar tertinggi.",
+              icon: <Target size={32} />
+            },
+            {
+              title: "Partnership & Growth",
+              desc: "Kami bukan sekadar vendor, kami adalah rekan pertumbuhan Anda. Keberhasilan project Anda adalah satu-satunya indikator kesuksesan kami.",
+              icon: <Crosshair size={32} />
+            }
+          ].map((val, idx) => (
+            <div key={idx} className="bg-[#111] p-10 rounded-2xl border border-gray-800 text-center hover:-translate-y-2 transition-transform duration-300">
+              <div className="w-16 h-16 bg-[#0a0a0a] border border-gray-800 rounded-xl flex items-center justify-center text-red-600 mx-auto mb-6 shadow-lg shadow-red-900/20">
+                {val.icon}
+              </div>
+              <h4 className="text-xl font-bold text-white mb-4">{val.title}</h4>
+              <p className="text-gray-500 leading-relaxed">{val.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. CTA SECTION */}
+      <section className="max-w-5xl mx-auto px-4 pb-12">
+        <div className="bg-gradient-to-r from-red-900/40 to-[#111] border border-red-900/50 p-12 rounded-3xl text-center relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-transparent"></div>
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10">Siap Memulai Babak Baru?</h3>
+          <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto relative z-10">
+            Berhentilah menjadi sama dengan yang lain. Mari ciptakan portal kesuksesan digital Anda bersama Crimson Rift Studio hari ini.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+            <Link to="/services" className="inline-flex px-8 py-4 bg-[#111] hover:bg-gray-800 text-white border border-gray-700 font-bold rounded-lg transition-all items-center justify-center gap-3 group">
+              Eksplorasi Layanan
+            </Link>
+            {/* Tombol WhatsApp Baru */}
+            <a 
+              href="https://wa.me/6281398621530" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all items-center justify-center gap-3 shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:-translate-y-1"
+            >
+              Hubungi Kami Sekarang <ChevronRight size={20} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
+</file>
+
 <file path="src/components/Navbar.jsx">
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
@@ -1850,94 +1900,6 @@ export default function Navbar() {
     </nav>
   );
 }
-</file>
-
-<file path="src/index.css">
-@import "tailwindcss";
-
-@theme {
-  --animate-fadeIn: fadeIn 0.4s ease-out forwards;
-  --animate-marquee: marquee 20s linear infinite;
-  
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-}
-
-body {
-  background-color: #0a0a0a;
-  color: white;
-}
-</file>
-
-<file path="src/main.jsx">
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-</file>
-
-<file path="vite.config.js">
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react(),
-  ],
-})
-</file>
-
-<file path="src/App.jsx">
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './app/home/Home';
-import About from './app/about/about';
-import Services from './app/services/Services';
-import WebDev from './app/services/WebDev';
-import Design from './app/services/Design'; // <--- IMPORT HALAMAN BARU DI SINI
-import Multimedia from './app/services/Multimedia';
-import Sosmed from './app/services/Sosmed';
-function App() {
-  return (
-    <Router>
-      <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-gray-100 font-sans selection:bg-red-600 selection:text-white">
-        <Navbar />
-        
-        <main className="flex-grow pt-20">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/web-development" element={<WebDev />} />
-            <Route path="/services/logo-branding" element={<Design />} />
-            <Route path="/services/photography-videography" element={<Multimedia />} />
-            <Route path="/services/social-media" element={<Sosmed />} />
-          </Routes>
-        </main>
-
-        <Footer />
-      </div>
-    </Router>
-  );
-}
-
-export default App;
 </file>
 
 <file path="src/app/services/Services.jsx">
@@ -2052,6 +2014,44 @@ export default function Services() {
     </div>
   );
 }
+</file>
+
+<file path="src/App.jsx">
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './app/home/Home';
+import About from './app/about/about';
+import Services from './app/services/Services';
+import WebDev from './app/services/WebDev';
+import Design from './app/services/Design'; // <--- IMPORT HALAMAN BARU DI SINI
+import Multimedia from './app/services/Multimedia';
+import Sosmed from './app/services/Sosmed';
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-gray-100 font-sans selection:bg-red-600 selection:text-white">
+        <Navbar />
+        
+        <main className="flex-grow pt-20">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/web-development" element={<WebDev />} />
+            <Route path="/services/logo-branding" element={<Design />} />
+            <Route path="/services/photography-videography" element={<Multimedia />} />
+            <Route path="/services/social-media" element={<Sosmed />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
+    </Router>
+  );
+}
+
+export default App;
 </file>
 
 </files>
