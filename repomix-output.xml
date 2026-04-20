@@ -1616,23 +1616,6 @@ createRoot(document.getElementById('root')).render(
 }
 </file>
 
-<file path="index.html">
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <base href="/" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crimson Rift Studio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
-</file>
-
 <file path="src/app/about/about.jsx">
 import { ChevronRight, Flame, Zap, Target, Crosshair, Hexagon, PenTool } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -1911,6 +1894,26 @@ export default function Navbar() {
     }
   ]
 }
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="/" />
+    <!-- Ikon utama -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Tambahan agar browser tidak bandel mencari favicon.ico -->
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crimson Rift Studio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
 </file>
 
 <file path="src/app/services/Services.jsx">
