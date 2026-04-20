@@ -44,6 +44,9 @@ The content is organized as follows:
 eslint.config.js
 index.html
 package.json
+public/clients/0xtanda.png
+public/clients/lakeswaramoto.png
+public/clients/tk-alhuda.png
 public/favicon.png
 public/logo/logo-crimson-rift-studio.png
 README.md
@@ -181,6 +184,55 @@ The React Compiler is not enabled on this template because of its impact on dev 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 </file>
 
+<file path="src/assets/react.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
+</file>
+
+<file path="src/assets/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+</file>
+
+<file path="src/components/Footer.jsx">
+const LOGO_URL = "/favicon.png";
+
+export default function Footer() {
+  return (
+    <footer className="bg-[#050505] border-t border-gray-900 pt-16 pb-8 px-4 md:px-12 lg:px-24">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <img src={LOGO_URL} alt="Logo" className="h-10 w-auto object-contain opacity-80" />
+        <p className="text-gray-600 text-sm text-center md:text-left">
+          &copy; {new Date().getFullYear()} Crimson Rift Studio. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
+</file>
+
+<file path="src/main.jsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+</file>
+
+<file path="vercel.json">
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+</file>
+
 <file path="src/app/home/Home.jsx">
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -188,34 +240,78 @@ import { Link } from 'react-router-dom';
 const LOGO_URL = "/logo/logo-crimson-rift-studio.png";
 
 export default function Home() {
+  // Daftar Client Portofolio
+  // Ganti path "logo" dengan nama file logomu nanti setelah diupload ke folder public/clients
+  const clients = [
+    { name: "0xTanda", logo: "/clients/0xtanda.png" },
+    { name: "TK Islam-TPQ Al-Huda", logo: "/clients/tk-alhuda.png" },
+    { name: "Lakeswaramoto", logo: "/clients/lakeswaramoto.png" }
+  ];
+
   return (
     <div className="flex flex-col animate-fadeIn">
+      {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-[90vh] px-4 text-center overflow-hidden pt-24 pb-12">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-[#0a0a0a] to-[#0a0a0a] z-0"></div>
+        {/* Glow background radial */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/10 via-[#0a0a0a] to-[#0a0a0a] z-0"></div>
+        
         <div className="z-10 flex flex-col items-center">
           <div className="relative group">
-            <div className="absolute -inset-1 bg-red-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            {/* Ukuran logo diperkecil di sini (h-24 md:h-32) */}
-            <img src={LOGO_URL} alt="Logo" className="relative w-auto h-54 md:h-72 object-contain mb-8 animate-[pulse_4s_ease-in-out_infinite]" />
+            {/* Glow di balik logo */}
+            <div className="absolute -inset-1 bg-red-600 rounded-full blur opacity-10 group-hover:opacity-25 transition duration-1000 group-hover:duration-200"></div>
+            
+            {/* Animasi float */}
+            <img 
+              src={LOGO_URL} 
+              alt="Logo" 
+              className="relative w-auto h-54 md:h-72 object-contain mb-8 animate-float" 
+            />
           </div>
+          
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
-            DIGITAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">EXCELLENCE</span>
+            DIGITAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">EXCELLENCE</span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+          
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
             Satu solusi untuk semua kebutuhan digital. Kami ahlinya dalam Website, Desain, Fotografi, Videografi, dan Manajemen Sosial Media.
           </p>
+          
           <div className="flex flex-col sm:flex-row gap-5">
-            <Link to="/services" className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all flex items-center justify-center gap-3 group">
+            <Link 
+              to="/services" 
+              className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all flex items-center justify-center gap-3 group shadow-lg shadow-red-900/20 hover:-translate-y-1"
+            >
               Jelajahi Layanan <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
       </section>
 
-      <div className="w-full bg-red-600 py-4 overflow-hidden flex whitespace-nowrap shadow-[0_0_20px_rgba(220,38,38,0.15)] relative z-10">
-        <div className="animate-marquee inline-block text-white font-black tracking-widest uppercase text-sm md:text-base">
-          {Array(6).fill("• WEBSITE & SEO • LOGO & BRANDING • PHOTOGRAPHY • VIDEOGRAPHY • SOSMED MANAGER • DIGITAL ADS ").map((text, i) => (
-            <span key={i} className="mx-4">{text}</span>
+      {/* Client Marquee Banner (Trusted By) */}
+      <div className="w-full bg-[#111] border-y border-gray-800 py-10 overflow-hidden relative z-10 flex flex-col items-center">
+        <p className="text-gray-500 text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-8">Telah Dipercaya Oleh</p>
+        
+        {/* Gradient Mask agar logo menghilang secara halus di ujung layar */}
+        <div className="absolute left-0 w-16 md:w-32 h-full bg-gradient-to-r from-[#111] to-transparent z-20 pointer-events-none"></div>
+        <div className="absolute right-0 w-16 md:w-32 h-full bg-gradient-to-l from-[#111] to-transparent z-20 pointer-events-none"></div>
+        
+        <div className="flex whitespace-nowrap w-max animate-marquee hover:[animation-play-state:paused]">
+          {/* Di-render 6 kali agar perputarannya (looping) tidak pernah putus */}
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="flex items-center justify-around min-w-max">
+              {clients.map((client, idx) => (
+                <div key={`${i}-${idx}`} className="flex items-center mx-8 md:mx-16 transition-transform duration-500 hover:scale-105 cursor-default">
+                  {/* Gambar Logo Client Saja (Sudah Full Color) */}
+                  <img 
+                    src={client.logo} 
+                    alt={client.name} 
+                    className="h-12 md:h-16 w-auto object-contain"
+                    /* Kode di bawah ini berguna untuk MENGHILANGKAN icon gambar pecah jika kamu belum mengupload logo clientnya */
+                    onError={(e) => { e.target.style.display = 'none'; }} 
+                  />
+                </div>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -233,9 +329,9 @@ export default function Design() {
   const [activeTab, setActiveTab] = useState('logo');
 
   const categories = [
-    { id: 'logo', label: 'Logo Design', icon: <PenTool size={20} /> },
-    { id: 'basicBranding', label: 'Logo + Basic Branding', icon: <Palette size={20} /> },
-    { id: 'fullBranding', label: 'Full Branding Package', icon: <Diamond size={20} /> }
+    { id: 'logo', label: 'Logo Design', icon: <PenTool size={20} strokeWidth={1.5} /> },
+    { id: 'basicBranding', label: 'Logo + Basic Branding', icon: <Palette size={20} strokeWidth={1.5} /> },
+    { id: 'fullBranding', label: 'Full Branding Package', icon: <Diamond size={20} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
@@ -297,14 +393,14 @@ export default function Design() {
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
-        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-600 transition-colors mb-12 font-medium">
-          <ChevronLeft size={20} /> Kembali ke Layanan
+        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
+          <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
         </Link>
 
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Logo Design <br/>& Branding</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Ciptakan identitas visual yang kuat dan profesional untuk meningkatkan nilai jual dan kepercayaan audiens terhadap bisnis Anda.</p>
+          <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Logo Design <br/>& Branding</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Ciptakan identitas visual yang kuat dan profesional untuk meningkatkan nilai jual dan kepercayaan audiens terhadap bisnis Anda.</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
@@ -314,73 +410,83 @@ export default function Design() {
               onClick={() => setActiveTab(cat.id)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeTab === cat.id 
-                ? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]' 
+                ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' 
                 : 'bg-[#111] text-gray-400 hover:bg-gray-800 border border-gray-800'
               }`}
             >
               {cat.icon}
-              <span className="hidden sm:block">{cat.label}</span>
+              <span className="hidden sm:block text-sm md:text-base">{cat.label}</span>
             </button>
           ))}
         </div>
 
         <div className="animate-fadeIn">
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 bg-red-900/20 text-red-500 rounded-full text-sm font-semibold border border-red-900/50">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-red-900/10 text-red-500 rounded-full text-sm font-semibold border border-red-900/30">
               {pricingData[activeTab].target}
             </span>
           </div>
 
-          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8`}>
+          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8 mt-6`}>
             {pricingData[activeTab].packages.map((pkg, idx) => (
               <div 
                 key={idx} 
-                className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${
+                className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${
                   pkg.isPopular 
-                  ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' 
-                  : 'border border-gray-800 hover:border-gray-600'
+                  ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' 
+                  : 'border border-gray-800 hover:border-red-900/30'
                 }`}
               >
+                {/* Wrapper khusus untuk background glow agar tetap terpotong rapi tanpa memotong kartu utamanya */}
+                <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                  {pkg.isPopular && (
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10"></div>
+                  )}
+                </div>
+
                 {pkg.isPopular && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                     Paling Laris
                   </div>
                 )}
-                <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
-                <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
                 
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {pkg.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                      <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="relative z-10 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
+                  <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
+                  
+                  <ul className="space-y-4 mb-10 flex-grow">
+                    {pkg.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                        <CheckCircle2 size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
+                        <span className="text-sm leading-snug">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${
-                  pkg.isPopular 
-                  ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' 
-                  : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'
-                }`}>
-                  Pilih Paket Ini
-                </button>
+                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                    pkg.isPopular 
+                    ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
+                    : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
+                  }`}>
+                    Pilih Paket Ini
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden">
+        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden shadow-lg">
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
             <div className="md:w-1/3">
               <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Add-on)</h3>
-              <p className="text-gray-400">Sesuaikan paket desain dengan kebutuhan spesifik brand Anda saat ini.</p>
+              <p className="text-gray-400 leading-relaxed">Sesuaikan paket desain dengan kebutuhan spesifik brand Anda saat ini.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {addOns.map((addon, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-xl border border-gray-800">
-                  <Plus size={18} className="text-red-500" />
+                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-2xl border border-gray-800 hover:border-red-900/30 transition-colors">
+                  <Plus size={18} strokeWidth={1.5} className="text-red-500 shrink-0" />
                   <span className="text-sm font-medium">{addon}</span>
                 </div>
               ))}
@@ -403,13 +509,13 @@ export default function Multimedia() {
   const [activeTab, setActiveTab] = useState('wedding');
 
   const categories = [
-    { id: 'wedding', label: 'Wedding & Pro', icon: <HeartHandshake size={18} /> },
-    { id: 'foto', label: 'Foto Produk', icon: <Camera size={18} /> },
-    { id: 'video', label: 'Video Produk', icon: <Video size={18} /> },
-    { id: 'bundle', label: 'Bundle Foto + Video', icon: <Layers size={18} /> },
-    { id: 'aifoto', label: 'AI Photo', icon: <Sparkles size={18} /> },
-    { id: 'aivideo', label: 'AI Video', icon: <Film size={18} /> },
-    { id: 'aichar', label: 'AI Character', icon: <UserSquare size={18} /> }
+    { id: 'wedding', label: 'Wedding & Pro', icon: <HeartHandshake size={18} strokeWidth={1.5} /> },
+    { id: 'foto', label: 'Foto Produk', icon: <Camera size={18} strokeWidth={1.5} /> },
+    { id: 'video', label: 'Video Produk', icon: <Video size={18} strokeWidth={1.5} /> },
+    { id: 'bundle', label: 'Bundle Foto + Video', icon: <Layers size={18} strokeWidth={1.5} /> },
+    { id: 'aifoto', label: 'AI Photo', icon: <Sparkles size={18} strokeWidth={1.5} /> },
+    { id: 'aivideo', label: 'AI Video', icon: <Film size={18} strokeWidth={1.5} /> },
+    { id: 'aichar', label: 'AI Character', icon: <UserSquare size={18} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
@@ -700,7 +806,7 @@ export default function Multimedia() {
     if (len === 2) return 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto';
     if (len === 3) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
     if (len === 4) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'; 
-    if (len === 6) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'; // Wrap jadi 2 baris
+    if (len === 6) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'; 
     return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
   };
 
@@ -708,17 +814,16 @@ export default function Multimedia() {
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
-        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-600 transition-colors mb-12 font-medium">
-          <ChevronLeft size={20} /> Kembali ke Layanan
+        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
+          <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
         </Link>
 
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Professional Photo <br/>& Videography</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Pilih dari solusi dokumentasi acara profesional, produksi visual lapangan, hingga pembuatan aset digital dengan AI.</p>
+          <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Professional Photo <br/>& Videography</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Pilih dari solusi dokumentasi acara profesional, produksi visual lapangan, hingga pembuatan aset digital dengan AI.</p>
         </div>
 
-        {/* TABS YANG SUDAH DIPERBAIKI: Menggunakan flex-wrap agar tidak digeser */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((cat) => (
             <button
@@ -726,7 +831,7 @@ export default function Multimedia() {
               onClick={() => setActiveTab(cat.id)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeTab === cat.id 
-                ? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]' 
+                ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' 
                 : 'bg-[#111] text-gray-400 hover:bg-gray-800 border border-gray-800'
               }`}
             >
@@ -736,10 +841,9 @@ export default function Multimedia() {
           ))}
         </div>
 
-        {/* Content Area */}
         <div className="animate-fadeIn">
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 bg-red-900/20 text-red-500 rounded-full text-sm font-semibold border border-red-900/50">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-red-900/10 text-red-500 rounded-full text-sm font-semibold border border-red-900/30">
               {pricingData[activeTab].target}
             </span>
           </div>
@@ -748,44 +852,53 @@ export default function Multimedia() {
             // --- LAYOUT KHUSUS UNTUK WEDDING & PRO (COMPLEX) ---
             <div className="space-y-24">
               
-              {/* Mapping Group / Sections */}
               {pricingData[activeTab].sections.map((sec, secIdx) => (
                 <div key={secIdx}>
                   <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-white tracking-widest uppercase">{sec.title}</h2>
                     {sec.subtitle && (
-                      <p className="text-red-500 italic mt-3 max-w-2xl mx-auto">"{sec.subtitle}"</p>
+                      <p className="text-red-500 italic mt-3 max-w-2xl mx-auto leading-relaxed">"{sec.subtitle}"</p>
                     )}
                   </div>
                   
-                  <div className={`grid ${getGridClass(sec.packages.length)} gap-8`}>
+                  <div className={`grid ${getGridClass(sec.packages.length)} gap-8 mt-6`}>
                     {sec.packages.map((pkg, idx) => (
-                      <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${pkg.isPopular ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' : 'border border-gray-800 hover:border-gray-600'}`}>
+                      <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${pkg.isPopular || pkg.badge ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' : 'border border-gray-800 hover:border-red-900/30'}`}>
+                        
+                        <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                          {(pkg.isPopular || pkg.badge) && (
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10"></div>
+                          )}
+                        </div>
+
                         {pkg.badge && (
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-600 to-red-800 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-lg">
+                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                             {pkg.badge}
                           </div>
                         )}
                         {!pkg.badge && pkg.isPopular && (
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                             Paling Laris
                           </div>
                         )}
-                        <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
-                        <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
-                        
-                        <ul className="space-y-4 mb-10 flex-grow">
-                          {pkg.features.map((feature, fIdx) => (
-                            <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                              <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
-                              <span className="text-sm">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
 
-                        <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'}`}>
-                          Pilih Paket Ini
-                        </button>
+                        <div className="relative z-10 flex flex-col flex-grow">
+                          <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
+                          <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
+                          
+                          <ul className="space-y-4 mb-10 flex-grow">
+                            {pkg.features.map((feature, fIdx) => (
+                              <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                                <CheckCircle2 size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
+                                <span className="text-sm leading-snug">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular || pkg.badge ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}>
+                            Pilih Paket Ini
+                          </button>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -793,12 +906,12 @@ export default function Multimedia() {
               ))}
 
               {/* Additional Items Khusus Wedding */}
-              <div className="bg-gradient-to-b from-[#111] to-[#0a0a0a] p-8 md:p-12 rounded-3xl border border-gray-800 relative overflow-hidden">
+              <div className="bg-gradient-to-b from-[#111] to-[#0a0a0a] p-8 md:p-12 rounded-3xl border border-gray-800 relative overflow-hidden shadow-lg">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
                 <h3 className="text-2xl font-bold text-white mb-8 border-b border-gray-800 pb-4 relative z-10">Additional Items</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                   {pricingData[activeTab].additionalItems.map((item, idx) => (
-                    <div key={idx} className="flex flex-col p-5 bg-[#161616] rounded-xl border border-gray-800/80">
+                    <div key={idx} className="flex flex-col p-5 bg-[#1a1a1a] rounded-2xl border border-gray-800 hover:border-red-900/30 transition-colors">
                       <span className="text-sm font-bold text-gray-400 mb-1">{item.name}</span>
                       <span className="text-lg font-bold text-red-500">{item.price}</span>
                     </div>
@@ -807,15 +920,15 @@ export default function Multimedia() {
               </div>
 
               {/* Terms & Conditions Section */}
-              <div className="bg-[#050505] p-8 md:p-12 rounded-3xl border border-red-900/30 shadow-[0_0_30px_rgba(220,38,38,0.03)]">
+              <div className="bg-[#050505] p-8 md:p-12 rounded-3xl border border-gray-800/50 shadow-lg">
                 <div className="text-center mb-12">
                   <h3 className="text-3xl font-bold text-white mb-2">Syarat & Ketentuan</h3>
                   <p className="text-gray-500">Penting untuk dibaca dan disepakati bersama</p>
                 </div>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {pricingData[activeTab].terms.map((term, idx) => (
-                    <div key={idx} className="bg-[#0a0a0a] p-6 rounded-2xl border border-gray-800/60">
+                    <div key={idx} className="bg-[#111] p-6 rounded-3xl border border-gray-800/60 hover:border-gray-700 transition-colors">
                       <div className="flex items-center gap-3 mb-4">
                         <span className="text-2xl">{term.icon}</span>
                         <h4 className="text-lg font-bold text-red-500">{term.title}</h4>
@@ -836,29 +949,39 @@ export default function Multimedia() {
             </div>
           ) : (
             // --- LAYOUT STANDAR UNTUK FOTO/VIDEO PRODUK & AI ---
-            <div className={`grid ${getGridClass(pricingData[activeTab].packages.length)} gap-8`}>
+            <div className={`grid ${getGridClass(pricingData[activeTab].packages.length)} gap-8 mt-6`}>
               {pricingData[activeTab].packages.map((pkg, idx) => (
-                <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${pkg.isPopular ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' : 'border border-gray-800 hover:border-gray-600'}`}>
+                <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${pkg.isPopular ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' : 'border border-gray-800 hover:border-red-900/30'}`}>
+                  
+                  <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                    {pkg.isPopular && (
+                      <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10"></div>
+                    )}
+                  </div>
+
                   {pkg.isPopular && (
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                       Paling Laris
                     </div>
                   )}
-                  <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
-                  <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
-                  
-                  <ul className="space-y-4 mb-10 flex-grow">
-                    {pkg.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                        <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
 
-                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'}`}>
-                    Pilih Paket Ini
-                  </button>
+                  <div className="relative z-10 flex flex-col flex-grow">
+                    <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
+                    <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
+                    
+                    <ul className="space-y-4 mb-10 flex-grow">
+                      {pkg.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                          <CheckCircle2 size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
+                          <span className="text-sm leading-snug">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}>
+                      Pilih Paket Ini
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -867,38 +990,38 @@ export default function Multimedia() {
 
         {/* Add Ons Section (Hanya tampil jika bukan di tab wedding yang punya addons khusus) */}
         {!pricingData[activeTab].isComplex && (
-          <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden">
+          <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden shadow-lg">
             <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
             <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-12">
               
               <div className="lg:w-1/3">
                 <h3 className="text-2xl font-bold text-white mb-3">Layanan Tambahan (Add-on)</h3>
-                <p className="text-gray-400">Kustomisasi paket Anda sesuai dengan skala dan timeline project yang dibutuhkan.</p>
+                <p className="text-gray-400 leading-relaxed">Kustomisasi paket Anda sesuai dengan skala dan timeline project yang dibutuhkan.</p>
               </div>
               
               <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                <div className="bg-[#161616] p-6 rounded-2xl border border-gray-800">
+                <div className="bg-[#111] p-6 rounded-3xl border border-gray-800 hover:border-red-900/10 transition-colors">
                   <h4 className="text-red-500 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                    <Camera size={20} /> Add-on Produksi Manual
+                    <Camera size={20} strokeWidth={1.5} /> Add-on Produksi Manual
                   </h4>
                   <div className="space-y-3">
                     {addOns.manual.map((addon, idx) => (
-                      <div key={idx} className="flex items-start gap-3 text-gray-300">
-                        <Plus size={18} className="text-red-600 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors">
+                        <Plus size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
                         <span className="text-sm font-medium">{addon}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="bg-[#161616] p-6 rounded-2xl border border-gray-800">
-                  <h4 className="text-blue-500 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                    <Sparkles size={20} /> Add-on Layanan AI
+                <div className="bg-[#111] p-6 rounded-3xl border border-gray-800 hover:border-red-900/10 transition-colors">
+                  <h4 className="text-red-400 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
+                    <Sparkles size={20} strokeWidth={1.5} /> Add-on Layanan AI
                   </h4>
                   <div className="space-y-3">
                     {addOns.ai.map((addon, idx) => (
-                      <div key={idx} className="flex items-start gap-3 text-gray-300">
-                        <Plus size={18} className="text-blue-500 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors">
+                        <Plus size={18} strokeWidth={1.5} className="text-red-400 shrink-0 mt-0.5" />
                         <span className="text-sm font-medium">{addon}</span>
                       </div>
                     ))}
@@ -925,9 +1048,9 @@ export default function Sosmed() {
   const [activeTab, setActiveTab] = useState('starter');
 
   const categories = [
-    { id: 'starter', label: 'UMKM & Starter', icon: <Smartphone size={18} /> },
-    { id: 'business', label: 'Business & Growth', icon: <TrendingUp size={18} /> },
-    { id: 'premium', label: 'Premium Full Service', icon: <Crown size={18} /> }
+    { id: 'starter', label: 'UMKM & Starter', icon: <Smartphone size={18} strokeWidth={1.5} /> },
+    { id: 'business', label: 'Business & Growth', icon: <TrendingUp size={18} strokeWidth={1.5} /> },
+    { id: 'premium', label: 'Premium Full Service', icon: <Crown size={18} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
@@ -1191,14 +1314,14 @@ export default function Sosmed() {
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
-        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-600 transition-colors mb-12 font-medium">
-          <ChevronLeft size={20} /> Kembali ke Layanan
+        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
+          <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
         </Link>
 
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Social Media <br/>& Ads Agency</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Tingkatkan interaksi audiens, bangun kepercayaan brand, dan dorong penjualan dengan pengelolaan media sosial yang profesional.</p>
+          <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Social Media <br/>& Ads Agency</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Tingkatkan interaksi audiens, bangun kepercayaan brand, dan dorong penjualan dengan pengelolaan media sosial yang profesional.</p>
         </div>
 
         {/* Tab Navigation */}
@@ -1209,7 +1332,7 @@ export default function Sosmed() {
               onClick={() => setActiveTab(cat.id)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeTab === cat.id 
-                ? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]' 
+                ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' 
                 : 'bg-[#111] text-gray-400 hover:bg-gray-800 border border-gray-800'
               }`}
             >
@@ -1222,89 +1345,98 @@ export default function Sosmed() {
         {/* Content Area */}
         <div className="animate-fadeIn">
           <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 bg-red-900/20 text-red-500 rounded-full text-sm font-semibold border border-red-900/50">
+            <span className="inline-block px-4 py-1.5 bg-red-900/10 text-red-500 rounded-full text-sm font-semibold border border-red-900/30">
               {pricingData[activeTab].target}
             </span>
           </div>
 
-          <div className={`grid ${getGridClass(pricingData[activeTab].packages.length)} gap-8`}>
+          <div className={`grid ${getGridClass(pricingData[activeTab].packages.length)} gap-8 mt-6`}>
             {pricingData[activeTab].packages.map((pkg, idx) => (
               <div 
                 key={idx} 
-                className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${
-                  pkg.isPopular 
-                  ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' 
-                  : 'border border-gray-800 hover:border-gray-600'
+                className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${
+                  pkg.isPopular || pkg.badge
+                  ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' 
+                  : 'border border-gray-800 hover:border-red-900/30'
                 }`}
               >
+                {/* Wrapper khusus untuk background glow agar tidak memotong label */}
+                <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                  {(pkg.isPopular || pkg.badge) && (
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10"></div>
+                  )}
+                </div>
+
                 {pkg.badge && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-600 to-red-800 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-lg">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                     {pkg.badge}
                   </div>
                 )}
                 {!pkg.badge && pkg.isPopular && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                     Paling Laris
                   </div>
                 )}
                 
-                <h3 className="text-xl font-bold text-gray-300 mb-1">{pkg.name}</h3>
-                <p className="text-sm font-medium text-red-500 mb-4">{pkg.focus}</p>
-                <h4 className="text-3xl font-black text-white mb-1">{pkg.price}</h4>
-                <p className="text-sm text-gray-500 mb-8">{pkg.period}</p>
-                
-                {/* Features */}
-                <div className="flex-grow">
-                  <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 block">Yang Anda Dapatkan:</span>
-                  <ul className="space-y-4 mb-8">
-                    {pkg.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                        <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-0.5" />
-                        <span className="text-sm leading-snug">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Batasan Scope (Limitations) */}
-                {pkg.batasan && pkg.batasan.length > 0 && (
-                  <div className="mt-auto mb-8 pt-6 border-t border-gray-800/60">
-                    <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 block">Batasan & Scope:</span>
-                    <ul className="space-y-3">
-                      {pkg.batasan.map((bts, bIdx) => (
-                        <li key={bIdx} className="flex items-start gap-3 text-gray-500">
-                          <XCircle size={16} className="text-gray-600 shrink-0 mt-0.5" />
-                          <span className="text-xs leading-snug">{bts}</span>
+                <div className="relative z-10 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold text-gray-300 mb-1">{pkg.name}</h3>
+                  <p className="text-sm font-medium text-red-500 mb-4">{pkg.focus}</p>
+                  <h4 className="text-3xl font-black text-white mb-1">{pkg.price}</h4>
+                  <p className="text-sm text-gray-500 mb-8">{pkg.period}</p>
+                  
+                  {/* Features */}
+                  <div className="flex-grow">
+                    <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 block">Yang Anda Dapatkan:</span>
+                    <ul className="space-y-4 mb-8">
+                      {pkg.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                          <CheckCircle2 size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
+                          <span className="text-sm leading-snug">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                )}
 
-                <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
-                  pkg.isPopular 
-                  ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' 
-                  : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'
-                }`}>
-                  Pilih Paket Ini
-                </button>
+                  {/* Batasan Scope (Limitations) */}
+                  {pkg.batasan && pkg.batasan.length > 0 && (
+                    <div className="mt-auto mb-8 pt-6 border-t border-gray-800/60">
+                      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 block">Batasan & Scope:</span>
+                      <ul className="space-y-3">
+                        {pkg.batasan.map((bts, bIdx) => (
+                          <li key={bIdx} className="flex items-start gap-3 text-gray-500">
+                            <XCircle size={16} strokeWidth={1.5} className="text-gray-600 shrink-0 mt-0.5" />
+                            <span className="text-xs leading-snug">{bts}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                    pkg.isPopular || pkg.badge
+                    ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
+                    : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
+                  }`}>
+                    Pilih Paket Ini
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Add Ons Section */}
-        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden">
+        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden shadow-lg">
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
             <div className="md:w-1/3">
               <h3 className="text-2xl font-bold text-white mb-3">Layanan Tambahan (Add-on)</h3>
-              <p className="text-gray-400">Tingkatkan efektivitas promosi dengan aset visual tambahan dan optimasi iklan.</p>
+              <p className="text-gray-400 leading-relaxed">Tingkatkan efektivitas promosi dengan aset visual tambahan dan optimasi iklan.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {addOns.map((addon, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-xl border border-gray-800">
-                  <Plus size={18} className="text-red-500 shrink-0" />
+                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-2xl border border-gray-800 hover:border-red-900/30 transition-colors">
+                  <Plus size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
                   <span className="text-sm font-medium">{addon}</span>
                 </div>
               ))}
@@ -1313,15 +1445,15 @@ export default function Sosmed() {
         </div>
 
         {/* Terms & Conditions Section */}
-        <div className="mt-24 bg-[#050505] p-8 md:p-12 rounded-3xl border border-red-900/30 shadow-[0_0_30px_rgba(220,38,38,0.03)]">
+        <div className="mt-24 bg-[#050505] p-8 md:p-12 rounded-3xl border border-gray-800/50 shadow-lg">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-white mb-2">Syarat & Ketentuan (T&C)</h3>
             <p className="text-gray-500 max-w-2xl mx-auto">Untuk menjaga profesionalisme dan kualitas kerja, berikut adalah aturan tegas yang kami terapkan pada layanan Social Media Management.</p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {terms.map((term, idx) => (
-              <div key={idx} className="bg-[#0a0a0a] p-6 rounded-2xl border border-gray-800/60 flex flex-col">
+              <div key={idx} className="bg-[#111] p-6 rounded-3xl border border-gray-800/60 hover:border-gray-700 transition-colors flex flex-col">
                 <div className="flex items-center gap-3 mb-5 border-b border-gray-800/50 pb-4">
                   <span className="text-2xl">{term.icon}</span>
                   <h4 className="text-base font-bold text-red-500">{term.title}</h4>
@@ -1354,10 +1486,10 @@ export default function WebDev() {
   const [activeTab, setActiveTab] = useState('landing');
 
   const categories = [
-    { id: 'landing', label: 'Landing Page', icon: <LayoutTemplate size={20} /> },
-    { id: 'single', label: 'Single Page', icon: <Layers size={20} /> },
-    { id: 'company', label: 'Company Profile', icon: <Building2 size={20} /> },
-    { id: 'store', label: 'Toko Online', icon: <Store size={20} /> }
+    { id: 'landing', label: 'Landing Page', icon: <LayoutTemplate size={20} strokeWidth={1.5} /> },
+    { id: 'single', label: 'Single Page', icon: <Layers size={20} strokeWidth={1.5} /> },
+    { id: 'company', label: 'Company Profile', icon: <Building2 size={20} strokeWidth={1.5} /> },
+    { id: 'store', label: 'Toko Online', icon: <Store size={20} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
@@ -1440,19 +1572,16 @@ export default function WebDev() {
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
-        {/* Breadcrumb / Back Button */}
-        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-600 transition-colors mb-12 font-medium">
-          <ChevronLeft size={20} /> Kembali ke Layanan
+        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
+          <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
         </Link>
 
-        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Website Development <br/>& SEO</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Pilih paket pengembangan website yang paling sesuai dengan skala dan kebutuhan bisnis Anda.</p>
+          <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Website Development <br/>& SEO</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Pilih paket pengembangan website yang paling sesuai dengan skala dan kebutuhan bisnis Anda.</p>
         </div>
 
-        {/* Custom Tabs */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
           {categories.map((cat) => (
             <button
@@ -1460,76 +1589,83 @@ export default function WebDev() {
               onClick={() => setActiveTab(cat.id)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeTab === cat.id 
-                ? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]' 
+                ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' 
                 : 'bg-[#111] text-gray-400 hover:bg-gray-800 border border-gray-800'
               }`}
             >
               {cat.icon}
-              <span className="hidden sm:block">{cat.label}</span>
+              <span className="hidden sm:block text-sm md:text-base">{cat.label}</span>
             </button>
           ))}
         </div>
 
-        {/* Pricing Content */}
         <div className="animate-fadeIn">
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 bg-red-900/20 text-red-500 rounded-full text-sm font-semibold border border-red-900/50">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-red-900/10 text-red-500 rounded-full text-sm font-semibold border border-red-900/30">
               {pricingData[activeTab].target}
             </span>
           </div>
 
-          {/* Grid Pricing Cards */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8`}>
+          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8 mt-6`}>
             {pricingData[activeTab].packages.map((pkg, idx) => (
               <div 
                 key={idx} 
-                className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${
+                className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${
                   pkg.isPopular 
-                  ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' 
-                  : 'border border-gray-800 hover:border-gray-600'
+                  ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' 
+                  : 'border border-gray-800 hover:border-red-900/30'
                 }`}
               >
+                {/* Wrapper khusus untuk background glow agar tetap terpotong rapi tanpa memotong badge "Paling Laris" */}
+                <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                  {pkg.isPopular && (
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10"></div>
+                  )}
+                </div>
+
                 {pkg.isPopular && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                     Paling Laris
                   </div>
                 )}
-                <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
-                <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
                 
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {pkg.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                      <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="relative z-10 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
+                  <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
+                  
+                  <ul className="space-y-4 mb-10 flex-grow">
+                    {pkg.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                        <CheckCircle2 size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
+                        <span className="text-sm leading-snug">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${
-                  pkg.isPopular 
-                  ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' 
-                  : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'
-                }`}>
-                  Pilih Paket Ini
-                </button>
+                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                    pkg.isPopular 
+                    ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
+                    : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
+                  }`}>
+                    Pilih Paket Ini
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Add Ons Section */}
-        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden">
+        <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden shadow-lg">
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
             <div className="md:w-1/3">
               <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Add-on)</h3>
-              <p className="text-gray-400">Tingkatkan performa website Anda dengan fitur dan layanan tambahan dari kami.</p>
+              <p className="text-gray-400 leading-relaxed">Tingkatkan performa website Anda dengan fitur dan layanan tambahan dari kami.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {addOns.map((addon, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-xl border border-gray-800">
-                  <Plus size={18} className="text-red-500" />
+                <div key={idx} className="flex items-center gap-3 text-gray-300 bg-[#1a1a1a] p-4 rounded-2xl border border-gray-800 hover:border-red-900/30 transition-colors">
+                  <Plus size={18} strokeWidth={1.5} className="text-red-500 shrink-0" />
                   <span className="text-sm font-medium">{addon}</span>
                 </div>
               ))}
@@ -1538,266 +1674,6 @@ export default function WebDev() {
         </div>
 
       </div>
-    </div>
-  );
-}
-</file>
-
-<file path="src/assets/react.svg">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
-</file>
-
-<file path="src/assets/vite.svg">
-<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
-</file>
-
-<file path="src/components/Footer.jsx">
-const LOGO_URL = "/favicon.png";
-
-export default function Footer() {
-  return (
-    <footer className="bg-[#050505] border-t border-gray-900 pt-16 pb-8 px-4 md:px-12 lg:px-24">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <img src={LOGO_URL} alt="Logo" className="h-10 w-auto object-contain opacity-80" />
-        <p className="text-gray-600 text-sm text-center md:text-left">
-          &copy; {new Date().getFullYear()} Crimson Rift Studio. All rights reserved.
-        </p>
-      </div>
-    </footer>
-  );
-}
-</file>
-
-<file path="src/index.css">
-@import "tailwindcss";
-
-@theme {
-  --animate-fadeIn: fadeIn 0.4s ease-out forwards;
-  --animate-marquee: marquee 20s linear infinite;
-  
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-}
-
-body {
-  background-color: #0a0a0a;
-  color: white;
-}
-</file>
-
-<file path="src/main.jsx">
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-</file>
-
-<file path="vercel.json">
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-</file>
-
-<file path="src/app/about/about.jsx">
-import { ChevronRight, Flame, Zap, Target, Crosshair, Hexagon, PenTool } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-const LOGO_URL = "/logo/logo-crimson-rift-studio.png";
-
-export default function About() {
-  return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn overflow-hidden">
-      
-      {/* 1. HERO SECTION */}
-      <section className="relative max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-        
-        <div className="flex flex-col items-center text-center z-10 relative">
-          <div className="relative group mb-10">
-            <div className="absolute -inset-4 bg-red-600/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-            <img 
-              src={LOGO_URL} 
-              alt="Crimson Rift Studio" 
-              className="relative w-full max-w-[200px] md:max-w-[280px] mx-auto drop-shadow-[0_0_40px_rgba(220,38,38,0.3)] animate-[pulse_4s_ease-in-out_infinite]" 
-            />
-          </div>
-          
-          <h2 className="text-sm font-bold text-red-600 tracking-[0.3em] uppercase mb-4">Di Balik Layar</h2>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-8 leading-tight">
-            Mendobrak Batas <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">Kreativitas Digital.</span>
-          </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Kami bukan sekadar agensi. Kami adalah arsitek visual, pencerita digital, dan jembatan yang menghubungkan visi brand Anda dengan dunia yang tanpa batas.
-          </p>
-        </div>
-      </section>
-
-      {/* 2. THE STORY SECTION */}
-      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent border border-red-900/30 rounded-3xl -rotate-3 scale-105 -z-10"></div>
-            <div className="bg-[#111] border border-gray-800 p-8 md:p-12 rounded-3xl relative z-10 shadow-2xl">
-              <Crosshair className="text-red-600 w-12 h-12 mb-6" />
-              <h3 className="text-3xl font-bold text-white mb-6">Awal Mula Sebuah Epik</h3>
-              <div className="space-y-4 text-gray-400 leading-relaxed text-lg">
-                <p>
-                  Crimson Rift Studio lahir dari sebuah kegelisahan. Kami melihat begitu banyak bisnis dan individu yang memiliki potensi luar biasa, produk yang hebat, dan cerita yang inspiratif, namun terhalang oleh representasi visual yang "biasa-biasa saja".
-                </p>
-                <p>
-                  Di era di mana impresi pertama dibentuk dalam hitungan detik di layar kaca, menjadi biasa adalah sebuah kerugian. Dari situlah kami berkumpul—para desainer, fotografer, videografer, dan pengembang web—untuk menciptakan sebuah "Rift" (celah/portal).
-                </p>
-                <p>
-                  Sebuah portal yang membawa klien kami keluar dari keramaian kompetisi, menuju dimensi di mana brand mereka terlihat dominan, tak terlupakan, dan eksklusif.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="order-1 lg:order-2 flex flex-col justify-center">
-            <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Cerita Kami</h2>
-            <h3 className="text-4xl font-bold text-white mb-6">Lahir dari Hasrat <br/>Terhadap Kesempurnaan.</h3>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              Kami menolak untuk menghasilkan karya yang diproduksi massal secara asal. Setiap pixel, setiap frame video, dan setiap baris kode yang kami buat dikerjakan dengan presisi tingkat tinggi dan strategi yang matang.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-1 bg-red-600 rounded-full"></div>
-              <span className="text-white font-medium italic">We don't just create, we engineer legacies.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. NAME & PHILOSOPHY SECTION */}
-      <section className="bg-[#050505] py-32 border-y border-gray-900 relative">
-        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
-          <div className="text-center mb-20">
-            <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Identitas & Makna</h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-white">Filosofi <span className="text-red-600">Crimson Rift</span></h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {/* Crimson */}
-            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-bl-full -z-10 group-hover:bg-red-600/20 transition-colors"></div>
-              <Flame className="text-red-600 w-12 h-12 mb-6" />
-              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">CRIMSON.</h4>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                Melambangkan warna merah pekat yang identik dengan <strong>gairah, energi, dan keberanian</strong>. Kami tidak mendesain untuk main aman. Kami menciptakan karya yang berani tampil beda, mencuri perhatian, dan meninggalkan jejak emosional yang kuat di benak audiens Anda.
-              </p>
-            </div>
-
-            {/* Rift */}
-            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-bl-full -z-10 group-hover:bg-red-600/20 transition-colors"></div>
-              <Zap className="text-red-600 w-12 h-12 mb-6" />
-              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">RIFT.</h4>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                Sebuah rekahan, celah, atau <strong>portal menuju dimensi lain</strong>. Ini adalah janji kami: menjadi jembatan yang menarik brand Anda dari realitas konvensional, membawanya menembus batasan digital, menuju masa depan yang penuh dengan inovasi dan dominasi pasar.
-              </p>
-            </div>
-          </div>
-
-          {/* Logo Philosophy */}
-          <div className="bg-gradient-to-br from-[#111] to-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-red-900/30 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.05)]">
-            <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-red-600/10 blur-3xl rounded-full"></div>
-            <div className="md:w-1/3 flex justify-center relative z-10">
-              <img 
-                src={LOGO_URL} 
-                alt="Logo Crimson Rift" 
-                className="w-32 md:w-48 relative z-10 drop-shadow-[0_0_40px_rgba(220,38,38,0.4)]" 
-              />
-            </div>
-            <div className="md:w-2/3 relative z-10 text-center md:text-left">
-              <h4 className="text-2xl font-bold text-white mb-4">Makna Simbol Kami</h4>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                Simbol yang kami gunakan membawa makna dualitas yang mendalam. Bagian kiri membentuk <strong>belahan setengah bulan</strong> yang ditembus oleh kilatan <strong>petir (rift)</strong>, melambangkan energi, kreativitas yang mendobrak batasan, dan kemunculan visi baru. <br/><br/>
-                Sementara bagian kanan adalah <strong>potongan setengah dari pentagon</strong>, merepresentasikan struktur, rasionalitas, dan pondasi profesionalisme yang kokoh. Perpaduan ini mencerminkan identitas Crimson Rift: keseimbangan sempurna antara seni yang imajinatif dan strategi digital yang terstruktur.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. CORE VALUES SECTION */}
-      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 py-32">
-        <div className="text-center mb-16">
-          <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Nilai Inti Kami</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white">Prinsip yang Menggerakkan Kami</h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Aesthetic & Functional",
-              desc: "Karya yang kami buat tidak hanya indah dipandang, tetapi juga harus bekerja dengan baik, mengkonversi audiens, dan memberikan hasil nyata.",
-              icon: <PenTool size={32} />
-            },
-            {
-              title: "Uncompromising Quality",
-              desc: "Kami tidak percaya pada kompromi kualitas. Setiap detail, mulai dari resolusi foto hingga kecepatan website, diawasi dengan standar tertinggi.",
-              icon: <Target size={32} />
-            },
-            {
-              title: "Partnership & Growth",
-              desc: "Kami bukan sekadar vendor, kami adalah rekan pertumbuhan Anda. Keberhasilan project Anda adalah satu-satunya indikator kesuksesan kami.",
-              icon: <Crosshair size={32} />
-            }
-          ].map((val, idx) => (
-            <div key={idx} className="bg-[#111] p-10 rounded-2xl border border-gray-800 text-center hover:-translate-y-2 transition-transform duration-300">
-              <div className="w-16 h-16 bg-[#0a0a0a] border border-gray-800 rounded-xl flex items-center justify-center text-red-600 mx-auto mb-6 shadow-lg shadow-red-900/20">
-                {val.icon}
-              </div>
-              <h4 className="text-xl font-bold text-white mb-4">{val.title}</h4>
-              <p className="text-gray-500 leading-relaxed">{val.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. CTA SECTION */}
-      <section className="max-w-5xl mx-auto px-4 pb-12">
-        <div className="bg-gradient-to-r from-red-900/40 to-[#111] border border-red-900/50 p-12 rounded-3xl text-center relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-transparent"></div>
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10">Siap Memulai Babak Baru?</h3>
-          <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto relative z-10">
-            Berhentilah menjadi sama dengan yang lain. Mari ciptakan portal kesuksesan digital Anda bersama Crimson Rift Studio hari ini.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
-            <Link to="/services" className="inline-flex px-8 py-4 bg-[#111] hover:bg-gray-800 text-white border border-gray-700 font-bold rounded-lg transition-all items-center justify-center gap-3 group">
-              Eksplorasi Layanan
-            </Link>
-            {/* Tombol WhatsApp Baru */}
-            <a 
-              href="https://wa.me/6281398621530" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all items-center justify-center gap-3 shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:-translate-y-1"
-            >
-              Hubungi Kami Sekarang <ChevronRight size={20} />
-            </a>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }
@@ -1854,7 +1730,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Menu Dropdown Mobile (Diperbaiki agar tampil) */}
+      {/* Menu Dropdown Mobile */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#111] border-b border-gray-800 animate-fadeIn">
           <div className="px-4 pt-2 pb-6 space-y-2">
@@ -1885,6 +1761,92 @@ export default function Navbar() {
 }
 </file>
 
+<file path="src/index.css">
+@import "tailwindcss";
+
+@theme {
+  --animate-fadeIn: fadeIn 0.6s ease-out forwards;
+  --animate-marquee: marquee 25s linear infinite;
+  /* Animasi baru yang lebih tenang pengganti kedap-kedip */
+  --animate-float: float 6s ease-in-out infinite;
+  
+  /* 1. OVERRIDE WARNA MERAH: Menjadi Soft Crimson / Muted Rose yang Mahal */
+  --color-red-50: #fdf2f4;
+  --color-red-100: #fbe5e9;
+  --color-red-200: #f6cdd5;
+  --color-red-300: #f0a6b5;
+  --color-red-400: #e77288;
+  --color-red-500: #d9465a;
+  --color-red-600: #c02b42; /* Merah utama yang elegan & tidak silau */
+  --color-red-700: #a11f35;
+  --color-red-800: #871e31;
+  --color-red-900: #731d2e;
+  
+  /* 2. OVERRIDE ABU-ABU & HITAM: Menjadi Warm Stone (Nyaman di mata) */
+  --color-gray-50: #fafaf9;
+  --color-gray-100: #f5f5f4;
+  --color-gray-200: #e7e5e4;
+  --color-gray-300: #d6d3d1;
+  --color-gray-400: #a8a29e;
+  --color-gray-500: #78716c;
+  --color-gray-600: #57534e;
+  --color-gray-700: #44403c;
+  --color-gray-800: #292524;
+  --color-gray-900: #1c1917;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+/* 3. MAPPING KELAS HARDCODE KE WARNA BARU
+  Ini menimpa background super gelap bawaan menjadi Warm Dark secara instan
+*/
+.bg-\[\#0a0a0a\] { background-color: #1c1917 !important; } 
+.bg-\[\#111\] { background-color: #292524 !important; border-color: #44403c !important; } 
+.bg-\[\#050505\] { background-color: #171413 !important; } 
+.bg-\[\#1a1a1a\] { background-color: #44403c !important; } 
+.bg-\[\#161616\] { background-color: #292524 !important; }
+
+/* Mengubah warna gradient yang gelap */
+.from-\[\#111\] { --tw-gradient-from: #292524 var(--tw-gradient-from-position) !important; }
+.via-\[\#0a0a0a\] { --tw-gradient-stops: var(--tw-gradient-from), #1c1917, var(--tw-gradient-to) !important; }
+.to-\[\#0a0a0a\] { --tw-gradient-to: #1c1917 var(--tw-gradient-to-position) !important; }
+
+/* 4. MEMATIKAN EFEK NEON YANG BIKIN SAKIT MATA */
+[class*="shadow-\[0_0_"] {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4) !important;
+}
+
+[class*="drop-shadow-\[0_0_"] {
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3)) !important;
+}
+
+/* Meredam efek blur transparan merah di background */
+.bg-red-900\/10 { background-color: rgba(115, 29, 46, 0.05) !important; }
+.bg-red-900\/20 { background-color: rgba(115, 29, 46, 0.1) !important; }
+.bg-red-600\/30 { background-color: rgba(192, 43, 66, 0.15) !important; }
+.bg-red-600\/10 { background-color: rgba(192, 43, 66, 0.05) !important; }
+.bg-red-600\/5 { background-color: rgba(192, 43, 66, 0.02) !important; }
+
+body {
+  background-color: #1c1917;
+  color: #e7e5e4;
+}
+</file>
+
 <file path="index.html">
 <!doctype html>
 <html lang="en">
@@ -1905,115 +1867,188 @@ export default function Navbar() {
 </html>
 </file>
 
-<file path="src/app/services/Services.jsx">
-import { Monitor, PenTool, Video, Megaphone, CheckCircle2, MessageSquare, Lightbulb, Rocket } from 'lucide-react';
+<file path="src/app/about/about.jsx">
+import { ChevronRight, Flame, Zap, Target, Crosshair, Hexagon, PenTool } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function Services() {
-  const servicesList = [
-    {
-      id: 'web',
-      title: 'Web Development & SEO',
-      icon: <Monitor size={36} />,
-      description: 'Pembuatan segala jenis website (E-Commerce, Company Profile, Landing Page, dll) yang cepat, responsif, dan teroptimasi SEO.',
-      features: ['Custom Website Development', 'Search Engine Optimization (SEO)', 'Performa Cepat & Mobile Friendly', 'Maintenance & Keamanan'],
-      link: '/services/web-development' // Tersambung ke WebDev.jsx
-    },
-    {
-      id: 'design',
-      title: 'Logo Design & Branding',
-      icon: <PenTool size={36} />,
-      description: 'Menciptakan identitas visual yang kuat, unik, dan berkarakter untuk bisnis Anda. Merancang konsep awal hingga panduan branding utuh.',
-      features: ['Desain Logo Profesional', 'Pembuatan Brand Identity', 'Panduan Visual (Brand Guidelines)', 'Desain Materi Promosi'],
-      link: '/services/logo-branding' // <--- TERSAMBUNG KE DESIGN.JSX
-    },
-    {
-      id: 'multimedia',
-      title: 'Photography & Videography',
-      icon: <Video size={36} />,
-      description: 'Layanan dokumentasi visual lengkap. Menghasilkan foto produk berkualitas tinggi dan video sinematik untuk menyampaikan pesan brand Anda.',
-      features: ['Foto Produk & Profil Profesional', 'Dokumentasi Acara (Foto & Video)', 'Video Company Profile & Iklan', 'High-End Retouching & Color Grading'],
-      link: '/services/photography-videography' // Disiapkan untuk next page
-    },
-    {
-      id: 'sosmed',
-      title: 'Social Media & Ads Agency',
-      icon: <Megaphone size={36} />,
-      description: 'Serahkan urusan digital marketing kepada kami. Dari pengelolaan akun hingga optimasi iklan berbayar untuk meningkatkan penjualan.',
-      features: ['Manajemen Akun & Konten Planner', 'Meta, TikTok, Google & Shopee Ads', 'Interaksi & Handle Customer Care', 'Laporan Performa Berkala'],
-      link: '/services/social-media' // Disiapkan untuk next page
-    }
-  ];
+const LOGO_URL = "/logo/logo-crimson-rift-studio.png";
 
-  const workflow = [
-    { step: '01', icon: <MessageSquare size={24} />, title: 'Konsultasi & Brief', desc: 'Mendiskusikan target, audiens, dan kebutuhan proyek.' },
-    { step: '02', icon: <Lightbulb size={24} />, title: 'Strategi & Konsep', desc: 'Merancang rencana aksi dan konsep visual.' },
-    { step: '03', icon: <Monitor size={24} />, title: 'Produksi & Eksekusi', desc: 'Tim ahli kami mulai memproduksi dan mendesain.' },
-    { step: '04', icon: <Rocket size={24} />, title: 'Review & Optimasi', desc: 'Penyempurnaan akhir dan peluncuran proyek.' }
-  ];
-
+export default function About() {
   return (
-    <div className="min-h-screen pt-24 pb-12 bg-[#0a0a0a] animate-fadeIn">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 text-center mt-12 mb-20">
-        <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Layanan Spesialis</h2>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Satu Solusi Untuk <br/><span className="text-red-600">Semua Kebutuhan Digital</span></h1>
-        <p className="text-gray-400 max-w-2xl mx-auto text-lg">Dari membangun identitas visual, membuat sistem website, hingga mendatangkan pelanggan melalui iklan. Kami siap menskalakan bisnis Anda.</p>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
-        {servicesList.map((service) => (
-          <div 
-            key={service.id} 
-            className="bg-[#111] border border-gray-800 p-8 md:p-10 rounded-2xl hover:border-red-600/50 transition-all duration-300 group flex flex-col"
-          >
-            <div className="w-16 h-16 bg-[#0a0a0a] border border-gray-800 rounded-xl flex items-center justify-center text-red-600 mb-8 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-lg group-hover:shadow-red-600/20">
-              {service.icon}
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-            <p className="text-gray-400 mb-8 leading-relaxed flex-grow">{service.description}</p>
-            
-            <ul className="space-y-3 mt-auto pt-6 border-t border-gray-800/50 mb-8">
-              {service.features.map((feature, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-gray-300">
-                  <CheckCircle2 size={20} className="text-red-600 shrink-0 mt-0.5" />
-                  <span className="text-sm font-medium">{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Tombol Lihat Detail untuk Semua Service */}
-            {service.link && (
-              <Link to={service.link} className="block w-full py-3 bg-red-600/10 hover:bg-red-600 text-red-500 hover:text-white text-center font-bold rounded-lg transition-colors border border-red-600/20">
-                Lihat Detail Harga
-              </Link>
-            )}
+    <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn overflow-hidden">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+        
+        <div className="flex flex-col items-center text-center z-10 relative">
+          <div className="relative group mb-10">
+            <div className="absolute -inset-4 bg-red-600/10 rounded-full blur-xl opacity-0 group-hover:opacity-50 transition duration-1000"></div>
+            <img 
+              src={LOGO_URL} 
+              alt="Crimson Rift Studio" 
+              className="relative w-full max-w-[200px] md:max-w-[280px] mx-auto drop-shadow-xl animate-float" 
+            />
           </div>
-        ))}
-      </div>
+          
+          <h2 className="text-sm font-bold text-red-500 tracking-[0.3em] uppercase mb-4">Di Balik Layar</h2>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-8 leading-tight">
+            Mendobrak Batas <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Kreativitas Digital.</span>
+          </h1>
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Kami bukan sekadar agensi. Kami adalah arsitek visual, pencerita digital, dan jembatan yang menghubungkan visi brand Anda dengan dunia yang tanpa batas.
+          </p>
+        </div>
+      </section>
 
-      <div className="bg-[#050505] py-24 border-y border-gray-900">
-        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
-          <div className="text-center mb-16">
-            <h2 className="text-red-600 font-bold tracking-widest uppercase text-sm mb-3">Cara Kerja Kami</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">Proses Kerja Transparan & Terukur</h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-800 -translate-y-12 z-0"></div>
-
-            {workflow.map((item, idx) => (
-              <div key={idx} className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-24 h-24 bg-[#111] border-2 border-gray-800 rounded-full flex flex-col items-center justify-center mb-6 group hover:border-red-600 transition-colors duration-300 shadow-xl">
-                  <span className="text-gray-600 font-black text-2xl group-hover:text-red-600/20 absolute">{item.step}</span>
-                  <div className="text-red-600 relative z-10">{item.icon}</div>
-                </div>
-                <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
-                <p className="text-gray-500 text-sm max-w-[200px]">{item.desc}</p>
+      {/* 2. THE STORY SECTION */}
+      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 mb-32 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent border border-red-900/30 rounded-3xl -rotate-3 scale-105 -z-10"></div>
+            <div className="bg-[#111] border border-gray-800 p-8 md:p-12 rounded-3xl relative z-10 shadow-xl">
+              <Crosshair className="text-red-500 w-12 h-12 mb-6" />
+              <h3 className="text-3xl font-bold text-white mb-6">Awal Mula Sebuah Epik</h3>
+              <div className="space-y-4 text-gray-300 leading-relaxed text-lg">
+                <p>
+                  Crimson Rift Studio lahir dari sebuah kegelisahan. Kami melihat begitu banyak bisnis dan individu yang memiliki potensi luar biasa, produk yang hebat, dan cerita yang inspiratif, namun terhalang oleh representasi visual yang "biasa-biasa saja".
+                </p>
+                <p>
+                  Di era di mana impresi pertama dibentuk dalam hitungan detik di layar kaca, menjadi biasa adalah sebuah kerugian. Dari situlah kami berkumpul—para desainer, fotografer, videografer, dan pengembang web—untuk menciptakan sebuah "Rift" (celah/portal).
+                </p>
+                <p>
+                  Sebuah portal yang membawa klien kami keluar dari keramaian kompetisi, menuju dimensi di mana brand mereka terlihat dominan, tak terlupakan, dan eksklusif.
+                </p>
               </div>
-            ))}
+            </div>
+          </div>
+          <div className="order-1 lg:order-2 flex flex-col justify-center">
+            <h2 className="text-red-500 font-bold tracking-widest uppercase text-sm mb-3">Cerita Kami</h2>
+            <h3 className="text-4xl font-bold text-white mb-6">Lahir dari Hasrat <br/>Terhadap Kesempurnaan.</h3>
+            <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+              Kami menolak untuk menghasilkan karya yang diproduksi massal secara asal. Setiap pixel, setiap frame video, dan setiap baris kode yang kami buat dikerjakan dengan presisi tingkat tinggi dan strategi yang matang.
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-1 bg-red-500 rounded-full"></div>
+              <span className="text-white font-medium italic">We don't just create, we engineer legacies.</span>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* 3. NAME & PHILOSOPHY SECTION */}
+      <section className="bg-[#050505] py-32 border-y border-gray-900 relative">
+        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+          <div className="text-center mb-20">
+            <h2 className="text-red-500 font-bold tracking-widest uppercase text-sm mb-3">Identitas & Makna</h2>
+            <h3 className="text-3xl md:text-5xl font-bold text-white">Filosofi <span className="text-red-500">Crimson Rift</span></h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {/* Crimson */}
+            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/5 rounded-bl-full -z-10 group-hover:bg-red-600/10 transition-colors"></div>
+              <Flame className="text-red-500 w-12 h-12 mb-6" />
+              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">CRIMSON.</h4>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                Melambangkan warna merah pekat yang identik dengan <strong>gairah, energi, dan keberanian</strong>. Kami tidak mendesain untuk main aman. Kami menciptakan karya yang berani tampil beda, mencuri perhatian, dan meninggalkan jejak emosional yang kuat di benak audiens Anda.
+              </p>
+            </div>
+
+            {/* Rift */}
+            <div className="bg-[#0a0a0a] p-10 rounded-3xl border border-gray-800 hover:border-red-900/50 transition-colors group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/5 rounded-bl-full -z-10 group-hover:bg-red-600/10 transition-colors"></div>
+              <Zap className="text-red-500 w-12 h-12 mb-6" />
+              <h4 className="text-3xl font-black text-white mb-4 tracking-wide">RIFT.</h4>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                Sebuah rekahan, celah, atau <strong>portal menuju dimensi lain</strong>. Ini adalah janji kami: menjadi jembatan yang menarik brand Anda dari realitas konvensional, membawanya menembus batasan digital, menuju masa depan yang penuh dengan inovasi dan dominasi pasar.
+              </p>
+            </div>
+          </div>
+
+          {/* Logo Philosophy */}
+          <div className="bg-gradient-to-br from-[#111] to-[#0a0a0a] p-8 md:p-16 rounded-3xl border border-red-900/30 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden shadow-lg">
+            <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-64 h-64 bg-red-600/5 blur-3xl rounded-full"></div>
+            <div className="md:w-1/3 flex justify-center relative z-10">
+              <img 
+                src={LOGO_URL} 
+                alt="Logo Crimson Rift" 
+                className="w-32 md:w-48 relative z-10 drop-shadow-xl" 
+              />
+            </div>
+            <div className="md:w-2/3 relative z-10 text-center md:text-left">
+              <h4 className="text-2xl font-bold text-white mb-4">Makna Simbol Kami</h4>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                Simbol yang kami gunakan membawa makna dualitas yang mendalam. Bagian kiri membentuk <strong>belahan setengah bulan</strong> yang ditembus oleh kilatan <strong>petir (rift)</strong>, melambangkan energi, kreativitas yang mendobrak batasan, dan kemunculan visi baru. <br/><br/>
+                Sementara bagian kanan adalah <strong>potongan setengah dari pentagon</strong>, merepresentasikan struktur, rasionalitas, dan pondasi profesionalisme yang kokoh. Perpaduan ini mencerminkan identitas Crimson Rift: keseimbangan sempurna antara seni yang imajinatif dan strategi digital yang terstruktur.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CORE VALUES SECTION */}
+      <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 py-32">
+        <div className="text-center mb-16">
+          <h2 className="text-red-500 font-bold tracking-widest uppercase text-sm mb-3">Nilai Inti Kami</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-white">Prinsip yang Menggerakkan Kami</h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Aesthetic & Functional",
+              desc: "Karya yang kami buat tidak hanya indah dipandang, tetapi juga harus bekerja dengan baik, mengkonversi audiens, dan memberikan hasil nyata.",
+              icon: <PenTool size={32} />
+            },
+            {
+              title: "Uncompromising Quality",
+              desc: "Kami tidak percaya pada kompromi kualitas. Setiap detail, mulai dari resolusi foto hingga kecepatan website, diawasi dengan standar tertinggi.",
+              icon: <Target size={32} />
+            },
+            {
+              title: "Partnership & Growth",
+              desc: "Kami bukan sekadar vendor, kami adalah rekan pertumbuhan Anda. Keberhasilan project Anda adalah satu-satunya indikator kesuksesan kami.",
+              icon: <Crosshair size={32} />
+            }
+          ].map((val, idx) => (
+            <div key={idx} className="bg-[#111] p-10 rounded-2xl border border-gray-800 text-center hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-lg">
+              <div className="w-16 h-16 bg-[#0a0a0a] border border-gray-800 rounded-xl flex items-center justify-center text-red-500 mx-auto mb-6 shadow-md shadow-red-900/10">
+                {val.icon}
+              </div>
+              <h4 className="text-xl font-bold text-white mb-4">{val.title}</h4>
+              <p className="text-gray-400 leading-relaxed">{val.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. CTA SECTION */}
+      <section className="max-w-5xl mx-auto px-4 pb-12">
+        <div className="bg-gradient-to-r from-red-900/20 to-[#111] border border-red-900/30 p-12 rounded-3xl text-center relative overflow-hidden shadow-lg">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-transparent"></div>
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10">Siap Memulai Babak Baru?</h3>
+          <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto relative z-10">
+            Berhentilah menjadi sama dengan yang lain. Mari ciptakan portal kesuksesan digital Anda bersama Crimson Rift Studio hari ini.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+            <Link to="/services" className="inline-flex px-8 py-4 bg-[#111] hover:bg-gray-800 text-white border border-gray-700 font-bold rounded-lg transition-all items-center justify-center gap-3 group">
+              Eksplorasi Layanan
+            </Link>
+            {/* Tombol WhatsApp */}
+            <a 
+              href="https://wa.me/6281398621530" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all items-center justify-center gap-3 shadow-lg shadow-red-900/20 hover:-translate-y-1"
+            >
+              Hubungi Kami Sekarang <ChevronRight size={20} />
+            </a>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
@@ -2033,19 +2068,39 @@ export default defineConfig({
 </file>
 
 <file path="src/App.jsx">
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './app/home/Home';
 import About from './app/about/about';
 import Services from './app/services/Services';
 import WebDev from './app/services/WebDev';
-import Design from './app/services/Design'; // <--- IMPORT HALAMAN BARU DI SINI
+import Design from './app/services/Design';
 import Multimedia from './app/services/Multimedia';
 import Sosmed from './app/services/Sosmed';
+
+// Komponen otomatis scroll ke atas setiap kali URL berubah
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant' // Langsung lompat ke atas tanpa animasi agar terasa natural
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      {/* Pasang komponen ScrollToTop di dalam Router */}
+      <ScrollToTop />
+      
       <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-gray-100 font-sans selection:bg-red-600 selection:text-white">
         <Navbar />
         
@@ -2068,6 +2123,131 @@ function App() {
 }
 
 export default App;
+</file>
+
+<file path="src/app/services/Services.jsx">
+import { Monitor, PenTool, Video, Megaphone, CheckCircle2, MessageSquare, Lightbulb, Rocket } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export default function Services() {
+  const servicesList = [
+    {
+      id: 'web',
+      title: 'Web Development & SEO',
+      icon: <Monitor size={32} strokeWidth={1.5} />,
+      description: 'Pembuatan segala jenis website (E-Commerce, Company Profile, Landing Page, dll) yang cepat, responsif, dan teroptimasi SEO.',
+      features: ['Custom Website Development', 'Search Engine Optimization (SEO)', 'Performa Cepat & Mobile Friendly', 'Maintenance & Keamanan'],
+      link: '/services/web-development'
+    },
+    {
+      id: 'design',
+      title: 'Logo Design & Branding',
+      icon: <PenTool size={32} strokeWidth={1.5} />,
+      description: 'Menciptakan identitas visual yang kuat, unik, dan berkarakter untuk bisnis Anda. Merancang konsep awal hingga panduan branding utuh.',
+      features: ['Desain Logo Profesional', 'Pembuatan Brand Identity', 'Panduan Visual (Brand Guidelines)', 'Desain Materi Promosi'],
+      link: '/services/logo-branding'
+    },
+    {
+      id: 'multimedia',
+      title: 'Photography & Videography',
+      icon: <Video size={32} strokeWidth={1.5} />,
+      description: 'Layanan dokumentasi visual lengkap. Menghasilkan foto produk berkualitas tinggi dan video sinematik untuk menyampaikan pesan brand Anda.',
+      features: ['Foto Produk & Profil Profesional', 'Dokumentasi Acara (Foto & Video)', 'Video Company Profile & Iklan', 'High-End Retouching & Color Grading'],
+      link: '/services/photography-videography'
+    },
+    {
+      id: 'sosmed',
+      title: 'Social Media & Ads Agency',
+      icon: <Megaphone size={32} strokeWidth={1.5} />,
+      description: 'Serahkan urusan digital marketing kepada kami. Dari pengelolaan akun hingga optimasi iklan berbayar untuk meningkatkan penjualan.',
+      features: ['Manajemen Akun & Konten Planner', 'Meta, TikTok, Google & Shopee Ads', 'Interaksi & Handle Customer Care', 'Laporan Performa Berkala'],
+      link: '/services/social-media'
+    }
+  ];
+
+  const workflow = [
+    { step: '01', icon: <MessageSquare size={24} strokeWidth={1.5} />, title: 'Konsultasi & Brief', desc: 'Mendiskusikan target, audiens, dan kebutuhan proyek.' },
+    { step: '02', icon: <Lightbulb size={24} strokeWidth={1.5} />, title: 'Strategi & Konsep', desc: 'Merancang rencana aksi dan konsep visual.' },
+    { step: '03', icon: <Monitor size={24} strokeWidth={1.5} />, title: 'Produksi & Eksekusi', desc: 'Tim ahli kami mulai memproduksi dan mendesain.' },
+    { step: '04', icon: <Rocket size={24} strokeWidth={1.5} />, title: 'Review & Optimasi', desc: 'Penyempurnaan akhir dan peluncuran proyek.' }
+  ];
+
+  return (
+    <div className="min-h-screen pt-28 pb-12 bg-[#0a0a0a] animate-fadeIn">
+      {/* Header Section */}
+      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 text-center mt-12 mb-20">
+        <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Layanan Spesialis</h2>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
+          Satu Solusi Untuk <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Semua Kebutuhan Digital</span>
+        </h1>
+        <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+          Dari membangun identitas visual, membuat sistem website, hingga mendatangkan pelanggan melalui iklan. Kami siap menskalakan bisnis Anda.
+        </p>
+      </div>
+
+      {/* Services Grid */}
+      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
+        {servicesList.map((service) => (
+          <div 
+            key={service.id} 
+            className="bg-[#111] border border-gray-800 p-8 md:p-10 rounded-3xl hover:border-red-900/50 transition-all duration-500 group flex flex-col shadow-sm hover:shadow-2xl hover:-translate-y-1 relative overflow-hidden"
+          >
+            {/* Soft Glow di pojok kanan atas */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10 group-hover:bg-red-600/10 transition-colors duration-500"></div>
+
+            <div className="w-16 h-16 bg-[#0a0a0a] border border-gray-800 rounded-2xl flex items-center justify-center text-red-500 mb-8 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-500 shadow-md group-hover:shadow-red-900/30">
+              {service.icon}
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">{service.title}</h3>
+            <p className="text-gray-400 mb-8 leading-relaxed flex-grow">{service.description}</p>
+            
+            <ul className="space-y-3 mt-auto pt-6 border-t border-gray-800/50 mb-8">
+              {service.features.map((feature, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-gray-300">
+                  <CheckCircle2 size={18} className="text-red-500 shrink-0 mt-0.5" />
+                  <span className="text-sm font-medium leading-snug">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {service.link && (
+              <Link to={service.link} className="block w-full py-4 bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white text-center font-bold rounded-xl transition-all duration-300 border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-lg hover:shadow-red-900/20">
+                Lihat Detail Harga
+              </Link>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Workflow Section */}
+      <div className="bg-[#050505] py-24 border-y border-gray-900">
+        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+          <div className="text-center mb-16">
+            <h2 className="text-red-500 font-bold tracking-[0.2em] uppercase text-sm mb-3">Cara Kerja Kami</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">Proses Kerja Transparan & Terukur</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            {/* Garis penghubung diredupkan (h-px bukan h-0.5) */}
+            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gray-800 -translate-y-12 z-0"></div>
+
+            {workflow.map((item, idx) => (
+              <div key={idx} className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-24 h-24 bg-[#111] border border-gray-800 rounded-full flex flex-col items-center justify-center mb-6 group hover:border-red-500 transition-colors duration-500 shadow-md hover:shadow-red-900/10">
+                  <span className="text-gray-700 font-black text-2xl group-hover:text-red-500/10 absolute transition-colors duration-500">{item.step}</span>
+                  <div className="text-red-500 relative z-10 group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
+                <p className="text-gray-500 text-sm max-w-[200px] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 </file>
 
 </files>

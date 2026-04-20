@@ -48,7 +48,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Menu Dropdown Mobile (Diperbaiki agar tampil) */}
+      {/* Menu Dropdown Mobile */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#111] border-b border-gray-800 animate-fadeIn">
           <div className="px-4 pt-2 pb-6 space-y-2">

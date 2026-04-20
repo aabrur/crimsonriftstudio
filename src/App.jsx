@@ -1,16 +1,36 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './app/home/Home';
 import About from './app/about/about';
 import Services from './app/services/Services';
 import WebDev from './app/services/WebDev';
-import Design from './app/services/Design'; // <--- IMPORT HALAMAN BARU DI SINI
+import Design from './app/services/Design';
 import Multimedia from './app/services/Multimedia';
 import Sosmed from './app/services/Sosmed';
+
+// Komponen otomatis scroll ke atas setiap kali URL berubah
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant' // Langsung lompat ke atas tanpa animasi agar terasa natural
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      {/* Pasang komponen ScrollToTop di dalam Router */}
+      <ScrollToTop />
+      
       <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-gray-100 font-sans selection:bg-red-600 selection:text-white">
         <Navbar />
         
