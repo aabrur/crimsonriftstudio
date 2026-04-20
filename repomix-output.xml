@@ -1885,17 +1885,6 @@ export default function Navbar() {
 }
 </file>
 
-<file path="vite.config.js">
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
-</file>
-
 <file path="index.html">
 <!doctype html>
 <html lang="en">
@@ -2028,6 +2017,19 @@ export default function Services() {
     </div>
   );
 }
+</file>
+
+<file path="vite.config.js">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+})
 </file>
 
 <file path="src/App.jsx">

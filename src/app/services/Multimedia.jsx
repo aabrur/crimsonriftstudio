@@ -6,13 +6,13 @@ export default function Multimedia() {
   const [activeTab, setActiveTab] = useState('wedding');
 
   const categories = [
-    { id: 'wedding', label: 'Wedding & Pro', icon: <HeartHandshake size={18} /> },
-    { id: 'foto', label: 'Foto Produk', icon: <Camera size={18} /> },
-    { id: 'video', label: 'Video Produk', icon: <Video size={18} /> },
-    { id: 'bundle', label: 'Bundle Foto + Video', icon: <Layers size={18} /> },
-    { id: 'aifoto', label: 'AI Photo', icon: <Sparkles size={18} /> },
-    { id: 'aivideo', label: 'AI Video', icon: <Film size={18} /> },
-    { id: 'aichar', label: 'AI Character', icon: <UserSquare size={18} /> }
+    { id: 'wedding', label: 'Wedding & Pro', icon: <HeartHandshake size={18} strokeWidth={1.5} /> },
+    { id: 'foto', label: 'Foto Produk', icon: <Camera size={18} strokeWidth={1.5} /> },
+    { id: 'video', label: 'Video Produk', icon: <Video size={18} strokeWidth={1.5} /> },
+    { id: 'bundle', label: 'Bundle Foto + Video', icon: <Layers size={18} strokeWidth={1.5} /> },
+    { id: 'aifoto', label: 'AI Photo', icon: <Sparkles size={18} strokeWidth={1.5} /> },
+    { id: 'aivideo', label: 'AI Video', icon: <Film size={18} strokeWidth={1.5} /> },
+    { id: 'aichar', label: 'AI Character', icon: <UserSquare size={18} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
@@ -303,7 +303,7 @@ export default function Multimedia() {
     if (len === 2) return 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto';
     if (len === 3) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
     if (len === 4) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'; 
-    if (len === 6) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'; // Wrap jadi 2 baris
+    if (len === 6) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'; 
     return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
   };
 
@@ -311,17 +311,16 @@ export default function Multimedia() {
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
-        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-600 transition-colors mb-12 font-medium">
-          <ChevronLeft size={20} /> Kembali ke Layanan
+        <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
+          <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
         </Link>
 
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold text-red-600 tracking-widest uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Professional Photo <br/>& Videography</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Pilih dari solusi dokumentasi acara profesional, produksi visual lapangan, hingga pembuatan aset digital dengan AI.</p>
+          <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Professional Photo <br/>& Videography</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Pilih dari solusi dokumentasi acara profesional, produksi visual lapangan, hingga pembuatan aset digital dengan AI.</p>
         </div>
 
-        {/* TABS YANG SUDAH DIPERBAIKI: Menggunakan flex-wrap agar tidak digeser */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((cat) => (
             <button
@@ -329,7 +328,7 @@ export default function Multimedia() {
               onClick={() => setActiveTab(cat.id)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeTab === cat.id 
-                ? 'bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]' 
+                ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' 
                 : 'bg-[#111] text-gray-400 hover:bg-gray-800 border border-gray-800'
               }`}
             >
@@ -339,10 +338,9 @@ export default function Multimedia() {
           ))}
         </div>
 
-        {/* Content Area */}
         <div className="animate-fadeIn">
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1.5 bg-red-900/20 text-red-500 rounded-full text-sm font-semibold border border-red-900/50">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-red-900/10 text-red-500 rounded-full text-sm font-semibold border border-red-900/30">
               {pricingData[activeTab].target}
             </span>
           </div>
@@ -351,44 +349,53 @@ export default function Multimedia() {
             // --- LAYOUT KHUSUS UNTUK WEDDING & PRO (COMPLEX) ---
             <div className="space-y-24">
               
-              {/* Mapping Group / Sections */}
               {pricingData[activeTab].sections.map((sec, secIdx) => (
                 <div key={secIdx}>
                   <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-white tracking-widest uppercase">{sec.title}</h2>
                     {sec.subtitle && (
-                      <p className="text-red-500 italic mt-3 max-w-2xl mx-auto">"{sec.subtitle}"</p>
+                      <p className="text-red-500 italic mt-3 max-w-2xl mx-auto leading-relaxed">"{sec.subtitle}"</p>
                     )}
                   </div>
                   
-                  <div className={`grid ${getGridClass(sec.packages.length)} gap-8`}>
+                  <div className={`grid ${getGridClass(sec.packages.length)} gap-8 mt-6`}>
                     {sec.packages.map((pkg, idx) => (
-                      <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${pkg.isPopular ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' : 'border border-gray-800 hover:border-gray-600'}`}>
+                      <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${pkg.isPopular || pkg.badge ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' : 'border border-gray-800 hover:border-red-900/30'}`}>
+                        
+                        <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                          {(pkg.isPopular || pkg.badge) && (
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10"></div>
+                          )}
+                        </div>
+
                         {pkg.badge && (
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-600 to-red-800 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-lg">
+                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                             {pkg.badge}
                           </div>
                         )}
                         {!pkg.badge && pkg.isPopular && (
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                             Paling Laris
                           </div>
                         )}
-                        <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
-                        <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
-                        
-                        <ul className="space-y-4 mb-10 flex-grow">
-                          {pkg.features.map((feature, fIdx) => (
-                            <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                              <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
-                              <span className="text-sm">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
 
-                        <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'}`}>
-                          Pilih Paket Ini
-                        </button>
+                        <div className="relative z-10 flex flex-col flex-grow">
+                          <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
+                          <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
+                          
+                          <ul className="space-y-4 mb-10 flex-grow">
+                            {pkg.features.map((feature, fIdx) => (
+                              <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                                <CheckCircle2 size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
+                                <span className="text-sm leading-snug">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular || pkg.badge ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}>
+                            Pilih Paket Ini
+                          </button>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -396,12 +403,12 @@ export default function Multimedia() {
               ))}
 
               {/* Additional Items Khusus Wedding */}
-              <div className="bg-gradient-to-b from-[#111] to-[#0a0a0a] p-8 md:p-12 rounded-3xl border border-gray-800 relative overflow-hidden">
+              <div className="bg-gradient-to-b from-[#111] to-[#0a0a0a] p-8 md:p-12 rounded-3xl border border-gray-800 relative overflow-hidden shadow-lg">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
                 <h3 className="text-2xl font-bold text-white mb-8 border-b border-gray-800 pb-4 relative z-10">Additional Items</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                   {pricingData[activeTab].additionalItems.map((item, idx) => (
-                    <div key={idx} className="flex flex-col p-5 bg-[#161616] rounded-xl border border-gray-800/80">
+                    <div key={idx} className="flex flex-col p-5 bg-[#1a1a1a] rounded-2xl border border-gray-800 hover:border-red-900/30 transition-colors">
                       <span className="text-sm font-bold text-gray-400 mb-1">{item.name}</span>
                       <span className="text-lg font-bold text-red-500">{item.price}</span>
                     </div>
@@ -410,15 +417,15 @@ export default function Multimedia() {
               </div>
 
               {/* Terms & Conditions Section */}
-              <div className="bg-[#050505] p-8 md:p-12 rounded-3xl border border-red-900/30 shadow-[0_0_30px_rgba(220,38,38,0.03)]">
+              <div className="bg-[#050505] p-8 md:p-12 rounded-3xl border border-gray-800/50 shadow-lg">
                 <div className="text-center mb-12">
                   <h3 className="text-3xl font-bold text-white mb-2">Syarat & Ketentuan</h3>
                   <p className="text-gray-500">Penting untuk dibaca dan disepakati bersama</p>
                 </div>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {pricingData[activeTab].terms.map((term, idx) => (
-                    <div key={idx} className="bg-[#0a0a0a] p-6 rounded-2xl border border-gray-800/60">
+                    <div key={idx} className="bg-[#111] p-6 rounded-3xl border border-gray-800/60 hover:border-gray-700 transition-colors">
                       <div className="flex items-center gap-3 mb-4">
                         <span className="text-2xl">{term.icon}</span>
                         <h4 className="text-lg font-bold text-red-500">{term.title}</h4>
@@ -439,29 +446,39 @@ export default function Multimedia() {
             </div>
           ) : (
             // --- LAYOUT STANDAR UNTUK FOTO/VIDEO PRODUK & AI ---
-            <div className={`grid ${getGridClass(pricingData[activeTab].packages.length)} gap-8`}>
+            <div className={`grid ${getGridClass(pricingData[activeTab].packages.length)} gap-8 mt-6`}>
               {pricingData[activeTab].packages.map((pkg, idx) => (
-                <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-2xl transition-all duration-300 ${pkg.isPopular ? 'border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.15)] md:-translate-y-4' : 'border border-gray-800 hover:border-gray-600'}`}>
+                <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${pkg.isPopular ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' : 'border border-gray-800 hover:border-red-900/30'}`}>
+                  
+                  <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+                    {pkg.isPopular && (
+                      <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10"></div>
+                    )}
+                  </div>
+
                   {pkg.isPopular && (
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-red-600 text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-gradient-to-r from-red-500 to-red-700 text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-md z-20">
                       Paling Laris
                     </div>
                   )}
-                  <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
-                  <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
-                  
-                  <ul className="space-y-4 mb-10 flex-grow">
-                    {pkg.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-3 text-gray-300">
-                        <CheckCircle2 size={18} className="text-red-600 shrink-0 mt-1" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
 
-                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/25' : 'bg-[#1a1a1a] hover:bg-gray-800 text-white border border-gray-700'}`}>
-                    Pilih Paket Ini
-                  </button>
+                  <div className="relative z-10 flex flex-col flex-grow">
+                    <h3 className="text-xl font-bold text-gray-300 mb-2">{pkg.name}</h3>
+                    <h4 className="text-3xl font-black text-white mb-8">{pkg.price}</h4>
+                    
+                    <ul className="space-y-4 mb-10 flex-grow">
+                      {pkg.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-3 text-gray-300">
+                          <CheckCircle2 size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
+                          <span className="text-sm leading-snug">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}>
+                      Pilih Paket Ini
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -470,38 +487,38 @@ export default function Multimedia() {
 
         {/* Add Ons Section (Hanya tampil jika bukan di tab wedding yang punya addons khusus) */}
         {!pricingData[activeTab].isComplex && (
-          <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden">
+          <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden shadow-lg">
             <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
             <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-12">
               
               <div className="lg:w-1/3">
                 <h3 className="text-2xl font-bold text-white mb-3">Layanan Tambahan (Add-on)</h3>
-                <p className="text-gray-400">Kustomisasi paket Anda sesuai dengan skala dan timeline project yang dibutuhkan.</p>
+                <p className="text-gray-400 leading-relaxed">Kustomisasi paket Anda sesuai dengan skala dan timeline project yang dibutuhkan.</p>
               </div>
               
               <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                <div className="bg-[#161616] p-6 rounded-2xl border border-gray-800">
+                <div className="bg-[#111] p-6 rounded-3xl border border-gray-800 hover:border-red-900/10 transition-colors">
                   <h4 className="text-red-500 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                    <Camera size={20} /> Add-on Produksi Manual
+                    <Camera size={20} strokeWidth={1.5} /> Add-on Produksi Manual
                   </h4>
                   <div className="space-y-3">
                     {addOns.manual.map((addon, idx) => (
-                      <div key={idx} className="flex items-start gap-3 text-gray-300">
-                        <Plus size={18} className="text-red-600 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors">
+                        <Plus size={18} strokeWidth={1.5} className="text-red-500 shrink-0 mt-0.5" />
                         <span className="text-sm font-medium">{addon}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="bg-[#161616] p-6 rounded-2xl border border-gray-800">
-                  <h4 className="text-blue-500 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                    <Sparkles size={20} /> Add-on Layanan AI
+                <div className="bg-[#111] p-6 rounded-3xl border border-gray-800 hover:border-red-900/10 transition-colors">
+                  <h4 className="text-red-400 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
+                    <Sparkles size={20} strokeWidth={1.5} /> Add-on Layanan AI
                   </h4>
                   <div className="space-y-3">
                     {addOns.ai.map((addon, idx) => (
-                      <div key={idx} className="flex items-start gap-3 text-gray-300">
-                        <Plus size={18} className="text-blue-500 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors">
+                        <Plus size={18} strokeWidth={1.5} className="text-red-400 shrink-0 mt-0.5" />
                         <span className="text-sm font-medium">{addon}</span>
                       </div>
                     ))}

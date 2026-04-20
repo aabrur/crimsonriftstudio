@@ -1,11 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --animate-fadeIn: fadeIn 0.4s ease-out forwards;
-  --animate-marquee: marquee 20s linear infinite;
+  --animate-fadeIn: fadeIn 0.6s ease-out forwards;
+  --animate-marquee: marquee 25s linear infinite;
+  /* Animasi baru yang lebih tenang pengganti kedap-kedip */
+  --animate-float: float 6s ease-in-out infinite;
   
+  /* 1. OVERRIDE WARNA MERAH: Menjadi Soft Crimson / Muted Rose yang Mahal */
+  --color-red-50: #fdf2f4;
+  --color-red-100: #fbe5e9;
+  --color-red-200: #f6cdd5;
+  --color-red-300: #f0a6b5;
+  --color-red-400: #e77288;
+  --color-red-500: #d9465a;
+  --color-red-600: #c02b42; /* Merah utama yang elegan & tidak silau */
+  --color-red-700: #a11f35;
+  --color-red-800: #871e31;
+  --color-red-900: #731d2e;
+  
+  /* 2. OVERRIDE ABU-ABU & HITAM: Menjadi Warm Stone (Nyaman di mata) */
+  --color-gray-50: #fafaf9;
+  --color-gray-100: #f5f5f4;
+  --color-gray-200: #e7e5e4;
+  --color-gray-300: #d6d3d1;
+  --color-gray-400: #a8a29e;
+  --color-gray-500: #78716c;
+  --color-gray-600: #57534e;
+  --color-gray-700: #44403c;
+  --color-gray-800: #292524;
+  --color-gray-900: #1c1917;
+
   @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(10px); }
+    0% { opacity: 0; transform: translateY(15px); }
     100% { opacity: 1; transform: translateY(0); }
   }
   
@@ -13,9 +39,45 @@
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
 }
 
+/* 3. MAPPING KELAS HARDCODE KE WARNA BARU
+  Ini menimpa background super gelap bawaan menjadi Warm Dark secara instan
+*/
+.bg-\[\#0a0a0a\] { background-color: #1c1917 !important; } 
+.bg-\[\#111\] { background-color: #292524 !important; border-color: #44403c !important; } 
+.bg-\[\#050505\] { background-color: #171413 !important; } 
+.bg-\[\#1a1a1a\] { background-color: #44403c !important; } 
+.bg-\[\#161616\] { background-color: #292524 !important; }
+
+/* Mengubah warna gradient yang gelap */
+.from-\[\#111\] { --tw-gradient-from: #292524 var(--tw-gradient-from-position) !important; }
+.via-\[\#0a0a0a\] { --tw-gradient-stops: var(--tw-gradient-from), #1c1917, var(--tw-gradient-to) !important; }
+.to-\[\#0a0a0a\] { --tw-gradient-to: #1c1917 var(--tw-gradient-to-position) !important; }
+
+/* 4. MEMATIKAN EFEK NEON YANG BIKIN SAKIT MATA */
+[class*="shadow-\[0_0_"] {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4) !important;
+}
+
+[class*="drop-shadow-\[0_0_"] {
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3)) !important;
+}
+
+/* Meredam efek blur transparan merah di background */
+.bg-red-900\/10 { background-color: rgba(115, 29, 46, 0.05) !important; }
+.bg-red-900\/20 { background-color: rgba(115, 29, 46, 0.1) !important; }
+.bg-red-600\/30 { background-color: rgba(192, 43, 66, 0.15) !important; }
+.bg-red-600\/10 { background-color: rgba(192, 43, 66, 0.05) !important; }
+.bg-red-600\/5 { background-color: rgba(192, 43, 66, 0.02) !important; }
+
 body {
-  background-color: #0a0a0a;
-  color: white;
+  background-color: #1c1917;
+  color: #e7e5e4;
 }
