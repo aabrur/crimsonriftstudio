@@ -1,121 +1,154 @@
-import { Monitor, PenTool, Video, Megaphone, CheckCircle2, MessageSquare, Lightbulb, Rocket } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Monitor, PenTool, Camera, Megaphone, ArrowUpRight } from 'lucide-react';
+
+// Animasi Reveal yang Mulus
+function Reveal({ children, delay = 0, duration = 1200, y = 30, className = "" }) {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setVisible(true);
+      });
+    }, { threshold: 0.1 });
+    const currentRef = domRef.current;
+    if (currentRef) observer.observe(currentRef);
+    return () => { if (currentRef) observer.unobserve(currentRef); };
+  }, []);
+
+  return (
+    <div
+      ref={domRef}
+      className={className}
+      style={{ 
+        transform: isVisible ? 'translateY(0)' : `translateY(${y}px)`,
+        opacity: isVisible ? 1 : 0,
+        transition: `all ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function Services() {
-  const servicesList = [
-    {
-      id: 'web',
-      title: 'Web Development & SEO',
-      icon: <Monitor size={32} strokeWidth={1.5} />,
-      description: 'Pembuatan segala jenis website (E-Commerce, Company Profile, Landing Page, dll) yang cepat, responsif, dan teroptimasi SEO.',
-      features: ['Custom Website Development', 'Search Engine Optimization (SEO)', 'Performa Cepat & Mobile Friendly', 'Maintenance & Keamanan'],
-      link: '/services/web-development'
+  const services = [
+    { 
+      id: 'web', 
+      title: "Web Architecture", 
+      desc: "Membangun ekosistem digital berkinerja tinggi, landing page teroptimasi, dan platform e-commerce yang mengonversi.", 
+      path: "/services/web-development",
+      img: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1500&auto=format&fit=crop",
+      icon: <Monitor size={24} strokeWidth={1.5} />,
+      colSpan: "md:col-span-2 lg:col-span-8" // Card Super Lebar
     },
-    {
-      id: 'design',
-      title: 'Logo Design & Branding',
-      icon: <PenTool size={32} strokeWidth={1.5} />,
-      description: 'Menciptakan identitas visual yang kuat, unik, dan berkarakter untuk bisnis Anda. Merancang konsep awal hingga panduan branding utuh.',
-      features: ['Desain Logo Profesional', 'Pembuatan Brand Identity', 'Panduan Visual (Brand Guidelines)', 'Desain Materi Promosi'],
-      link: '/services/logo-branding'
+    { 
+      id: 'design', 
+      title: "Brand Identity", 
+      desc: "Sistem visual, logo, dan filosofi merek yang menanamkan persepsi premium di benak audiens.", 
+      path: "/services/logo-branding",
+      // FIX: Mengganti URL gambar yang error dengan gambar branding/estetik yang baru dan aman
+      img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop",
+      icon: <PenTool size={24} strokeWidth={1.5} />,
+      colSpan: "md:col-span-1 lg:col-span-4" // Card Kotak
     },
-    {
-      id: 'multimedia',
-      title: 'Photography & Videography',
-      icon: <Video size={32} strokeWidth={1.5} />,
-      description: 'Layanan dokumentasi visual lengkap. Menghasilkan foto produk berkualitas tinggi dan video sinematik untuk menyampaikan pesan brand Anda.',
-      features: ['Foto Produk & Profil Profesional', 'Dokumentasi Acara (Foto & Video)', 'Video Company Profile & Iklan', 'High-End Retouching & Color Grading'],
-      link: '/services/photography-videography'
+    { 
+      id: 'multimedia', 
+      title: "Lens & Motion", 
+      desc: "Sinematografi dan fotografi level atas untuk membekukan emosi dan menceritakan visi brand.", 
+      path: "/services/photography-videography",
+      img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop",
+      icon: <Camera size={24} strokeWidth={1.5} />,
+      colSpan: "md:col-span-1 lg:col-span-5" // Card Sedang
     },
-    {
-      id: 'sosmed',
-      title: 'Social Media & Ads Agency',
-      icon: <Megaphone size={32} strokeWidth={1.5} />,
-      description: 'Serahkan urusan digital marketing kepada kami. Dari pengelolaan akun hingga optimasi iklan berbayar untuk meningkatkan penjualan.',
-      features: ['Manajemen Akun & Konten Planner', 'Meta, TikTok, Google & Shopee Ads', 'Interaksi & Handle Customer Care', 'Laporan Performa Berkala'],
-      link: '/services/social-media'
+    { 
+      id: 'sosmed', 
+      title: "Growth Engine", 
+      desc: "Strategi konten yang agresif dan manajemen iklan berbayar untuk menskalakan bisnis.", 
+      path: "/services/social-media",
+      img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1500&auto=format&fit=crop",
+      icon: <Megaphone size={24} strokeWidth={1.5} />,
+      colSpan: "md:col-span-2 lg:col-span-7" // Card Sedang-Lebar
     }
   ];
 
-  const workflow = [
-    { step: '01', icon: <MessageSquare size={24} strokeWidth={1.5} />, title: 'Konsultasi & Brief', desc: 'Mendiskusikan target, audiens, dan kebutuhan proyek.' },
-    { step: '02', icon: <Lightbulb size={24} strokeWidth={1.5} />, title: 'Strategi & Konsep', desc: 'Merancang rencana aksi dan konsep visual.' },
-    { step: '03', icon: <Monitor size={24} strokeWidth={1.5} />, title: 'Produksi & Eksekusi', desc: 'Tim ahli kami mulai memproduksi dan mendesain.' },
-    { step: '04', icon: <Rocket size={24} strokeWidth={1.5} />, title: 'Review & Optimasi', desc: 'Penyempurnaan akhir dan peluncuran proyek.' }
-  ];
-
   return (
-    <div className="min-h-screen pt-28 pb-12 bg-[#0a0a0a] animate-fadeIn">
-      {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 text-center mt-12 mb-20">
-        <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Layanan Spesialis</h2>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
-          Satu Solusi Untuk <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Semua Kebutuhan Digital</span>
-        </h1>
-        <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-          Dari membangun identitas visual, membuat sistem website, hingga mendatangkan pelanggan melalui iklan. Kami siap menskalakan bisnis Anda.
-        </p>
-      </div>
-
-      {/* Services Grid */}
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
-        {servicesList.map((service) => (
-          <div 
-            key={service.id} 
-            className="bg-[#111] border border-gray-800 p-8 md:p-10 rounded-3xl hover:border-red-900/50 transition-all duration-500 group flex flex-col shadow-sm hover:shadow-2xl hover:-translate-y-1 relative overflow-hidden"
-          >
-            {/* Soft Glow di pojok kanan atas */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-bl-full -z-10 group-hover:bg-red-600/10 transition-colors duration-500"></div>
-
-            <div className="w-16 h-16 bg-[#0a0a0a] border border-gray-800 rounded-2xl flex items-center justify-center text-red-500 mb-8 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-500 shadow-md group-hover:shadow-red-900/30">
-              {service.icon}
+    <div className="bg-[#030303] pt-40 pb-32 min-h-screen">
+      <div className="max-w-[100rem] mx-auto px-6 md:px-12 lg:px-24">
+        
+        {/* HEADER SECTION */}
+        <Reveal>
+          <div className="mb-24 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
+            <div>
+              <span className="text-red-600 text-[10px] md:text-xs font-black tracking-[0.5em] uppercase mb-6 block">
+                Capabilities
+              </span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter uppercase leading-[0.9]">
+                The <span className="text-gray-700">Arsenal.</span>
+              </h1>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-4 tracking-wide">{service.title}</h3>
-            <p className="text-gray-400 mb-8 leading-relaxed flex-grow">{service.description}</p>
-            
-            <ul className="space-y-3 mt-auto pt-6 border-t border-gray-800/50 mb-8">
-              {service.features.map((feature, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-gray-300">
-                  <CheckCircle2 size={18} className="text-red-500 shrink-0 mt-0.5" />
-                  <span className="text-sm font-medium leading-snug">{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            {service.link && (
-              <Link to={service.link} className="block w-full py-4 bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white text-center font-bold rounded-xl transition-all duration-300 border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-lg hover:shadow-red-900/20">
-                Lihat Detail Harga
-              </Link>
-            )}
+            <p className="text-gray-400 text-lg md:text-xl max-w-lg font-light leading-relaxed border-l border-red-600/30 pl-6">
+              Kami mempersenjatai bisnis Anda dengan solusi digital end-to-end yang dirancang untuk mendominasi pasar secara elegan.
+            </p>
           </div>
-        ))}
-      </div>
+        </Reveal>
 
-      {/* Workflow Section */}
-      <div className="bg-[#050505] py-24 border-y border-gray-900">
-        <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
-          <div className="text-center mb-16">
-            <h2 className="text-red-500 font-bold tracking-[0.2em] uppercase text-sm mb-3">Cara Kerja Kami</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">Proses Kerja Transparan & Terukur</h3>
-          </div>
+        {/* BENTO GRID LAYOUT ($10K VIBE) */}
+        {/* FIX: Membuang auto-rows, memastikan gap lega (gap-6 md:gap-8) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8">
+          {services.map((srv, i) => (
+            <Reveal key={srv.id} delay={i * 150} className={`${srv.colSpan}`}>
+              
+              {/* FIX: Menetapkan tinggi card (h-[400px] / h-[500px]) agar tidak pernah mendempet */}
+              <Link 
+                to={srv.path} 
+                className="block w-full h-[420px] md:h-[500px] rounded-[2.5rem] overflow-hidden relative group border border-white/5 hover:border-red-500/30 hover:shadow-[0_0_80px_rgba(220,38,38,0.15)] transition-all duration-700"
+              >
+                {/* Background Image - Cinematic Hover */}
+                <img 
+                  src={srv.img} 
+                  alt={srv.title} 
+                  className="absolute inset-0 w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-90 group-hover:scale-105 transition-all duration-[2000ms] ease-[cubic-bezier(0.25,1,0.5,1)]"
+                />
+                
+                {/* Overlay Hitam Halus untuk Visibilitas Teks */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030303]/40 to-[#030303]/95 group-hover:via-[#030303]/20 transition-all duration-700 pointer-events-none"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-            {/* Garis penghubung diredupkan (h-px bukan h-0.5) */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gray-800 -translate-y-12 z-0"></div>
+                {/* Wrapper Konten Internal */}
+                <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between pointer-events-none">
+                  
+                  {/* Icon Bulat (Glassmorphism) */}
+                  <div className="w-16 h-16 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white group-hover:bg-red-600 group-hover:border-red-600 group-hover:scale-110 transition-all duration-700 shadow-2xl">
+                    {srv.icon}
+                  </div>
+                  
+                  {/* Area Teks (Title & Deskripsi Meluncur Naik) */}
+                  <div className="transform translate-y-10 group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                    <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-4 uppercase drop-shadow-2xl">
+                      {srv.title}
+                    </h2>
+                    
+                    {/* Paragraf Tersembunyi (Reveal On Hover) */}
+                    <div className="overflow-hidden">
+                      <p className="text-gray-300 font-light text-sm md:text-base leading-relaxed max-w-md opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                        {srv.desc}
+                      </p>
+                    </div>
 
-            {workflow.map((item, idx) => (
-              <div key={idx} className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-24 h-24 bg-[#111] border border-gray-800 rounded-full flex flex-col items-center justify-center mb-6 group hover:border-red-500 transition-colors duration-500 shadow-md hover:shadow-red-900/10">
-                  <span className="text-gray-700 font-black text-2xl group-hover:text-red-500/10 absolute transition-colors duration-500">{item.step}</span>
-                  <div className="text-red-500 relative z-10 group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+                    {/* Tombol Panah (Sleek) */}
+                    <div className="mt-8 flex items-center gap-3 text-[10px] md:text-xs font-black tracking-[0.3em] text-red-500 uppercase opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-700 delay-100">
+                      Lihat Harga & Detail <ArrowUpRight size={18} />
+                    </div>
+                  </div>
+
                 </div>
-                <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
-                <p className="text-gray-500 text-sm max-w-[200px] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
+        
       </div>
     </div>
   );
