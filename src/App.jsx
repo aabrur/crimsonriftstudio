@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// Impor Komponen Global & Layout (Tanpa ekstensi .jsx agar aman di semua environment)
+// Impor Komponen Global & Layout
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
@@ -43,8 +43,8 @@ export default function App() {
       {/* 3. Film Grain / Noise Overlay (Terhampar tipis di atas seluruh web) */}
       <div className="noise-overlay"></div>
 
-      {/* Container Web Utama */}
-      <div className="min-h-screen flex flex-col bg-[#030303] text-gray-100 font-sans selection:bg-red-600 selection:text-white overflow-x-hidden relative z-0">
+      {/* Container Web Utama (overflow-x-hidden DIHAPUS agar sticky bekerja sempurna) */}
+      <div className="min-h-screen flex flex-col bg-[#030303] text-gray-100 font-sans selection:bg-red-600 selection:text-white relative z-0">
         <Navbar />
         
         <main className="flex-grow pt-0">
