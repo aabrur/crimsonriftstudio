@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Sparkles, MoveRight, ChevronLeft, Eye, Wind } from 'lucide-react';
+import { Volume2, VolumeX, Sparkles, MoveRight, ChevronLeft, Eye, Wind, Disc } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // ---------------------------------------------------------
@@ -44,6 +44,8 @@ export const fetchPortfolioData = () => {
 
 export default function PortfolioGallery() {
   const scrollRef = useRef(null);
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [hoveredArt, setHoveredArt] = useState(null);
   
   // State untuk menyimpan data CMS
@@ -73,9 +75,23 @@ export default function PortfolioGallery() {
     return () => el.removeEventListener('wheel', onWheel);
   }, []);
 
+  const toggleMusic = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.volume = 0.3;
+      audioRef.current.play().catch(e => console.log("Auto-play diblokir:", e));
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className={`relative w-full h-screen text-gray-200 overflow-hidden font-sans transition-colors duration-[2000ms] ease-in-out ${hoveredArt ? 'bg-[#020202]' : 'bg-[#030303]'}`}>
       
+      {/* Audio Ambient Lofi/Cinematic */}
+      <audio ref={audioRef} src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" loop />
+
       {/* Latar Belakang Cahaya Mewah */}
       <div className={`absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(200,30,50,0.06),transparent_60%)] pointer-events-none transition-opacity duration-[2000ms] ${hoveredArt ? 'opacity-20' : 'opacity-100'}`}></div>
 
@@ -89,6 +105,18 @@ export default function PortfolioGallery() {
             Crimson <span className="text-red-700 italic font-serif">Exhibition.</span>
           </h1>
         </div>
+
+        {/* TOMBOL MUSIK ELEGAN */}
+        <button onClick={toggleMusic} className="pointer-events-auto flex items-center gap-4 pl-6 pr-3 py-3 md:pl-8 md:pr-4 md:py-4 bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 rounded-full backdrop-blur-3xl transition-all duration-700 group shadow-2xl">
+          <div className="hidden md:flex flex-col text-right">
+            <span className="text-[9px] font-black tracking-[0.3em] uppercase text-gray-400 group-hover:text-white transition-colors">
+              {isPlaying ? 'Acoustic On' : 'Silent Mode'}
+            </span>
+          </div>
+          <div className={`p-3 rounded-full transition-all duration-1000 ${isPlaying ? 'bg-red-900/40 text-red-400 shadow-[0_0_30px_rgba(220,38,38,0.4)] rotate-0' : 'bg-black/50 text-gray-500 border border-gray-800'}`}>
+            {isPlaying ? <Disc size={18} className="animate-[spin_4s_linear_infinite]" /> : <VolumeX size={18} />}
+          </div>
+        </button>
       </header>
 
       {/* PANDUAN INTERAKSI */}
@@ -119,8 +147,8 @@ export default function PortfolioGallery() {
           </div>
         </div>
 
-        {/* KARYA SENI (ARTWORKS) */}
-        {artworks.map((art) => (
+        {/* KARYA SENI (ARTWORKS) - DIRENDER DARI DATA CMS */}
+        {artworks.map((art, index) => (
           <div key={art.id} className="min-w-[90vw] md:min-w-[75vw] lg:min-w-[70vw] h-full flex items-center justify-center snap-center px-4 md:px-8 relative group" onMouseEnter={() => setHoveredArt(art.id)} onMouseLeave={() => setHoveredArt(null)}>
             
             {/* TYPOGRAPHY LATAR BELAKANG */}

@@ -65,6 +65,7 @@ src/assets/hero.png
 src/assets/react.svg
 src/assets/vite.svg
 src/cms/sanity-mock.jsx
+src/components/ClientMarquee.jsx
 src/components/CustomCursor.jsx
 src/components/Footer.jsx
 src/components/GlobalAudio.jsx
@@ -78,6 +79,61 @@ vite.config.js
 
 <files>
 This section contains the contents of the repository's files.
+
+<file path="src/components/ClientMarquee.jsx">
+import React from 'react';
+
+export default function ClientMarquee() {
+  // Daftar logo klien (Bisa ditambah/dikurangi sesuai kebutuhan)
+  const clientLogos = [
+    '/clients/0xtanda.png',
+    '/clients/tk-alhuda.png',
+    '/clients/lakeswaramoto.png',
+    // Gandakan untuk memastikan layar penuh sebelum looping
+    '/clients/0xtanda.png',
+    '/clients/tk-alhuda.png',
+    '/clients/lakeswaramoto.png',
+    '/clients/0xtanda.png',
+    '/clients/tk-alhuda.png',
+    '/clients/lakeswaramoto.png'
+  ];
+
+  return (
+    <div className="w-full bg-[#030303] py-20 overflow-hidden border-t border-white/5 relative z-20">
+      
+      {/* Teks Pengantar Marquee */}
+      <p className="text-center text-gray-500 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-12 flex items-center justify-center gap-4">
+        <span className="w-8 h-px bg-gray-700"></span>
+        Dipercaya oleh Para Visioner
+        <span className="w-8 h-px bg-gray-700"></span>
+      </p>
+      
+      {/* Wrapper Animasi Berjalan */}
+      <div className="flex animate-marquee whitespace-nowrap hover:[animation-play-state:paused] group">
+        
+        {/* Gandakan konten untuk efek seamless tanpa putus */}
+        {[...Array(2)].map((_, i) => (
+          <div key={i} className="flex items-center gap-16 md:gap-32 px-8 md:px-16">
+            {clientLogos.map((logo, index) => (
+              <img
+                key={index}
+                src={logo}
+                alt={`Client Logo ${index}`}
+                className="h-10 md:h-14 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-500 cursor-pointer drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+              />
+            ))}
+          </div>
+        ))}
+        
+      </div>
+      
+      {/* Bayangan Gradasi di Kanan-Kiri agar terlihat memudar elegan */}
+      <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-[#030303] to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#030303] to-transparent pointer-events-none"></div>
+    </div>
+  );
+}
+</file>
 
 <file path=".gitignore">
 # Logs
@@ -1359,64 +1415,159 @@ export default function Contact() {
 </file>
 
 <file path="src/app/portfolio/PortfolioGallery.jsx">
-import React, { useRef, useEffect, useState } from 'react';
-import { Sparkles, MoveRight, ChevronLeft, Eye, Wind } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 
-// ---------------------------------------------------------
-// FASE 5: CMS SANITY SETUP (MOCKING LOKAL)
-// Data ini merepresentasikan skema dari Headless CMS (Sanity).
-// Disatukan di file ini untuk menghindari error import.
-// ---------------------------------------------------------
-export const fetchPortfolioData = () => {
-  return [
-    {
-      id: "proj-001",
-      title: "SILENT SYMPHONY",
-      category: "Surrealism Portrait",
-      year: "2025",
-      story: "Sebuah ode untuk keheningan malam. Karya ini mengeksplorasi batas antara realitas dan mimpi, di mana subjek seolah membeku dalam waktu.",
-      mood: "Melankolis, Intim, dan Penuh Misteri.",
-      focal: "Pendaran cahaya tunggal (chiaroscuro) yang menyorot pada satu titik fokus.",
-      img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop"
-    },
-    {
-      id: "proj-002",
-      title: "NEON ECHOES",
-      category: "Cinematic Landscape",
-      year: "2024",
-      story: "Distopia urban yang direkam melalui palet warna cyberpunk. Menggambarkan kesepian di tengah keramaian kota metropolitan.",
-      mood: "Futuristik, Nostalgik, Terasing.",
-      focal: "Refleksi cahaya neon pada aspal basah, memberikan tekstur visual yang kaya.",
-      img: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=2000&auto=format&fit=crop"
-    },
-    {
-      id: "proj-003",
-      title: "ETHEREAL BOND",
-      category: "Fine Art Documentation",
-      year: "2026",
-      story: "Kemurnian cinta yang ditangkap tanpa rekayasa pose. Karya ini didedikasikan untuk membekukan detak jantung ke dalam sebuah medium visual abadi.",
-      mood: "Hangat, Murni, Membumi (Earthy).",
-      focal: "Bahasa tubuh yang halus—sentuhan jemari dan tatapan mata yang natural.",
-      img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2000&auto=format&fit=crop"
-    }
-  ];
-};
+// --- DATA STUDI KASUS ($20K VIBE) ---
+// Fokus pada masalah klien (Challenge) dan hasil (Impact)
+const cases = [
+  {
+    id: '01',
+    category: 'Brand Rebirth',
+    client: 'Lakeswara Moto',
+    challenge: 'Terlihat seperti bengkel jalanan biasa, kehilangan trust dari pemilik motor premium.',
+    impact: 'Re-branding total menaikkan perceived value. Pendapatan jasa custom naik 300% dalam 6 bulan.',
+    img: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2000&auto=format&fit=crop'
+  },
+  {
+    id: '02',
+    category: 'Web Architecture',
+    client: '0xTanda',
+    challenge: 'Website lama sangat lambat dan gagal menjelaskan produk Web3 yang kompleks.',
+    impact: 'Membangun arsitektur web presisi. Bounce rate turun 80%, user retention melonjak tajam.',
+    img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop'
+  },
+  {
+    id: '03',
+    category: 'Digital Campaign',
+    client: 'TK Al-Huda',
+    challenge: 'Pendaftaran murid baru stagnan karena masih mengandalkan brosur fisik.',
+    impact: 'Kampanye digital bertarget. Kuota pendaftaran penuh dalam waktu kurang dari 3 minggu.',
+    img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2000&auto=format&fit=crop'
+  },
+  {
+    id: '04',
+    category: 'Cinematography',
+    client: 'Sartorial Elegance',
+    challenge: 'Visual produk fashion tidak mampu memancarkan kemewahan bahan yang digunakan.',
+    impact: 'Produksi video sinematik kelas atas. Meningkatkan engagement Instagram organik sebesar 450%.',
+    img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000&auto=format&fit=crop'
+  },
+  {
+    id: '05',
+    category: 'Identity System',
+    client: 'Aetheria Tech',
+    challenge: 'Identitas visual startup tidak dipercaya oleh investor kelas atas.',
+    impact: 'Sistem desain futuristik dan solid. Membantu mengamankan pendanaan seri A senilai $2M.',
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop'
+  }
+];
+
+// --- KOMPONEN KARTU DENGAN EFEK 3D TILT ---
+function TiltCard({ item, index }) {
+  const cardRef = useRef(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Hitung rotasi (maksimal 10 derajat)
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+    
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
+  return (
+    <div 
+      className="flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[80vh] flex items-center justify-center snap-center perspective-1000"
+    >
+      <div 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        className="relative w-full h-full max-h-[800px] rounded-[2rem] overflow-hidden group cursor-none transition-transform duration-200 ease-out"
+        style={{
+          transform: isHovered 
+            ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.02, 1.02, 1.02)` 
+            : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+          boxShadow: isHovered ? '0 25px 50px -12px rgba(220, 38, 38, 0.25)' : '0 10px 30px -10px rgba(0,0,0,0.5)'
+        }}
+      >
+        {/* Gambar Latar dengan efek Parallax Zoom */}
+        <div className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
+          <img 
+            src={item.img} 
+            alt={item.client} 
+            className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-75 transition-all duration-700 transform scale-110 group-hover:scale-100 origin-center"
+          />
+        </div>
+
+        {/* Gradasi Gelap agar Teks Terbaca */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        {/* Konten Text (The Impact) */}
+        <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+          
+          <div className="flex justify-between items-end mb-6 border-b border-white/20 pb-6">
+            <div>
+              <span className="text-red-500 text-[10px] md:text-xs font-black tracking-[0.3em] uppercase block mb-2">
+                {item.category}
+              </span>
+              <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none transform translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-500">
+                {item.client}
+              </h3>
+            </div>
+            <span className="text-4xl md:text-6xl font-black text-transparent stroke-text opacity-20 group-hover:opacity-50 transition-opacity duration-500">
+              {item.id}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+            <div>
+              <span className="text-[9px] font-bold tracking-widest text-gray-500 uppercase block mb-2">The Challenge</span>
+              <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
+                {item.challenge}
+              </p>
+            </div>
+            <div>
+              <span className="text-[9px] font-bold tracking-widest text-red-500 uppercase block mb-2">The Impact</span>
+              <p className="text-sm md:text-base text-white font-medium leading-relaxed">
+                {item.impact}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Custom Cursor "DRAG" / "VIEW" (hanya muncul saat di-hover) */}
+        {isHovered && (
+          <div className="absolute top-8 right-8 w-12 h-12 bg-red-600 rounded-full flex items-center justify-center animate-pulse pointer-events-none z-50">
+            <span className="text-[8px] font-black tracking-widest text-white uppercase">See</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function PortfolioGallery() {
   const scrollRef = useRef(null);
-  const [hoveredArt, setHoveredArt] = useState(null);
-  
-  // State untuk menyimpan data CMS
-  const [artworks, setArtworks] = useState([]);
 
-  // Simulasi pemuatan data layaknya fetch dari backend Sanity
-  useEffect(() => {
-    const data = fetchPortfolioData();
-    setArtworks(data);
-  }, []);
-
-  // Mengubah scroll vertikal menjadi horizontal super mulus
+  // Efek Horizontal Scroll Pakai Roda Mouse (Tanpa plugin tambahan)
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -1424,9 +1575,10 @@ export default function PortfolioGallery() {
     const onWheel = (e) => {
       if (e.deltaY === 0) return;
       e.preventDefault();
-      el.scrollBy({
-        left: e.deltaY * 3,
-        behavior: 'auto' 
+      // Mengubah scroll vertikal (mouse wheel) menjadi scroll horizontal
+      el.scrollTo({
+        left: el.scrollLeft + e.deltaY * 2,
+        behavior: 'smooth'
       });
     };
 
@@ -1435,130 +1587,94 @@ export default function PortfolioGallery() {
   }, []);
 
   return (
-    <div className={`relative w-full h-screen text-gray-200 overflow-hidden font-sans transition-colors duration-[2000ms] ease-in-out ${hoveredArt ? 'bg-[#020202]' : 'bg-[#030303]'}`}>
+    <div className="bg-[#030303] min-h-screen overflow-hidden flex flex-col pt-24 pb-12">
       
-      {/* Latar Belakang Cahaya Mewah */}
-      <div className={`absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(200,30,50,0.06),transparent_60%)] pointer-events-none transition-opacity duration-[2000ms] ${hoveredArt ? 'opacity-20' : 'opacity-100'}`}></div>
-
-      {/* HEADER TETAP (SUPER MINIMALIS) */}
-      <header className="absolute top-0 left-0 right-0 z-50 p-8 md:p-12 flex justify-between items-start pointer-events-none">
-        <div className="pointer-events-auto flex flex-col group">
-          <Link to="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-4 w-fit">
-            <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Exit Gallery
-          </Link>
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter text-white/90 uppercase">
-            Crimson <span className="text-red-700 italic font-serif">Exhibition.</span>
-          </h1>
+      {/* Header Halaman */}
+      <div className="px-6 md:px-12 lg:px-24 shrink-0 mb-8 md:mb-12">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-8 h-[1px] bg-red-600"></div>
+          <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-red-500 uppercase">
+            Showcase
+          </span>
         </div>
-      </header>
-
-      {/* PANDUAN INTERAKSI */}
-      <div className="absolute bottom-10 left-12 z-50 pointer-events-none flex items-center gap-5 text-gray-500/70 opacity-80 mix-blend-difference">
-        <div className="w-16 h-[1px] bg-gray-500"></div>
-        <span className="text-[9px] md:text-[10px] tracking-[0.5em] uppercase font-bold flex items-center gap-3">
-          Scroll To Discover <MoveRight size={14} className="animate-pulse text-red-500/80" />
-        </span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter uppercase leading-[0.85]">
+            Engineered <br/>
+            <span className="text-gray-600">Monopolies.</span>
+          </h1>
+          <p className="text-gray-400 font-light max-w-sm text-sm md:text-base leading-relaxed">
+            Gulir untuk melihat bagaimana kami mengubah masalah bisnis menjadi dominasi digital yang absolut.
+          </p>
+        </div>
       </div>
 
-      {/* CONTAINER HORIZONTAL SCROLL (Smooth & Cinematic) */}
-      <div ref={scrollRef} className="flex items-center w-full h-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory hide-scrollbar pl-[5vw] pr-[20vw] md:pl-[15vw] md:pr-[40vw] pt-20" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-        
-        {/* SLIDE PEMBUKA */}
-        <div className="min-w-[90vw] md:min-w-[70vw] h-full flex flex-col justify-center snap-center pl-4 pr-10 relative">
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-red-900/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-          <p className="text-red-700 font-bold tracking-[1em] uppercase text-xs mb-8 flex items-center gap-3">
-            <Sparkles size={14} /> Virtual Museum
-          </p>
-          <h2 className="text-6xl md:text-[9rem] lg:text-[11rem] font-black text-white/5 tracking-tighter leading-[0.8] select-none uppercase mix-blend-overlay">
-            VISUAL <br/> POETRY.
-          </h2>
-          <div className="absolute top-1/2 -translate-y-1/2 pl-2">
-             <div className="w-20 md:w-32 h-[1px] bg-gradient-to-r from-red-600 to-transparent mb-10"></div>
-             <p className="text-xl md:text-4xl text-gray-300 font-light max-w-3xl leading-relaxed italic" style={{ textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}>
-               "Seni sejati tidak membutuhkan penjelasan teknis. Ia hanya butuh <span className="text-white font-medium">dirasakan.</span>"
-             </p>
+      {/* Area Horizontal Scroll */}
+      <div 
+        ref={scrollRef}
+        className="flex-grow flex items-center gap-8 md:gap-16 px-6 md:px-12 lg:px-24 overflow-x-auto hide-scrollbar snap-x snap-mandatory relative z-10"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} // Sembunyikan scrollbar bawaan
+      >
+        {/* Slide Pertama (Instruksi) */}
+        <div className="flex-shrink-0 w-[30vw] md:w-[20vw] h-[70vh] md:h-[80vh] flex flex-col justify-center snap-center">
+          <div className="flex gap-4 items-center mb-8 animate-bounce-x">
+             <ArrowRight className="text-red-600" size={32} strokeWidth={1} />
+             <span className="text-white font-black tracking-[0.3em] uppercase text-xs">Scroll</span>
+          </div>
+          <div className="h-[1px] w-full bg-white/10 relative">
+             <div className="absolute top-0 left-0 h-full w-1/3 bg-red-600"></div>
           </div>
         </div>
 
-        {/* KARYA SENI (ARTWORKS) */}
-        {artworks.map((art) => (
-          <div key={art.id} className="min-w-[90vw] md:min-w-[75vw] lg:min-w-[70vw] h-full flex items-center justify-center snap-center px-4 md:px-8 relative group" onMouseEnter={() => setHoveredArt(art.id)} onMouseLeave={() => setHoveredArt(null)}>
-            
-            {/* TYPOGRAPHY LATAR BELAKANG */}
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-red-600/[0.03] select-none pointer-events-none z-0 transition-all duration-[1500ms] whitespace-nowrap ${hoveredArt === art.id ? 'scale-110 tracking-[0.2em] opacity-100' : 'scale-90 tracking-tighter opacity-0'}`}>
-              {art.title}
-            </div>
-
-            {/* FRAME KARYA */}
-            <div className={`relative w-full max-w-[1200px] aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/5 bg-[#0a0a0a] z-10 transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${hoveredArt === art.id ? 'scale-[1.02] shadow-[0_0_100px_rgba(150,20,30,0.15)] border-white/10' : 'scale-100'}`}>
-              
-              <img src={art.img} alt={art.title} className={`w-full h-full object-cover transition-all duration-[3000ms] ease-out ${hoveredArt === art.id ? 'scale-105 saturate-100 brightness-100' : 'scale-100 saturate-0 brightness-75'}`} />
-              
-              <div className={`absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/50 to-transparent transition-all duration-[1000ms] ease-in-out ${hoveredArt === art.id ? 'opacity-90' : 'opacity-0'}`}></div>
-
-              {/* PANEL INFORMASI ARTISTIK */}
-              <div className={`absolute inset-x-0 bottom-0 p-8 md:p-14 lg:p-20 flex flex-col justify-end transition-all duration-[1000ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}`}>
-                
-                <div className={`flex items-center gap-4 mb-6 transition-all duration-700 delay-100 ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
-                  <span className="px-4 py-2 bg-white/5 border border-white/10 text-white/70 text-[9px] md:text-[10px] font-black tracking-[0.3em] uppercase rounded-full backdrop-blur-xl">
-                    {art.category}
-                  </span>
-                  <span className="text-gray-500 text-[10px] font-bold tracking-[0.4em] uppercase">{art.year}</span>
-                </div>
-
-                <h3 className={`text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 tracking-tighter drop-shadow-2xl transition-all duration-700 delay-200 ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
-                  {art.title}
-                </h3>
-                
-                <div className={`grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 transition-all duration-700 delay-300 ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
-                  <div className="md:col-span-7">
-                    <p className="text-[10px] text-red-500 uppercase tracking-[0.4em] font-black mb-3 flex items-center gap-2">
-                      <Wind size={14} /> Narasi Karya
-                    </p>
-                    <p className="text-gray-300 text-sm md:text-base leading-loose font-light italic">
-                      "{art.story}"
-                    </p>
-                  </div>
-                  <div className="md:col-span-5 flex flex-col gap-6 border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-10">
-                    <div>
-                      <p className="text-[9px] text-gray-500 uppercase tracking-[0.4em] font-bold mb-2">Atmosfer Visual</p>
-                      <p className="text-white text-sm font-medium">{art.mood}</p>
-                    </div>
-                    <div>
-                      <p className="text-[9px] text-gray-500 uppercase tracking-[0.4em] font-bold mb-2">Focal Point</p>
-                      <p className="text-gray-400 text-sm font-light leading-relaxed">{art.focal}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 pointer-events-none ${hoveredArt === art.id ? 'opacity-0 scale-150' : 'opacity-100 scale-100'}`}>
-                <div className="w-16 h-16 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/50 shadow-2xl">
-                  <Eye size={24} />
-                </div>
-              </div>
-
-            </div>
-          </div>
+        {/* Pemetaan Studi Kasus */}
+        {cases.map((item, index) => (
+          <TiltCard key={item.id} item={item} index={index} />
         ))}
         
-        {/* SLIDE PENUTUP */}
-        <div className="min-w-[60vw] md:min-w-[40vw] h-full flex items-center snap-center pl-10">
-          <div className="flex flex-col">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-600 tracking-tighter mb-4">
-              THE END <br/> OF EXHIBITION.
-            </h2>
-            <p className="text-gray-500 text-sm uppercase tracking-widest font-bold">Terima kasih telah berkunjung.</p>
-          </div>
+        {/* Slide Terakhir (Penutup) */}
+        <div className="flex-shrink-0 w-[50vw] md:w-[30vw] h-[70vh] md:h-[80vh] flex flex-col justify-center items-center snap-center px-12 text-center">
+          <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none mb-6">
+            Siap Menjadi <br/> <span className="text-red-600">Yang Berikutnya?</span>
+          </h2>
+          <Link 
+             to="/contact" 
+             className="px-8 py-4 bg-white text-black font-black uppercase tracking-widest text-xs rounded-full hover:bg-red-600 hover:text-white transition-colors duration-300"
+          >
+            Mulai Diskusi
+          </Link>
         </div>
-
       </div>
 
+      {/* Indikator Navigasi (kiri bawah) */}
+      <div className="absolute bottom-12 left-6 md:left-12 lg:left-24 flex gap-4 z-20 pointer-events-none">
+        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-[#030303]/50 backdrop-blur-sm text-gray-500">
+           <ArrowLeft size={16} />
+        </div>
+        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-[#030303]/50 backdrop-blur-sm text-white">
+           <ArrowRight size={16} />
+        </div>
+      </div>
+
+      {/* Styling Khusus Hide Scrollbar agar rapi di semua browser */}
       <style dangerouslySetInnerHTML={{__html: `
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }
+        .stroke-text {
+          -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+          color: transparent;
+        }
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        @keyframes bounce-x {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(10px); }
+        }
+        .animate-bounce-x {
+          animation: bounce-x 2s infinite;
+        }
       `}} />
+
     </div>
   );
 }
@@ -2163,13 +2279,18 @@ export default function Design() {
                     ))}
                   </ul>
 
-                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
-                    pkg.isPopular 
-                    ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
-                    : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
-                  }`}>
+                  <a 
+                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Logo%20%26%20Branding.`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                      pkg.isPopular 
+                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
+                      : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
+                    }`}
+                  >
                     Pilih Paket Ini
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -2595,9 +2716,14 @@ export default function Multimedia() {
                             ))}
                           </ul>
 
-                          <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular || pkg.badge ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}>
+                          <a 
+                            href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Photo%20%26%20Videography.`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular || pkg.badge ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}
+                          >
                             Pilih Paket Ini
-                          </button>
+                          </a>
                         </div>
                       </div>
                     ))}
@@ -2678,9 +2804,14 @@ export default function Multimedia() {
                       ))}
                     </ul>
 
-                    <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}>
+                    <a 
+                      href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Photo%20%26%20Videography.`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${pkg.isPopular ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'}`}
+                    >
                       Pilih Paket Ini
-                    </button>
+                    </a>
                   </div>
                 </div>
               ))}
@@ -3112,13 +3243,17 @@ export default function Sosmed() {
                     </div>
                   )}
 
-                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                  <a 
+                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Social%20Media%20%26%20Ads.`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
                     pkg.isPopular || pkg.badge
                     ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
                     : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
                   }`}>
                     Pilih Paket Ini
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -3342,13 +3477,18 @@ export default function WebDev() {
                     ))}
                   </ul>
 
-                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
-                    pkg.isPopular 
-                    ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
-                    : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
-                  }`}>
+                  <a 
+                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Website%20Development.`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                      pkg.isPopular 
+                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
+                      : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
+                    }`}
+                  >
                     Pilih Paket Ini
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -3877,7 +4017,7 @@ export default function Services() {
 <file path="src/app/home/Home.jsx">
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDown, MoveRight } from 'lucide-react';
+import { ArrowDown, MoveRight, XCircle, AlertCircle, TrendingDown, Sparkles } from 'lucide-react';
 
 // Animasi Mulus
 function Reveal({ children, delay = 0, duration = 1200, y = 30, className = "" }) {
@@ -3910,6 +4050,11 @@ function Reveal({ children, delay = 0, duration = 1200, y = 30, className = "" }
   );
 }
 
+// ---------------------------------------------------------
+// PENTING: LINK LOGO UNTUK EFEK PECAH (SHATTER)
+// ---------------------------------------------------------
+const SHATTER_LOGO_URL = '/logo/logo-crimson-rift-studio.svg';
+
 // Menghitung pecahan kaca (Grid 8x8 = 64 serpihan lebih detail)
 const SHATTER_GRID = 8;
 const SHATTER_PIECES = Array.from({ length: SHATTER_GRID * SHATTER_GRID }).map((_, i) => {
@@ -3917,7 +4062,6 @@ const SHATTER_PIECES = Array.from({ length: SHATTER_GRID * SHATTER_GRID }).map((
   const row = Math.floor(i / SHATTER_GRID);
   const centerX = SHATTER_GRID / 2 - 0.5;
   const centerY = SHATTER_GRID / 2 - 0.5;
-  // Daya ledak
   const dx = (col - centerX) * (Math.random() * 200 + 80);
   const dy = (row - centerY) * (Math.random() * 200 + 80);
   const r = (Math.random() - 0.5) * 1080;
@@ -3931,7 +4075,6 @@ export default function Home() {
 
   // Efek memantau posisi scroll dan ukuran layar (Responsif)
   useEffect(() => {
-    // Ambil tinggi layar asli pengguna
     setVh(window.innerHeight);
     const handleResize = () => setVh(window.innerHeight);
     window.addEventListener('resize', handleResize);
@@ -3954,51 +4097,70 @@ export default function Home() {
   }, []);
 
   // ---------------------------------------------------------
-  // TIMELINE ANIMASI MATEMATIS (Pasti dan Presisi)
+  // TIMELINE ANIMASI (SESUAI VALIDASI LU)
   // ---------------------------------------------------------
   
-  // FASE 1: Logo meledak dan hilang (Scroll 0 hingga 1x tinggi layar)
-  const shatterProgress = Math.min(Math.max(scrollY / vh, 0), 1);
+  // FASE 1: Logo meledak lebih cepat (selesai di 0.5x tinggi layar)
+  const shatterProgress = Math.min(Math.max(scrollY / (vh * 0.5), 0), 1);
   
-  // JEDA KOSONG DARI (1x vh HINGGA 2x vh)
-  
-  // FASE 2: Teks muncul (Dimulai dari scroll 2x tinggi layar hingga 3x tinggi layar)
-  const textRevealProgress = Math.min(Math.max((scrollY - (vh * 2)) / vh, 0), 1);
+  // FASE 2: Teks langsung overlap (Mulai dari 0.1x hingga 0.6x)
+  const textRevealProgress = Math.min(Math.max((scrollY - (vh * 0.1)) / (vh * 0.5), 0), 1);
 
-  const services = [
-    { id: '01', title: 'Web Architecture', desc: 'Digital presence engineered for performance and conversion.', path: '/services/web-development', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2000&auto=format&fit=crop' },
-    { id: '02', title: 'Brand Identity', desc: 'Timeless visual systems that command respect and authority.', path: '/services/logo-branding', img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop' },
-    { id: '03', title: 'Cinematography', desc: 'Visual storytelling that freezes time and evokes emotion.', path: '/services/photography-videography', img: 'https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?q=80&w=2000&auto=format&fit=crop' },
-    { id: '04', title: 'Growth & Ads', desc: 'Data-driven advocacy to scale your business exponentially.', path: '/services/social-media', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop' }
+  // DATA KELUHAN BISNIS (THE PAIN POINTS)
+  const painPoints = [
+    { 
+      id: '01', 
+      title: 'Jebakan Estetika', 
+      desc: 'Membakar anggaran puluhan juta untuk desain cantik yang lambat, berat, dan gagal mengkonversi pengunjung menjadi pelanggan setia.', 
+      icon: <XCircle size={32} className="text-red-500 mb-6" />,
+      img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop' 
+    },
+    { 
+      id: '02', 
+      title: 'Krisis Identitas', 
+      desc: 'Menjadi bayangan di industri sendiri. Brand Anda terlihat, bersuara, dan terasa persis seperti ratusan kompetitor lainnya.', 
+      icon: <AlertCircle size={32} className="text-red-500 mb-6" />,
+      img: 'https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=2000&auto=format&fit=crop' 
+    },
+    { 
+      id: '03', 
+      title: 'Skalabilitas Buntu', 
+      desc: 'Sistem digital dan marketing yang usang menghambat momentum pertumbuhan Anda saat bersiap untuk mendominasi pasar yang lebih besar.', 
+      icon: <TrendingDown size={32} className="text-red-500 mb-6" />,
+      img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2000&auto=format&fit=crop' 
+    }
+  ];
+
+  // DATA LOGO KLIEN
+  const clients = [
+    { id: '0xtanda', src: '/clients/0xtanda.png' },
+    { id: 'tk-alhuda', src: '/clients/tk-alhuda.png' },
+    { id: 'lakeswara', src: '/clients/lakeswaramoto.png' }
   ];
 
   return (
-    // FIX BUG PENTING: overflow-x-hidden DIHAPUS dari wrapper parent agar Sticky tidak mati!
     <div className="bg-[#030303] relative transition-colors duration-1000">
       
-      {/* Background Dinamis saat Hover Layanan */}
+      {/* Background Dinamis saat Hover Layanan (FIX BUG IMAGE BLANK) */}
       <div 
         className={`fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 ease-in-out ${activeHoverBg ? 'opacity-30' : 'opacity-0'}`}
         style={{
-          backgroundImage: `url(${activeHoverBg})`,
+          backgroundImage: activeHoverBg ? `url(${activeHoverBg})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'grayscale(50%) blur(4px)'
+          filter: 'grayscale(60%) blur(8px) contrast(1.2)'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-[#030303]/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-[#030303]/60"></div>
       </div>
 
-      {/* 1. EPIC HERO SECTION (Tinggi 400vh untuk menampung timeline 4 Fase) */}
-      <section className="h-[400vh] relative z-10 bg-[#030303]">
+      {/* 1. EPIC HERO SECTION (Tinggi 180vh Sesuai Validasi Terakhir Lu) */}
+      <section className="h-[180vh] relative z-10 bg-[#030303]">
         <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-6">
           
-          {/* Glow Merah Latar Belakang */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
-          {/* FIX BUG HORIZONTAL SCROLL: Overflow dipindah ke wrapper absolute ini agar Sticky aman */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-            {/* FASE 1: EFEK SHATTER LOGO SVG */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px]">
               {SHATTER_PIECES.map((piece, i) => (
                 <div
@@ -4009,11 +4171,11 @@ export default function Home() {
                     height: `${100 / SHATTER_GRID}%`,
                     left: `${piece.col * (100 / SHATTER_GRID)}%`,
                     top: `${piece.row * (100 / SHATTER_GRID)}%`,
-                    backgroundImage: `url('/logo/logo-crimson-rift-studio.svg')`,
+                    backgroundImage: `url('${SHATTER_LOGO_URL}')`,
                     backgroundSize: `${SHATTER_GRID * 100}% ${SHATTER_GRID * 100}%`,
                     backgroundPosition: `${piece.col * (100 / (SHATTER_GRID - 1))}% ${piece.row * (100 / (SHATTER_GRID - 1))}%`,
                     backgroundRepeat: 'no-repeat',
-                    opacity: Math.max(1 - shatterProgress * 1.5, 0), // Pudar dan hilang
+                    opacity: Math.max(1 - shatterProgress * 1.5, 0),
                     transform: `
                       translate(${piece.dx * shatterProgress}px, ${piece.dy * shatterProgress}px) 
                       rotate(${piece.r * shatterProgress}deg) 
@@ -4026,13 +4188,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* FASE 2: TEKS NAIK DARI BAWAH (Dijamin muncul pada Scroll Fase 3) */}
+          {/* FASE 2: TEKS NAIK DARI BAWAH (0.1x Text Reveal Sesuai Validasi) */}
           <div
             className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none z-30"
             style={{
               opacity: textRevealProgress,
-              // Teks naik dari bawah layar (100px) ke titik tengah (0px)
-              transform: `translateY(${100 * (1 - textRevealProgress)}px) scale(${0.95 + 0.05 * textRevealProgress})`
+              transform: `translateY(${40 * (1 - textRevealProgress)}px) scale(${0.95 + 0.05 * textRevealProgress})`
             }}
           >
             <div className="flex items-center justify-center gap-4 mb-6">
@@ -4052,17 +4213,16 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Indikator Panah Bawah - Hilang seketika saat mulai scroll sedikit */}
-          <div className="absolute bottom-10 flex items-center justify-center w-full pointer-events-none" style={{ opacity: Math.max(1 - (scrollY / (vh * 0.2)), 0) }}>
+          {/* Opacity Arrow Sesuai Validasi (0.4) */}
+          <div className="absolute bottom-10 flex items-center justify-center w-full pointer-events-none" style={{ opacity: Math.max(1 - (scrollY / (vh * 0.4)), 0) }}>
             <ArrowDown className="text-gray-600 animate-bounce" size={24} />
           </div>
-
         </div>
       </section>
 
       <div className="relative z-10 pt-20">
         {/* 2. Visual Story Grid */}
-        <section className="py-24 px-6 md:px-12 lg:px-24 max-w-[100rem] mx-auto">
+        <section className="py-24 px-6 md:px-12 lg:px-24 max-w-[100rem] mx-auto overflow-x-hidden">
           <Reveal>
             <div className="mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase">Narasi <span className="text-red-600 italic">Visual.</span></h2>
@@ -4105,43 +4265,137 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3. Interactive Services Hub */}
-        <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 max-w-[100rem] mx-auto border-t border-white/5 relative z-10 overflow-hidden">
+        {/* -------------------------------------------------------------
+            3. NARRATIVE & PAIN POINTS (VIBE $20,000) 
+        ------------------------------------------------------------- */}
+        <section className="py-24 md:py-40 px-6 md:px-12 lg:px-24 max-w-[100rem] mx-auto relative z-10 overflow-hidden border-t border-white/5">
           <Reveal>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter uppercase leading-none">
-                The <br/> <span className="text-gray-700">Expertise.</span>
-              </h2>
-              <Link to="/services" className="group flex items-center gap-4 text-[9px] md:text-[10px] font-black tracking-[0.3em] uppercase text-white hover:text-red-500 transition-colors">
-                Explore All 
-                <span className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white transition-all">
-                  <ArrowDown size={14} className="-rotate-90"/>
-                </span>
-              </Link>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-12">
+              <div className="max-w-3xl">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-8 h-[1px] bg-red-600"></div>
+                  <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-red-500 uppercase">
+                    Realita Industri
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter uppercase leading-[0.9] mb-8">
+                  Mengapa Bisnis Hebat <br/> <span className="text-gray-600">Berakhir Menjadi</span> <span className="text-red-600 italic font-serif">Bayangan?</span>
+                </h2>
+                <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
+                  Banyak pemimpin bisnis datang kepada kami dengan frustrasi yang sama. Di tengah kebisingan era digital, menjadi 'cukup bagus' adalah jaminan untuk dilupakan.
+                </p>
+              </div>
             </div>
           </Reveal>
 
-          <div className="flex flex-col">
-            {services.map((srv, i) => (
-              <Reveal key={srv.id} delay={i * 100}>
-                <Link 
-                  to={srv.path} 
-                  className="group flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-white/10 hover:border-red-600 transition-colors relative"
-                  onMouseEnter={() => setActiveHoverBg(srv.img)}
+          {/* Grid Keluhan Bisnis */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            {painPoints.map((point, i) => (
+              <Reveal key={point.id} delay={i * 150} className="h-full">
+                <div 
+                  className="group flex flex-col justify-between h-full p-8 md:p-12 rounded-[2rem] bg-[#080808] border border-white/5 hover:border-red-600/50 transition-all duration-700 relative overflow-hidden"
+                  onMouseEnter={() => setActiveHoverBg(point.img)}
                   onMouseLeave={() => setActiveHoverBg(null)}
                 >
-                  <div className="flex flex-col md:w-2/3">
-                    <span className="text-red-600 text-[10px] font-black tracking-widest mb-4 block">{srv.id}</span>
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter group-hover:translate-x-6 transition-transform duration-500">{srv.title}</h3>
-                  </div>
-                  <div className="mt-6 md:mt-0 flex flex-col items-start md:items-end md:w-1/3">
-                    <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed md:text-right group-hover:text-gray-300 transition-colors">{srv.desc}</p>
-                    <div className="mt-4 flex items-center gap-2 text-[10px] font-black tracking-[0.2em] text-red-500 uppercase opacity-0 group-hover:opacity-100 group-hover:translate-x-0 -translate-x-4 transition-all duration-500">
-                      Selengkapnya <MoveRight size={14} />
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-12">
+                      <span className="text-gray-800 text-4xl font-black tracking-tighter group-hover:text-red-900/50 transition-colors duration-500">{point.id}</span>
+                      {point.icon}
                     </div>
+                    <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-500">{point.title}</h3>
+                    <p className="text-gray-500 font-light leading-relaxed group-hover:text-gray-300 transition-colors duration-500">{point.desc}</p>
                   </div>
-                </Link>
+                </div>
               </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={400}>
+             <div className="mt-20 md:mt-32 text-center max-w-4xl mx-auto">
+               <p className="text-2xl md:text-4xl text-white font-light italic leading-tight mb-8">
+                 "Kami tidak sekadar memperbaiki desain Anda. Kami menghancurkan hambatan yang menahan bisnis Anda, lalu merekayasa ulang <strong className="text-red-500 font-bold">Monopoli Digital</strong> Anda."
+               </p>
+             </div>
+          </Reveal>
+        </section>
+
+        {/* -------------------------------------------------------------
+            4. GIANT CTA TO SERVICES PAGE 
+        ------------------------------------------------------------- */}
+        <section className="relative py-32 md:py-48 px-6 md:px-12 bg-[#050505] overflow-hidden border-t border-white/5">
+          {/* Ambient Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+          
+          <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
+            
+            <Reveal>
+              <Sparkles className="text-red-600 mx-auto mb-8 animate-pulse" size={40} strokeWidth={1} />
+            </Reveal>
+
+            <Reveal delay={100}>
+              <h2 className="text-[10px] md:text-xs font-black text-red-600 tracking-[0.5em] uppercase mb-6">
+                Berhenti Menjadi Pengikut
+              </h2>
+              <h3 className="text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] font-black text-white tracking-tighter uppercase leading-[0.85] mb-12 drop-shadow-lg">
+                Mulai <br/> <span className="text-transparent bg-clip-text bg-gradient-to-b from-gray-300 to-gray-700">Dominasi.</span>
+              </h3>
+            </Reveal>
+
+            <Reveal delay={300}>
+              <Link 
+                to="/services" 
+                className="group relative inline-flex items-center justify-center gap-4 md:gap-6 px-10 py-5 md:px-16 md:py-8 bg-white hover:bg-red-600 text-black hover:text-white font-black text-xs md:text-sm uppercase tracking-[0.3em] rounded-full transition-all duration-700 overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_80px_rgba(220,38,38,0.4)]"
+              >
+                <span className="relative z-10">Eksplorasi Solusi Kami</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+                <MoveRight size={20} className="relative z-10 group-hover:translate-x-3 transition-transform duration-500" />
+              </Link>
+            </Reveal>
+
+            <Reveal delay={500} className="mt-16">
+               <div className="flex flex-wrap justify-center gap-4 text-gray-600 text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold">
+                 <span>Web Architecture</span>
+                 <span className="text-red-900">•</span>
+                 <span>Brand Identity</span>
+                 <span className="text-red-900">•</span>
+                 <span>Cinematography</span>
+                 <span className="text-red-900">•</span>
+                 <span>Digital Growth</span>
+               </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------------
+            5. MARQUEE KLIEN (PERBAIKAN TERTUMPUK & WARNA ASLI)
+        ------------------------------------------------------------- */}
+        <section className="py-20 border-t border-white/5 bg-[#030303] overflow-hidden relative z-10">
+          {/* Bayangan Gradasi Kanan Kiri */}
+          <div className="absolute top-0 bottom-0 left-0 w-24 md:w-40 bg-gradient-to-r from-[#030303] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 right-0 w-24 md:w-40 bg-gradient-to-l from-[#030303] to-transparent z-10 pointer-events-none"></div>
+
+          <p className="text-center text-gray-500 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-12 flex items-center justify-center gap-4 relative z-20">
+            <span className="w-8 h-px bg-gray-800"></span>
+            Dipercaya oleh Para Visioner
+            <span className="w-8 h-px bg-gray-800"></span>
+          </p>
+
+          {/* PERBAIKAN: w-max mencegah flexbox menumpuk logo, mx mengatur jaraknya pasti */}
+          <div className="flex w-max animate-marquee items-center whitespace-nowrap">
+            {[...Array(8)].map((_, i) => (
+              <React.Fragment key={i}>
+                {clients.map((client) => (
+                  <img
+                    key={`${i}-${client.id}`}
+                    src={client.src}
+                    alt={`Client ${client.id}`}
+                    /* shrink-0 mencegah gambar menciut, mx-12 md:mx-24 memberikan jarak yang super lega antar logo */
+                    className="h-10 md:h-14 w-auto shrink-0 object-contain mx-12 md:mx-24 hover:scale-110 transition-transform duration-500 cursor-pointer drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] relative z-20"
+                  />
+                ))}
+              </React.Fragment>
             ))}
           </div>
         </section>
@@ -4157,29 +4411,40 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 // Impor Komponen Global & Layout
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Preloader from './components/Preloader';
-import GlobalAudio from './components/GlobalAudio';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
+import Preloader from './components/Preloader.jsx';
+import GlobalAudio from './components/GlobalAudio.jsx';
+import CustomCursor from './components/CustomCursor.jsx';
 
 // Impor Halaman
-import Home from './app/home/Home';
-import About from './app/about/about';
-import Services from './app/services/Services';
-import WebDev from './app/services/WebDev';
-import Design from './app/services/Design';
-import Multimedia from './app/services/Multimedia';
-import Sosmed from './app/services/Sosmed';
-import PortfolioGallery from './app/portfolio/PortfolioGallery';
-import Contact from './app/contact/Contact';
+import Home from './app/home/Home.jsx';
+import About from './app/about/about.jsx';
+import Services from './app/services/Services.jsx';
+import WebDev from './app/services/WebDev.jsx';
+import Design from './app/services/Design.jsx';
+import Multimedia from './app/services/Multimedia.jsx';
+import Sosmed from './app/services/Sosmed.jsx';
+import PortfolioGallery from './app/portfolio/PortfolioGallery.jsx';
+import Contact from './app/contact/Contact.jsx';
 
-// Fungsi Auto Scroll to Top
+// Fungsi Auto Scroll to Top saat pindah halaman
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
   return null;
+}
+
+// Wrapper Footer agar otomatis tersembunyi di halaman Gallery
+function FooterWrapper() {
+  const location = useLocation();
+  // Jangan render Footer jika path adalah /gallery
+  if (location.pathname === '/gallery') {
+    return null;
+  }
+  return <Footer />;
 }
 
 export default function App() {
@@ -4189,16 +4454,18 @@ export default function App() {
     <Router>
       <ScrollToTop />
       
-      {/* 1. Cinematic Preloader (Muncul pertama kali 0-100%) */}
+      {/* Kursor Magnetik Kustom */}
+      <CustomCursor />
+      
+      {/* 1. Cinematic Preloader */}
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       
-      {/* 2. Global Relaxing Ambience Sound (Pemutar Musik) */}
+      {/* 2. Global Relaxing Ambience Sound */}
       <GlobalAudio />
 
-      {/* 3. Film Grain / Noise Overlay (Terhampar tipis di atas seluruh web) */}
+      {/* 3. Film Grain / Noise Overlay */}
       <div className="noise-overlay"></div>
 
-      {/* Container Web Utama (overflow-x-hidden DIHAPUS agar sticky bekerja sempurna) */}
       <div className="min-h-screen flex flex-col bg-[#030303] text-gray-100 font-sans selection:bg-red-600 selection:text-white relative z-0">
         <Navbar />
         
@@ -4211,12 +4478,16 @@ export default function App() {
             <Route path="/services/logo-branding" element={<Design />} />
             <Route path="/services/photography-videography" element={<Multimedia />} />
             <Route path="/services/social-media" element={<Sosmed />} />
+            
+            {/* Route untuk halaman Showcase / Gallery yang baru */}
             <Route path="/gallery" element={<PortfolioGallery />} />
+            
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
 
-        <Footer />
+        {/* Gunakan FooterWrapper untuk menyembunyikan Footer di /gallery */}
+        <FooterWrapper />
       </div>
     </Router>
   );

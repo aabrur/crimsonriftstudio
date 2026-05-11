@@ -370,13 +370,17 @@ export default function Sosmed() {
                     </div>
                   )}
 
-                  <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
+                  <a 
+                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Social%20Media%20%26%20Ads.`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
                     pkg.isPopular || pkg.badge
                     ? 'bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-900/20 hover:-translate-y-1' 
                     : 'bg-[#1a1a1a] hover:bg-red-600 text-gray-300 hover:text-white border border-gray-800 hover:border-red-600 shadow-sm hover:shadow-md hover:-translate-y-1'
                   }`}>
                     Pilih Paket Ini
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
