@@ -80,61 +80,6 @@ vite.config.js
 <files>
 This section contains the contents of the repository's files.
 
-<file path="src/components/ClientMarquee.jsx">
-import React from 'react';
-
-export default function ClientMarquee() {
-  // Daftar logo klien (Bisa ditambah/dikurangi sesuai kebutuhan)
-  const clientLogos = [
-    '/clients/0xtanda.png',
-    '/clients/tk-alhuda.png',
-    '/clients/lakeswaramoto.png',
-    // Gandakan untuk memastikan layar penuh sebelum looping
-    '/clients/0xtanda.png',
-    '/clients/tk-alhuda.png',
-    '/clients/lakeswaramoto.png',
-    '/clients/0xtanda.png',
-    '/clients/tk-alhuda.png',
-    '/clients/lakeswaramoto.png'
-  ];
-
-  return (
-    <div className="w-full bg-[#030303] py-20 overflow-hidden border-t border-white/5 relative z-20">
-      
-      {/* Teks Pengantar Marquee */}
-      <p className="text-center text-gray-500 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-12 flex items-center justify-center gap-4">
-        <span className="w-8 h-px bg-gray-700"></span>
-        Dipercaya oleh Para Visioner
-        <span className="w-8 h-px bg-gray-700"></span>
-      </p>
-      
-      {/* Wrapper Animasi Berjalan */}
-      <div className="flex animate-marquee whitespace-nowrap hover:[animation-play-state:paused] group">
-        
-        {/* Gandakan konten untuk efek seamless tanpa putus */}
-        {[...Array(2)].map((_, i) => (
-          <div key={i} className="flex items-center gap-16 md:gap-32 px-8 md:px-16">
-            {clientLogos.map((logo, index) => (
-              <img
-                key={index}
-                src={logo}
-                alt={`Client Logo ${index}`}
-                className="h-10 md:h-14 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-500 cursor-pointer drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]"
-              />
-            ))}
-          </div>
-        ))}
-        
-      </div>
-      
-      {/* Bayangan Gradasi di Kanan-Kiri agar terlihat memudar elegan */}
-      <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-[#030303] to-transparent pointer-events-none"></div>
-      <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#030303] to-transparent pointer-events-none"></div>
-    </div>
-  );
-}
-</file>
-
 <file path=".gitignore">
 # Logs
 logs
@@ -1414,272 +1359,6 @@ export default function Contact() {
 }
 </file>
 
-<file path="src/app/portfolio/PortfolioGallery.jsx">
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
-
-// --- DATA STUDI KASUS ($20K VIBE) ---
-// Fokus pada masalah klien (Challenge) dan hasil (Impact)
-const cases = [
-  {
-    id: '01',
-    category: 'Brand Rebirth',
-    client: 'Lakeswara Moto',
-    challenge: 'Terlihat seperti bengkel jalanan biasa, kehilangan trust dari pemilik motor premium.',
-    impact: 'Re-branding total menaikkan perceived value. Pendapatan jasa custom naik 300% dalam 6 bulan.',
-    img: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2000&auto=format&fit=crop'
-  },
-  {
-    id: '02',
-    category: 'Web Architecture',
-    client: '0xTanda',
-    challenge: 'Website lama sangat lambat dan gagal menjelaskan produk Web3 yang kompleks.',
-    impact: 'Membangun arsitektur web presisi. Bounce rate turun 80%, user retention melonjak tajam.',
-    img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop'
-  },
-  {
-    id: '03',
-    category: 'Digital Campaign',
-    client: 'TK Al-Huda',
-    challenge: 'Pendaftaran murid baru stagnan karena masih mengandalkan brosur fisik.',
-    impact: 'Kampanye digital bertarget. Kuota pendaftaran penuh dalam waktu kurang dari 3 minggu.',
-    img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2000&auto=format&fit=crop'
-  },
-  {
-    id: '04',
-    category: 'Cinematography',
-    client: 'Sartorial Elegance',
-    challenge: 'Visual produk fashion tidak mampu memancarkan kemewahan bahan yang digunakan.',
-    impact: 'Produksi video sinematik kelas atas. Meningkatkan engagement Instagram organik sebesar 450%.',
-    img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000&auto=format&fit=crop'
-  },
-  {
-    id: '05',
-    category: 'Identity System',
-    client: 'Aetheria Tech',
-    challenge: 'Identitas visual startup tidak dipercaya oleh investor kelas atas.',
-    impact: 'Sistem desain futuristik dan solid. Membantu mengamankan pendanaan seri A senilai $2M.',
-    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop'
-  }
-];
-
-// --- KOMPONEN KARTU DENGAN EFEK 3D TILT ---
-function TiltCard({ item, index }) {
-  const cardRef = useRef(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    // Hitung rotasi (maksimal 10 derajat)
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-    
-    setTilt({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0 });
-  };
-
-  return (
-    <div 
-      className="flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[80vh] flex items-center justify-center snap-center perspective-1000"
-    >
-      <div 
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
-        className="relative w-full h-full max-h-[800px] rounded-[2rem] overflow-hidden group cursor-none transition-transform duration-200 ease-out"
-        style={{
-          transform: isHovered 
-            ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.02, 1.02, 1.02)` 
-            : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-          boxShadow: isHovered ? '0 25px 50px -12px rgba(220, 38, 38, 0.25)' : '0 10px 30px -10px rgba(0,0,0,0.5)'
-        }}
-      >
-        {/* Gambar Latar dengan efek Parallax Zoom */}
-        <div className="absolute inset-0 overflow-hidden bg-[#0a0a0a]">
-          <img 
-            src={item.img} 
-            alt={item.client} 
-            className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-75 transition-all duration-700 transform scale-110 group-hover:scale-100 origin-center"
-          />
-        </div>
-
-        {/* Gradasi Gelap agar Teks Terbaca */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-        {/* Konten Text (The Impact) */}
-        <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-          
-          <div className="flex justify-between items-end mb-6 border-b border-white/20 pb-6">
-            <div>
-              <span className="text-red-500 text-[10px] md:text-xs font-black tracking-[0.3em] uppercase block mb-2">
-                {item.category}
-              </span>
-              <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none transform translate-y-4 group-hover:translate-y-0 opacity-80 group-hover:opacity-100 transition-all duration-500">
-                {item.client}
-              </h3>
-            </div>
-            <span className="text-4xl md:text-6xl font-black text-transparent stroke-text opacity-20 group-hover:opacity-50 transition-opacity duration-500">
-              {item.id}
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-            <div>
-              <span className="text-[9px] font-bold tracking-widest text-gray-500 uppercase block mb-2">The Challenge</span>
-              <p className="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-                {item.challenge}
-              </p>
-            </div>
-            <div>
-              <span className="text-[9px] font-bold tracking-widest text-red-500 uppercase block mb-2">The Impact</span>
-              <p className="text-sm md:text-base text-white font-medium leading-relaxed">
-                {item.impact}
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Custom Cursor "DRAG" / "VIEW" (hanya muncul saat di-hover) */}
-        {isHovered && (
-          <div className="absolute top-8 right-8 w-12 h-12 bg-red-600 rounded-full flex items-center justify-center animate-pulse pointer-events-none z-50">
-            <span className="text-[8px] font-black tracking-widest text-white uppercase">See</span>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-export default function PortfolioGallery() {
-  const scrollRef = useRef(null);
-
-  // Efek Horizontal Scroll Pakai Roda Mouse (Tanpa plugin tambahan)
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const onWheel = (e) => {
-      if (e.deltaY === 0) return;
-      e.preventDefault();
-      // Mengubah scroll vertikal (mouse wheel) menjadi scroll horizontal
-      el.scrollTo({
-        left: el.scrollLeft + e.deltaY * 2,
-        behavior: 'smooth'
-      });
-    };
-
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, []);
-
-  return (
-    <div className="bg-[#030303] min-h-screen overflow-hidden flex flex-col pt-24 pb-12">
-      
-      {/* Header Halaman */}
-      <div className="px-6 md:px-12 lg:px-24 shrink-0 mb-8 md:mb-12">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-8 h-[1px] bg-red-600"></div>
-          <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-red-500 uppercase">
-            Showcase
-          </span>
-        </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter uppercase leading-[0.85]">
-            Engineered <br/>
-            <span className="text-gray-600">Monopolies.</span>
-          </h1>
-          <p className="text-gray-400 font-light max-w-sm text-sm md:text-base leading-relaxed">
-            Gulir untuk melihat bagaimana kami mengubah masalah bisnis menjadi dominasi digital yang absolut.
-          </p>
-        </div>
-      </div>
-
-      {/* Area Horizontal Scroll */}
-      <div 
-        ref={scrollRef}
-        className="flex-grow flex items-center gap-8 md:gap-16 px-6 md:px-12 lg:px-24 overflow-x-auto hide-scrollbar snap-x snap-mandatory relative z-10"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} // Sembunyikan scrollbar bawaan
-      >
-        {/* Slide Pertama (Instruksi) */}
-        <div className="flex-shrink-0 w-[30vw] md:w-[20vw] h-[70vh] md:h-[80vh] flex flex-col justify-center snap-center">
-          <div className="flex gap-4 items-center mb-8 animate-bounce-x">
-             <ArrowRight className="text-red-600" size={32} strokeWidth={1} />
-             <span className="text-white font-black tracking-[0.3em] uppercase text-xs">Scroll</span>
-          </div>
-          <div className="h-[1px] w-full bg-white/10 relative">
-             <div className="absolute top-0 left-0 h-full w-1/3 bg-red-600"></div>
-          </div>
-        </div>
-
-        {/* Pemetaan Studi Kasus */}
-        {cases.map((item, index) => (
-          <TiltCard key={item.id} item={item} index={index} />
-        ))}
-        
-        {/* Slide Terakhir (Penutup) */}
-        <div className="flex-shrink-0 w-[50vw] md:w-[30vw] h-[70vh] md:h-[80vh] flex flex-col justify-center items-center snap-center px-12 text-center">
-          <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-            Siap Menjadi <br/> <span className="text-red-600">Yang Berikutnya?</span>
-          </h2>
-          <Link 
-             to="/contact" 
-             className="px-8 py-4 bg-white text-black font-black uppercase tracking-widest text-xs rounded-full hover:bg-red-600 hover:text-white transition-colors duration-300"
-          >
-            Mulai Diskusi
-          </Link>
-        </div>
-      </div>
-
-      {/* Indikator Navigasi (kiri bawah) */}
-      <div className="absolute bottom-12 left-6 md:left-12 lg:left-24 flex gap-4 z-20 pointer-events-none">
-        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-[#030303]/50 backdrop-blur-sm text-gray-500">
-           <ArrowLeft size={16} />
-        </div>
-        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-[#030303]/50 backdrop-blur-sm text-white">
-           <ArrowRight size={16} />
-        </div>
-      </div>
-
-      {/* Styling Khusus Hide Scrollbar agar rapi di semua browser */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .stroke-text {
-          -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-          color: transparent;
-        }
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        @keyframes bounce-x {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(10px); }
-        }
-        .animate-bounce-x {
-          animation: bounce-x 2s infinite;
-        }
-      `}} />
-
-    </div>
-  );
-}
-</file>
-
 <file path="src/assets/react.svg">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
 </file>
@@ -1937,6 +1616,61 @@ export default function About() {
 }
 </file>
 
+<file path="src/components/ClientMarquee.jsx">
+import React from 'react';
+
+export default function ClientMarquee() {
+  // Daftar logo klien (Bisa ditambah/dikurangi sesuai kebutuhan)
+  const clientLogos = [
+    '/clients/0xtanda.png',
+    '/clients/tk-alhuda.png',
+    '/clients/lakeswaramoto.png',
+    // Gandakan untuk memastikan layar penuh sebelum looping
+    '/clients/0xtanda.png',
+    '/clients/tk-alhuda.png',
+    '/clients/lakeswaramoto.png',
+    '/clients/0xtanda.png',
+    '/clients/tk-alhuda.png',
+    '/clients/lakeswaramoto.png'
+  ];
+
+  return (
+    <div className="w-full bg-[#030303] py-20 overflow-hidden border-t border-white/5 relative z-20">
+      
+      {/* Teks Pengantar Marquee */}
+      <p className="text-center text-gray-500 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-12 flex items-center justify-center gap-4">
+        <span className="w-8 h-px bg-gray-700"></span>
+        Dipercaya oleh Para Visioner
+        <span className="w-8 h-px bg-gray-700"></span>
+      </p>
+      
+      {/* Wrapper Animasi Berjalan */}
+      <div className="flex animate-marquee whitespace-nowrap hover:[animation-play-state:paused] group">
+        
+        {/* Gandakan konten untuk efek seamless tanpa putus */}
+        {[...Array(2)].map((_, i) => (
+          <div key={i} className="flex items-center gap-16 md:gap-32 px-8 md:px-16">
+            {clientLogos.map((logo, index) => (
+              <img
+                key={index}
+                src={logo}
+                alt={`Client Logo ${index}`}
+                className="h-10 md:h-14 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all duration-500 cursor-pointer drop-shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+              />
+            ))}
+          </div>
+        ))}
+        
+      </div>
+      
+      {/* Bayangan Gradasi di Kanan-Kiri agar terlihat memudar elegan */}
+      <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-[#030303] to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#030303] to-transparent pointer-events-none"></div>
+    </div>
+  );
+}
+</file>
+
 <file path="src/components/CustomCursor.jsx">
 import React, { useState, useEffect } from 'react';
 
@@ -2134,6 +1868,285 @@ createRoot(document.getElementById('root')).render(
     }
   ]
 }
+</file>
+
+<file path="src/app/portfolio/PortfolioGallery.jsx">
+import React, { useRef, useEffect, useState } from 'react';
+import { Volume2, VolumeX, Sparkles, MoveRight, ChevronLeft, Eye, Wind, Disc } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+// ---------------------------------------------------------
+// FASE 5: CMS SANITY SETUP (MOCKING LOKAL)
+// Data ini merepresentasikan skema dari Headless CMS (Sanity).
+// Disatukan di file ini untuk menghindari error import.
+// ---------------------------------------------------------
+export const fetchPortfolioData = () => {
+  return [
+    {
+      id: "proj-001",
+      title: "SILENT SYMPHONY",
+      category: "Surrealism Portrait",
+      year: "2025",
+      story: "Sebuah ode untuk keheningan malam. Karya ini mengeksplorasi batas antara realitas dan mimpi, di mana subjek seolah membeku dalam waktu.",
+      mood: "Melankolis, Intim, dan Penuh Misteri.",
+      focal: "Pendaran cahaya tunggal (chiaroscuro) yang menyorot pada satu titik fokus.",
+      img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop"
+    },
+    {
+      id: "proj-002",
+      title: "NEON ECHOES",
+      category: "Cinematic Landscape",
+      year: "2024",
+      story: "Distopia urban yang direkam melalui palet warna cyberpunk. Menggambarkan kesepian di tengah keramaian kota metropolitan.",
+      mood: "Futuristik, Nostalgik, Terasing.",
+      focal: "Refleksi cahaya neon pada aspal basah, memberikan tekstur visual yang kaya.",
+      img: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=2000&auto=format&fit=crop"
+    },
+    {
+      id: "proj-003",
+      title: "ETHEREAL BOND",
+      category: "Fine Art Documentation",
+      year: "2026",
+      story: "Kemurnian cinta yang ditangkap tanpa rekayasa pose. Karya ini didedikasikan untuk membekukan detak jantung ke dalam sebuah medium visual abadi.",
+      mood: "Hangat, Murni, Membumi (Earthy).",
+      focal: "Bahasa tubuh yang halus—sentuhan jemari dan tatapan mata yang natural.",
+      img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2000&auto=format&fit=crop"
+    }
+  ];
+};
+
+export default function PortfolioGallery() {
+  const scrollRef = useRef(null);
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hoveredArt, setHoveredArt] = useState(null);
+  
+  // State untuk menyimpan data CMS
+  const [artworks, setArtworks] = useState([]);
+
+  // Simulasi pemuatan data layaknya fetch dari backend Sanity
+  useEffect(() => {
+    const data = fetchPortfolioData();
+    setArtworks(data);
+  }, []);
+
+  // Mengubah scroll vertikal menjadi horizontal super mulus
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onWheel = (e) => {
+      if (e.deltaY === 0) return;
+      e.preventDefault();
+      el.scrollBy({
+        left: e.deltaY * 3,
+        behavior: 'auto' 
+      });
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, []);
+
+  const toggleMusic = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.volume = 0.3;
+      audioRef.current.play().catch(e => console.log("Auto-play diblokir:", e));
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <div className={`relative w-full h-screen text-gray-200 overflow-hidden font-sans transition-colors duration-[2000ms] ease-in-out ${hoveredArt ? 'bg-[#020202]' : 'bg-[#030303]'}`}>
+      
+      {/* Audio Ambient Lofi/Cinematic */}
+      <audio ref={audioRef} src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" loop />
+
+      {/* Latar Belakang Cahaya Mewah */}
+      <div className={`absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(200,30,50,0.06),transparent_60%)] pointer-events-none transition-opacity duration-[2000ms] ${hoveredArt ? 'opacity-20' : 'opacity-100'}`}></div>
+
+      {/* HEADER TETAP (SUPER MINIMALIS) */}
+      <header className="absolute top-0 left-0 right-0 z-50 p-8 md:p-12 flex justify-between items-start pointer-events-none">
+        <div className="pointer-events-auto flex flex-col group">
+          <Link to="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-4 w-fit">
+            <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Exit Gallery
+          </Link>
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tighter text-white/90 uppercase">
+            Crimson <span className="text-red-700 italic font-serif">Exhibition.</span>
+          </h1>
+        </div>
+
+        {/* TOMBOL MUSIK ELEGAN */}
+        <button onClick={toggleMusic} className="pointer-events-auto flex items-center gap-4 pl-6 pr-3 py-3 md:pl-8 md:pr-4 md:py-4 bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 rounded-full backdrop-blur-3xl transition-all duration-700 group shadow-2xl">
+          <div className="hidden md:flex flex-col text-right">
+            <span className="text-[9px] font-black tracking-[0.3em] uppercase text-gray-400 group-hover:text-white transition-colors">
+              {isPlaying ? 'Acoustic On' : 'Silent Mode'}
+            </span>
+          </div>
+          <div className={`p-3 rounded-full transition-all duration-1000 ${isPlaying ? 'bg-red-900/40 text-red-400 shadow-[0_0_30px_rgba(220,38,38,0.4)] rotate-0' : 'bg-black/50 text-gray-500 border border-gray-800'}`}>
+            {isPlaying ? <Disc size={18} className="animate-[spin_4s_linear_infinite]" /> : <VolumeX size={18} />}
+          </div>
+        </button>
+      </header>
+
+      {/* PANDUAN INTERAKSI */}
+      <div className="absolute bottom-10 left-12 z-50 pointer-events-none flex items-center gap-5 text-gray-500/70 opacity-80 mix-blend-difference">
+        <div className="w-16 h-[1px] bg-gray-500"></div>
+        <span className="text-[9px] md:text-[10px] tracking-[0.5em] uppercase font-bold flex items-center gap-3">
+          Scroll To Discover <MoveRight size={14} className="animate-pulse text-red-500/80" />
+        </span>
+      </div>
+
+      {/* CONTAINER HORIZONTAL SCROLL (Smooth & Cinematic) */}
+      <div ref={scrollRef} className="flex items-center w-full h-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory hide-scrollbar pl-[5vw] pr-[20vw] md:pl-[15vw] md:pr-[40vw] pt-20" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        
+        {/* SLIDE PEMBUKA */}
+        <div className="min-w-[90vw] md:min-w-[70vw] h-full flex flex-col justify-center snap-center pl-4 pr-10 relative">
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-red-900/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+          <p className="text-red-700 font-bold tracking-[1em] uppercase text-xs mb-8 flex items-center gap-3">
+            <Sparkles size={14} /> Virtual Museum
+          </p>
+          <h2 className="text-6xl md:text-[9rem] lg:text-[11rem] font-black text-white/5 tracking-tighter leading-[0.8] select-none uppercase mix-blend-overlay">
+            VISUAL <br/> POETRY.
+          </h2>
+          <div className="absolute top-1/2 -translate-y-1/2 pl-2">
+             <div className="w-20 md:w-32 h-[1px] bg-gradient-to-r from-red-600 to-transparent mb-10"></div>
+             <p className="text-xl md:text-4xl text-gray-300 font-light max-w-3xl leading-relaxed italic" style={{ textShadow: '0 10px 30px rgba(0,0,0,0.8)' }}>
+               "Seni sejati tidak membutuhkan penjelasan teknis. Ia hanya butuh <span className="text-white font-medium">dirasakan.</span>"
+             </p>
+          </div>
+        </div>
+
+        {/* KARYA SENI (ARTWORKS) - DIRENDER DARI DATA CMS */}
+        {artworks.map((art, index) => (
+          <div key={art.id} className="min-w-[90vw] md:min-w-[75vw] lg:min-w-[70vw] h-full flex items-center justify-center snap-center px-4 md:px-8 relative group" onMouseEnter={() => setHoveredArt(art.id)} onMouseLeave={() => setHoveredArt(null)}>
+            
+            {/* TYPOGRAPHY LATAR BELAKANG */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-red-600/[0.03] select-none pointer-events-none z-0 transition-all duration-[1500ms] whitespace-nowrap ${hoveredArt === art.id ? 'scale-110 tracking-[0.2em] opacity-100' : 'scale-90 tracking-tighter opacity-0'}`}>
+              {art.title}
+            </div>
+
+            {/* FRAME KARYA */}
+            <div className={`relative w-full max-w-[1200px] aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] border border-white/5 bg-[#0a0a0a] z-10 transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${hoveredArt === art.id ? 'scale-[1.02] shadow-[0_0_100px_rgba(150,20,30,0.15)] border-white/10' : 'scale-100'}`}>
+              
+              <img src={art.img} alt={art.title} className={`w-full h-full object-cover transition-all duration-[3000ms] ease-out ${hoveredArt === art.id ? 'scale-105 saturate-100 brightness-100' : 'scale-100 saturate-0 brightness-75'}`} />
+              
+              <div className={`absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/50 to-transparent transition-all duration-[1000ms] ease-in-out ${hoveredArt === art.id ? 'opacity-90' : 'opacity-0'}`}></div>
+
+              {/* PANEL INFORMASI ARTISTIK */}
+              <div className={`absolute inset-x-0 bottom-0 p-8 md:p-14 lg:p-20 flex flex-col justify-end transition-all duration-[1000ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'}`}>
+                
+                <div className={`flex items-center gap-4 mb-6 transition-all duration-700 delay-100 ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
+                  <span className="px-4 py-2 bg-white/5 border border-white/10 text-white/70 text-[9px] md:text-[10px] font-black tracking-[0.3em] uppercase rounded-full backdrop-blur-xl">
+                    {art.category}
+                  </span>
+                  <span className="text-gray-500 text-[10px] font-bold tracking-[0.4em] uppercase">{art.year}</span>
+                </div>
+
+                <h3 className={`text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 tracking-tighter drop-shadow-2xl transition-all duration-700 delay-200 ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
+                  {art.title}
+                </h3>
+                
+                <div className={`grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 transition-all duration-700 delay-300 ${hoveredArt === art.id ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
+                  <div className="md:col-span-7">
+                    <p className="text-[10px] text-red-500 uppercase tracking-[0.4em] font-black mb-3 flex items-center gap-2">
+                      <Wind size={14} /> Narasi Karya
+                    </p>
+                    <p className="text-gray-300 text-sm md:text-base leading-loose font-light italic">
+                      "{art.story}"
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 flex flex-col gap-6 border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-10">
+                    <div>
+                      <p className="text-[9px] text-gray-500 uppercase tracking-[0.4em] font-bold mb-2">Atmosfer Visual</p>
+                      <p className="text-white text-sm font-medium">{art.mood}</p>
+                    </div>
+                    <div>
+                      <p className="text-[9px] text-gray-500 uppercase tracking-[0.4em] font-bold mb-2">Focal Point</p>
+                      <p className="text-gray-400 text-sm font-light leading-relaxed">{art.focal}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 pointer-events-none ${hoveredArt === art.id ? 'opacity-0 scale-150' : 'opacity-100 scale-100'}`}>
+                <div className="w-16 h-16 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/50 shadow-2xl">
+                  <Eye size={24} />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+        
+        {/* SLIDE PENUTUP */}
+        <div className="min-w-[60vw] md:min-w-[40vw] h-full flex items-center snap-center pl-10">
+          <div className="flex flex-col">
+            <h2 className="text-3xl md:text-5xl font-black text-gray-600 tracking-tighter mb-4">
+              THE END <br/> OF EXHIBITION.
+            </h2>
+            <p className="text-gray-500 text-sm uppercase tracking-widest font-bold">Terima kasih telah berkunjung.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}} />
+    </div>
+  );
+}
+</file>
+
+<file path="src/components/Footer.jsx">
+import { Link } from 'react-router-dom';
+
+export default function Footer() {
+  return (
+    <footer className="bg-[#030303] border-t border-white/5 pt-32 pb-12 px-6 md:px-12 relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-red-900/50 to-transparent"></div>
+      <div className="max-w-[90rem] mx-auto flex flex-col items-center">
+        <h2 className="text-[12vw] md:text-[8rem] font-black text-white/5 tracking-tighter leading-none mb-12 select-none text-center">
+          CRIMSON RIFT.
+        </h2>
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12">
+          <div className="flex gap-8 text-[9px] font-black tracking-[0.3em] text-gray-500 uppercase">
+            <Link className="hover:text-white transition-colors" to="/services">Services</Link>
+            <Link className="hover:text-white transition-colors" to="/gallery">Gallery</Link>
+            <Link className="hover:text-white transition-colors" to="/about">About</Link>
+          </div>
+          <p className="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© {new Date().getFullYear()} Crimson Rift Studio</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="/" />
+    <!-- Ikon utama -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Tambahan agar browser tidak bandel mencari favicon.ico -->
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crimson Rift Studio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
 </file>
 
 <file path="src/app/services/Design.jsx">
@@ -3517,51 +3530,6 @@ export default function WebDev() {
     </div>
   );
 }
-</file>
-
-<file path="src/components/Footer.jsx">
-import { Link } from 'react-router-dom';
-
-export default function Footer() {
-  return (
-    <footer className="bg-[#030303] border-t border-white/5 pt-32 pb-12 px-6 md:px-12 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-red-900/50 to-transparent"></div>
-      <div className="max-w-[90rem] mx-auto flex flex-col items-center">
-        <h2 className="text-[12vw] md:text-[8rem] font-black text-white/5 tracking-tighter leading-none mb-12 select-none text-center">
-          CRIMSON RIFT.
-        </h2>
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12">
-          <div className="flex gap-8 text-[9px] font-black tracking-[0.3em] text-gray-500 uppercase">
-            <Link className="hover:text-white transition-colors" to="/services">Services</Link>
-            <Link className="hover:text-white transition-colors" to="/gallery">Gallery</Link>
-            <Link className="hover:text-white transition-colors" to="/about">About</Link>
-          </div>
-          <p className="text-[9px] text-gray-600 tracking-[0.3em] uppercase">© {new Date().getFullYear()} Crimson Rift Studio</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-</file>
-
-<file path="index.html">
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <base href="/" />
-    <!-- Ikon utama -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <!-- Tambahan agar browser tidak bandel mencari favicon.ico -->
-    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crimson Rift Studio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
 </file>
 
 <file path="src/index.css">
