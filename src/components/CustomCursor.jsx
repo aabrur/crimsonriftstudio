@@ -1,62 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
+  const pos = useRef({ x: 0, y: 0 });
+  const ring = useRef({ x: 0, y: 0 });
+  const [active, setActive] = useState(false);
+  const isFinePointer = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
 
   useEffect(() => {
-    // Sembunyikan kursor kustom di perangkat mobile/touch
-    if (window.innerWidth < 768) return;
-    setIsVisible(true);
+    if (!isFinePointer) return undefined;
+    let frame;
 
-    const onMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+    const move = (event) => {
+      pos.current = { x: event.clientX, y: event.clientY };
+      dotRef.current?.style.setProperty('transform', `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`);
+    };
+    const over = (event) => setActive(Boolean(event.target.closest('a, button, input, textarea, [data-cursor="magnetic"]')));
+    const animate = () => {
+      ring.current.x += (pos.current.x - ring.current.x) * 0.18;
+      ring.current.y += (pos.current.y - ring.current.y) * 0.18;
+      ringRef.current?.style.setProperty('transform', `translate3d(${ring.current.x}px, ${ring.current.y}px, 0) translate(-50%, -50%)`);
+      frame = window.requestAnimationFrame(animate);
     };
 
-    const onMouseOver = (e) => {
-      const target = e.target;
-      // Cek apakah mouse berada di atas elemen interaktif
-      if (
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') ||
-        target.closest('button')
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
-    };
-
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseover', onMouseOver);
-
+    window.addEventListener('mousemove', move, { passive: true });
+    window.addEventListener('mouseover', over);
+    frame = window.requestAnimationFrame(animate);
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseover', onMouseOver);
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseover', over);
+      window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [isFinePointer]);
 
-  if (!isVisible) return null;
+  if (!isFinePointer) return null;
 
   return (
     <>
-      {/* Kursor Titik Inti */}
-      <div 
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 ease-out"
-        style={{ left: `${position.x}px`, top: `${position.y}px` }}
-      ></div>
-      
-      {/* Kursor Lingkaran Luar (Membesar saat hover) */}
-      <div 
-        className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9999] border transition-all duration-300 ease-out transform -translate-x-1/2 -translate-y-1/2 ${
-          isHovering 
-            ? 'w-16 h-16 bg-red-600/20 border-red-600/50 backdrop-blur-[2px]' 
-            : 'w-8 h-8 border-white/20 bg-transparent'
-        }`}
-        style={{ left: `${position.x}px`, top: `${position.y}px` }}
-      ></div>
+      <div ref={dotRef} className="fixed left-0 top-0 z-[10000] h-2 w-2 rounded-full bg-white pointer-events-none mix-blend-difference" />
+      <div ref={ringRef} className={`fixed left-0 top-0 z-[9999] rounded-full pointer-events-none border transition-[width,height,background,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${active ? 'h-20 w-20 border-red-400/35 bg-red-500/10 shadow-[0_0_50px_rgba(220,38,38,0.24)] backdrop-blur-[2px]' : 'h-9 w-9 border-white/18 bg-white/[0.015]'}`} />
     </>
   );
 }

@@ -1,69 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDown, MoveRight, XCircle, AlertCircle, TrendingDown, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Camera, Code2, Gem, Megaphone, MoveRight, PenTool, Sparkles } from 'lucide-react';
+import ClientMarquee from '../../components/ClientMarquee.jsx';
+import PageShell from '../../components/ui/PageShell.jsx';
+import Reveal from '../../components/ui/Reveal.jsx';
 
-// Animasi Mulus
-function Reveal({ children, delay = 0, duration = 1200, y = 30, className = "" }) {
-  const [isVisible, setVisible] = useState(false);
-  const domRef = useRef();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) setVisible(true);
-      });
-    }, { threshold: 0.1 });
-    const currentRef = domRef.current;
-    if (currentRef) observer.observe(currentRef);
-    return () => { if (currentRef) observer.unobserve(currentRef); };
-  }, []);
-
-  return (
-    <div
-      ref={domRef}
-      className={className}
-      style={{ 
-        transform: isVisible ? 'translateY(0)' : `translateY(${y}px)`,
-        opacity: isVisible ? 1 : 0,
-        transition: `all ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`
-      }}
-    >
-      {children}
-    </div>
-  );
-}
-
-// ---------------------------------------------------------
-// PENTING: LINK LOGO UNTUK EFEK PECAH (SHATTER)
-// ---------------------------------------------------------
-const SHATTER_LOGO_URL = '/logo/logo-crimson-rift-studio.svg';
-
-// Menghitung pecahan kaca (Grid 8x8 = 64 serpihan lebih detail)
-const SHATTER_GRID = 8;
-const SHATTER_PIECES = Array.from({ length: SHATTER_GRID * SHATTER_GRID }).map((_, i) => {
-  const col = i % SHATTER_GRID;
-  const row = Math.floor(i / SHATTER_GRID);
-  const centerX = SHATTER_GRID / 2 - 0.5;
-  const centerY = SHATTER_GRID / 2 - 0.5;
-  const dx = (col - centerX) * (Math.random() * 200 + 80);
-  const dy = (row - centerY) * (Math.random() * 200 + 80);
-  const r = (Math.random() - 0.5) * 1080;
-  return { col, row, dx, dy, r };
-});
+const heroImage = 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2200&auto=format&fit=crop';
 
 export default function Home() {
-  const [activeHoverBg, setActiveHoverBg] = useState(null);
   const [scrollY, setScrollY] = useState(0);
-  const [vh, setVh] = useState(800); // Tinggi viewport default
 
-  // Efek memantau posisi scroll dan ukuran layar (Responsif)
   useEffect(() => {
-    setVh(window.innerHeight);
-    const handleResize = () => setVh(window.innerHeight);
-    window.addEventListener('resize', handleResize);
-
     let ticking = false;
-    const handleScroll = () => {
+    const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           setScrollY(window.scrollY);
@@ -72,318 +21,168 @@ export default function Home() {
         ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // ---------------------------------------------------------
-  // TIMELINE ANIMASI (SESUAI VALIDASI LU)
-  // ---------------------------------------------------------
-  
-  // FASE 1: Logo meledak lebih cepat (selesai di 0.5x tinggi layar)
-  const shatterProgress = Math.min(Math.max(scrollY / (vh * 0.5), 0), 1);
-  
-  // FASE 2: Teks langsung overlap (Mulai dari 0.1x hingga 0.6x)
-  const textRevealProgress = Math.min(Math.max((scrollY - (vh * 0.1)) / (vh * 0.5), 0), 1);
+  const services = useMemo(() => [
+    { icon: Code2, title: 'Web Architecture', copy: 'High-performance websites, landing systems, and digital products engineered for perception and conversion.', path: '/services/web-development' },
+    { icon: PenTool, title: 'Brand Identity', copy: 'Logo suites, visual systems, and art direction that make your brand feel rare, deliberate, and premium.', path: '/services/logo-branding' },
+    { icon: Camera, title: 'Lens & Motion', copy: 'Cinematic photography and video assets that turn your story into a market-shaping visual language.', path: '/services/photography-videography' },
+    { icon: Megaphone, title: 'Growth Engine', copy: 'Content strategy, campaign direction, and social ecosystems built to compound attention over time.', path: '/services/social-media' },
+  ], []);
 
-  // DATA KELUHAN BISNIS (THE PAIN POINTS)
-  const painPoints = [
-    { 
-      id: '01', 
-      title: 'Jebakan Estetika', 
-      desc: 'Membakar anggaran puluhan juta untuk desain cantik yang lambat, berat, dan gagal mengkonversi pengunjung menjadi pelanggan setia.', 
-      icon: <XCircle size={32} className="text-red-500 mb-6" />,
-      img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop' 
-    },
-    { 
-      id: '02', 
-      title: 'Krisis Identitas', 
-      desc: 'Menjadi bayangan di industri sendiri. Brand Anda terlihat, bersuara, dan terasa persis seperti ratusan kompetitor lainnya.', 
-      icon: <AlertCircle size={32} className="text-red-500 mb-6" />,
-      img: 'https://images.unsplash.com/photo-1604076913837-52ab5629fba9?q=80&w=2000&auto=format&fit=crop' 
-    },
-    { 
-      id: '03', 
-      title: 'Skalabilitas Buntu', 
-      desc: 'Sistem digital dan marketing yang usang menghambat momentum pertumbuhan Anda saat bersiap untuk mendominasi pasar yang lebih besar.', 
-      icon: <TrendingDown size={32} className="text-red-500 mb-6" />,
-      img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2000&auto=format&fit=crop' 
-    }
-  ];
-
-  // DATA LOGO KLIEN
-  const clients = [
-    { id: '0xtanda', src: '/clients/0xtanda.png' },
-    { id: 'tk-alhuda', src: '/clients/tk-alhuda.png' },
-    { id: 'lakeswara', src: '/clients/lakeswaramoto.png' }
+  const gallery = [
+    { title: 'Obsidian Commerce', type: 'E-commerce System', image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1600&auto=format&fit=crop' },
+    { title: 'Monohaus Identity', type: 'Brand Direction', image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1400&auto=format&fit=crop' },
+    { title: 'Rift Motion', type: 'Cinematic Launch', image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1400&auto=format&fit=crop' },
   ];
 
   return (
-    <div className="bg-[#030303] relative transition-colors duration-1000">
-      
-      {/* Background Dinamis saat Hover Layanan (FIX BUG IMAGE BLANK) */}
-      <div 
-        className={`fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 ease-in-out ${activeHoverBg ? 'opacity-30' : 'opacity-0'}`}
-        style={{
-          backgroundImage: activeHoverBg ? `url(${activeHoverBg})` : 'none',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'grayscale(60%) blur(8px) contrast(1.2)'
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/80 to-[#030303]/60"></div>
-      </div>
+    <PageShell>
+      <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-20 pt-32 md:px-12 lg:px-24">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Luxury creative studio interior"
+            className="h-[112%] w-full object-cover opacity-35 grayscale will-change-transform"
+            style={{ transform: `translate3d(0, ${scrollY * 0.12}px, 0) scale(1.06)` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#030303]/35 via-[#030303]/78 to-[#030303]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,transparent,rgba(3,3,3,0.82)_70%)]" />
+        </div>
 
-      {/* 1. EPIC HERO SECTION (Tinggi 180vh Sesuai Validasi Terakhir Lu) */}
-      <section className="h-[180vh] relative z-10 bg-[#030303]">
-        <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center px-6">
-          
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
-
-          <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px]">
-              {SHATTER_PIECES.map((piece, i) => (
-                <div
-                  key={i}
-                  className="absolute drop-shadow-[0_0_20px_rgba(220,38,38,0.5)]"
-                  style={{
-                    width: `${100 / SHATTER_GRID}%`,
-                    height: `${100 / SHATTER_GRID}%`,
-                    left: `${piece.col * (100 / SHATTER_GRID)}%`,
-                    top: `${piece.row * (100 / SHATTER_GRID)}%`,
-                    backgroundImage: `url('${SHATTER_LOGO_URL}')`,
-                    backgroundSize: `${SHATTER_GRID * 100}% ${SHATTER_GRID * 100}%`,
-                    backgroundPosition: `${piece.col * (100 / (SHATTER_GRID - 1))}% ${piece.row * (100 / (SHATTER_GRID - 1))}%`,
-                    backgroundRepeat: 'no-repeat',
-                    opacity: Math.max(1 - shatterProgress * 1.5, 0),
-                    transform: `
-                      translate(${piece.dx * shatterProgress}px, ${piece.dy * shatterProgress}px) 
-                      rotate(${piece.r * shatterProgress}deg) 
-                      scale(${1 - shatterProgress * 0.5})
-                    `,
-                    willChange: 'transform, opacity'
-                  }}
-                />
-              ))}
-            </div>
+        <div className="relative z-10 mx-auto grid max-w-[92rem] gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <div>
+            <Reveal>
+              <div className="mb-8 flex flex-wrap items-center gap-4">
+                <span className="eyebrow">Creative Digital Atelier</span>
+                <span className="h-px w-16 bg-red-500/50" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.34em] text-white/38">Indonesia / Worldwide</span>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <h1 className="max-w-6xl text-balance text-6xl font-black uppercase leading-[0.82] tracking-tighter text-white sm:text-7xl md:text-8xl lg:text-[9.6rem]">
+                Digital presence with cinematic gravity.
+              </h1>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mt-8 max-w-2xl text-lg font-light leading-8 text-white/58 md:text-xl">
+                We craft premium websites, brand systems, and content engines for businesses that need to look expensive, move fast, and convert with quiet confidence.
+              </p>
+            </Reveal>
+            <Reveal delay={360}>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <Link to="/gallery" className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-5 text-[11px] font-black uppercase tracking-[0.32em] text-black transition-all duration-500 hover:bg-red-600 hover:text-white hover:shadow-[0_0_70px_rgba(220,38,38,0.34)]">
+                  View Gallery <MoveRight size={17} className="transition-transform duration-500 group-hover:translate-x-1.5" />
+                </Link>
+                <Link to="/services" className="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/[0.04] px-8 py-5 text-[11px] font-black uppercase tracking-[0.32em] text-white/70 backdrop-blur-xl transition-all duration-500 hover:border-white/25 hover:text-white">
+                  Explore Services
+                </Link>
+              </div>
+            </Reveal>
           </div>
 
-          {/* FASE 2: TEKS NAIK DARI BAWAH (0.1x Text Reveal Sesuai Validasi) */}
-          <div
-            className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none z-30"
-            style={{
-              opacity: textRevealProgress,
-              transform: `translateY(${40 * (1 - textRevealProgress)}px) scale(${0.95 + 0.05 * textRevealProgress})`
-            }}
-          >
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="w-12 h-[1px] bg-red-600"></div>
-              <span className="text-[9px] md:text-[10px] font-black tracking-[0.5em] text-red-500 uppercase">
-                Creative Digital Agency
-              </span>
-              <div className="w-12 h-[1px] bg-red-600"></div>
+          <Reveal delay={420} className="lg:justify-self-end">
+            <div className="glass-panel relative min-h-[420px] overflow-hidden rounded-[2.5rem] p-6 md:min-h-[560px] md:p-8">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-red-900/20" />
+              <img src="/logo/logo-crimson-rift-studio.svg" alt="Crimson Rift Studio" className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 object-contain opacity-90 drop-shadow-[0_0_80px_rgba(220,38,38,0.25)] animate-float md:h-72 md:w-72" />
+              <div className="absolute bottom-6 left-6 right-6 grid grid-cols-3 gap-3">
+                {['Strategy', 'Identity', 'Systems'].map((item) => (
+                  <div key={item} className="rounded-2xl border border-white/8 bg-black/30 p-4 text-center backdrop-blur-xl">
+                    <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/42">{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black text-white leading-[0.85] tracking-tighter uppercase mb-6 drop-shadow-2xl">
-              We Engineer <br/> <span className="text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-600">Legacies.</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-gray-400 font-light max-w-2xl leading-relaxed mx-auto px-4">
-              Kami tidak sekadar mendesain; kami menerjemahkan visi Anda menjadi mahakarya visual dan ekosistem digital yang mendominasi pasar.
-            </p>
-          </div>
+          </Reveal>
+        </div>
 
-          {/* Opacity Arrow Sesuai Validasi (0.4) */}
-          <div className="absolute bottom-10 flex items-center justify-center w-full pointer-events-none" style={{ opacity: Math.max(1 - (scrollY / (vh * 0.4)), 0) }}>
-            <ArrowDown className="text-gray-600 animate-bounce" size={24} />
+        <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/35">
+          <ArrowDown size={22} className="animate-bounce" />
+        </div>
+      </section>
+
+      <section className="px-6 py-24 md:px-12 md:py-32 lg:px-24">
+        <div className="mx-auto max-w-[92rem]">
+          <Reveal>
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+              <div>
+                <p className="eyebrow mb-5">Selected Direction</p>
+                <h2 className="text-4xl font-black uppercase leading-[0.9] tracking-tighter text-white md:text-6xl lg:text-7xl">Minimal surfaces. Maximum emotion.</h2>
+              </div>
+              <p className="max-w-3xl text-lg leading-8 text-white/52 lg:justify-self-end">
+                Every composition is designed with negative space, precise contrast, measured motion, and tactile interaction—so the experience feels polished without feeling loud.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-16 grid gap-5 md:grid-cols-3">
+            {gallery.map((item, index) => (
+              <Reveal key={item.title} delay={index * 120}>
+                <div className={`group luxury-card relative overflow-hidden rounded-[2.25rem] ${index === 0 ? 'md:mt-16' : index === 2 ? 'md:mt-28' : ''}`}>
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <img src={item.image} alt={item.title} className="h-full w-full object-cover grayscale transition-all duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:grayscale-0" />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90" />
+                  <div className="absolute bottom-0 left-0 right-0 p-7">
+                    <p className="mb-3 text-[10px] font-black uppercase tracking-[0.34em] text-red-300">{item.type}</p>
+                    <h3 className="text-3xl font-black uppercase tracking-tighter text-white">{item.title}</h3>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="relative z-10 pt-20">
-        {/* 2. Visual Story Grid */}
-        <section className="py-24 px-6 md:px-12 lg:px-24 max-w-[100rem] mx-auto overflow-x-hidden">
+      <section className="px-6 py-24 md:px-12 md:py-36 lg:px-24">
+        <div className="mx-auto max-w-[92rem]">
           <Reveal>
-            <div className="mb-16">
-              <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase">Narasi <span className="text-red-600 italic">Visual.</span></h2>
-              <p className="text-gray-400 mt-4 max-w-xl font-light leading-relaxed">Setiap piksel dan frame yang kami ciptakan memiliki cerita, emosi, dan tujuan strategis yang jelas.</p>
-            </div>
-          </Reveal>
-
-          {/* Tinggi solid untuk mencegah gambar terpotong */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 min-h-[600px] md:h-[600px]">
-            <Reveal delay={100} duration={1500} y={50} className="md:col-span-8 h-[400px] md:h-full">
-              <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative group">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2000" alt="Excellence" className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-[2000ms]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                <div className="absolute bottom-10 left-8 md:bottom-12 md:left-12">
-                  <span className="text-red-500 text-[9px] font-black tracking-[0.4em] uppercase mb-3 block">Estetika Maksimal</span>
-                  <h3 className="text-2xl md:text-4xl font-black text-white tracking-tighter uppercase">Menembus <br/> Batas Wajar.</h3>
-                </div>
+            <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="eyebrow mb-5">Capabilities</p>
+                <h2 className="text-4xl font-black uppercase leading-[0.9] tracking-tighter text-white md:text-7xl">The premium stack.</h2>
               </div>
-            </Reveal>
-            
-            <div className="md:col-span-4 flex flex-col gap-6 h-full">
-              <Reveal delay={200} duration={1500} y={50} className="flex-1 min-h-[250px] md:min-h-0 h-full">
-                <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative group">
-                  <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Code" className="w-full h-full object-cover filter saturate-0 group-hover:saturate-100 group-hover:scale-110 transition-all duration-[1500ms]" />
-                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-colors"></div>
-                  <div className="absolute bottom-6 left-6">
-                    <h3 className="text-lg font-black text-white uppercase tracking-wider">Kode Presisi</h3>
-                  </div>
-                </div>
-              </Reveal>
-              <Reveal delay={300} duration={1500} y={50} className="flex-1 min-h-[250px] md:min-h-0 h-full">
-                <div className="w-full h-full rounded-[2.5rem] overflow-hidden relative group bg-red-900 flex items-center justify-center p-8 text-center border border-red-500/30 shadow-inner">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.5),transparent)]"></div>
-                  <p className="relative z-10 text-white font-medium italic text-lg leading-relaxed">
-                    "Karya kami adalah jembatan antara imajinasi dan realitas."
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* -------------------------------------------------------------
-            3. NARRATIVE & PAIN POINTS (VIBE $20,000) 
-        ------------------------------------------------------------- */}
-        <section className="py-24 md:py-40 px-6 md:px-12 lg:px-24 max-w-[100rem] mx-auto relative z-10 overflow-hidden border-t border-white/5">
-          <Reveal>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-12">
-              <div className="max-w-3xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-8 h-[1px] bg-red-600"></div>
-                  <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-red-500 uppercase">
-                    Realita Industri
-                  </span>
-                </div>
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter uppercase leading-[0.9] mb-8">
-                  Mengapa Bisnis Hebat <br/> <span className="text-gray-600">Berakhir Menjadi</span> <span className="text-red-600 italic font-serif">Bayangan?</span>
-                </h2>
-                <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed">
-                  Banyak pemimpin bisnis datang kepada kami dengan frustrasi yang sama. Di tengah kebisingan era digital, menjadi 'cukup bagus' adalah jaminan untuk dilupakan.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Grid Keluhan Bisnis */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-            {painPoints.map((point, i) => (
-              <Reveal key={point.id} delay={i * 150} className="h-full">
-                <div 
-                  className="group flex flex-col justify-between h-full p-8 md:p-12 rounded-[2rem] bg-[#080808] border border-white/5 hover:border-red-600/50 transition-all duration-700 relative overflow-hidden"
-                  onMouseEnter={() => setActiveHoverBg(point.img)}
-                  onMouseLeave={() => setActiveHoverBg(null)}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-12">
-                      <span className="text-gray-800 text-4xl font-black tracking-tighter group-hover:text-red-900/50 transition-colors duration-500">{point.id}</span>
-                      {point.icon}
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-4 group-hover:translate-x-2 transition-transform duration-500">{point.title}</h3>
-                    <p className="text-gray-500 font-light leading-relaxed group-hover:text-gray-300 transition-colors duration-500">{point.desc}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={400}>
-             <div className="mt-20 md:mt-32 text-center max-w-4xl mx-auto">
-               <p className="text-2xl md:text-4xl text-white font-light italic leading-tight mb-8">
-                 "Kami tidak sekadar memperbaiki desain Anda. Kami menghancurkan hambatan yang menahan bisnis Anda, lalu merekayasa ulang <strong className="text-red-500 font-bold">Monopoli Digital</strong> Anda."
-               </p>
-             </div>
-          </Reveal>
-        </section>
-
-        {/* -------------------------------------------------------------
-            4. GIANT CTA TO SERVICES PAGE 
-        ------------------------------------------------------------- */}
-        <section className="relative py-32 md:py-48 px-6 md:px-12 bg-[#050505] overflow-hidden border-t border-white/5">
-          {/* Ambient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none"></div>
-          
-          <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
-            
-            <Reveal>
-              <Sparkles className="text-red-600 mx-auto mb-8 animate-pulse" size={40} strokeWidth={1} />
-            </Reveal>
-
-            <Reveal delay={100}>
-              <h2 className="text-[10px] md:text-xs font-black text-red-600 tracking-[0.5em] uppercase mb-6">
-                Berhenti Menjadi Pengikut
-              </h2>
-              <h3 className="text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] font-black text-white tracking-tighter uppercase leading-[0.85] mb-12 drop-shadow-lg">
-                Mulai <br/> <span className="text-transparent bg-clip-text bg-gradient-to-b from-gray-300 to-gray-700">Dominasi.</span>
-              </h3>
-            </Reveal>
-
-            <Reveal delay={300}>
-              <Link 
-                to="/services" 
-                className="group relative inline-flex items-center justify-center gap-4 md:gap-6 px-10 py-5 md:px-16 md:py-8 bg-white hover:bg-red-600 text-black hover:text-white font-black text-xs md:text-sm uppercase tracking-[0.3em] rounded-full transition-all duration-700 overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_80px_rgba(220,38,38,0.4)]"
-              >
-                <span className="relative z-10">Eksplorasi Solusi Kami</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
-                <MoveRight size={20} className="relative z-10 group-hover:translate-x-3 transition-transform duration-500" />
+              <Link to="/services" className="group inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.32em] text-white/55 transition-colors hover:text-white">
+                All services <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </Link>
-            </Reveal>
-
-            <Reveal delay={500} className="mt-16">
-               <div className="flex flex-wrap justify-center gap-4 text-gray-600 text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold">
-                 <span>Web Architecture</span>
-                 <span className="text-red-900">•</span>
-                 <span>Brand Identity</span>
-                 <span className="text-red-900">•</span>
-                 <span>Cinematography</span>
-                 <span className="text-red-900">•</span>
-                 <span>Digital Growth</span>
-               </div>
-            </Reveal>
+            </div>
+          </Reveal>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <Reveal key={service.title} delay={index * 90}>
+                  <Link to={service.path} className="group luxury-card flex min-h-[360px] flex-col justify-between rounded-[2rem] p-8">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-red-300 transition-all duration-500 group-hover:border-red-400/45 group-hover:bg-red-500/15 group-hover:text-white">
+                      <Icon size={24} strokeWidth={1.4} />
+                    </div>
+                    <div>
+                      <h3 className="mb-5 text-3xl font-black uppercase leading-none tracking-tighter text-white">{service.title}</h3>
+                      <p className="text-sm leading-7 text-white/48 transition-colors duration-500 group-hover:text-white/68">{service.copy}</p>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* -------------------------------------------------------------
-            5. MARQUEE KLIEN (PERBAIKAN TERTUMPUK & WARNA ASLI)
-        ------------------------------------------------------------- */}
-        <section className="py-20 border-t border-white/5 bg-[#030303] overflow-hidden relative z-10">
-          {/* Bayangan Gradasi Kanan Kiri */}
-          <div className="absolute top-0 bottom-0 left-0 w-24 md:w-40 bg-gradient-to-r from-[#030303] to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute top-0 bottom-0 right-0 w-24 md:w-40 bg-gradient-to-l from-[#030303] to-transparent z-10 pointer-events-none"></div>
+      <ClientMarquee />
 
-          <p className="text-center text-gray-500 text-[10px] md:text-xs font-black tracking-[0.4em] uppercase mb-12 flex items-center justify-center gap-4 relative z-20">
-            <span className="w-8 h-px bg-gray-800"></span>
-            Dipercaya oleh Para Visioner
-            <span className="w-8 h-px bg-gray-800"></span>
-          </p>
-
-          {/* PERBAIKAN: w-max mencegah flexbox menumpuk logo, mx mengatur jaraknya pasti */}
-          <div className="flex w-max animate-marquee items-center whitespace-nowrap">
-            {[...Array(8)].map((_, i) => (
-              <React.Fragment key={i}>
-                {clients.map((client) => (
-                  <img
-                    key={`${i}-${client.id}`}
-                    src={client.src}
-                    alt={`Client ${client.id}`}
-                    /* shrink-0 mencegah gambar menciut, mx-12 md:mx-24 memberikan jarak yang super lega antar logo */
-                    className="h-10 md:h-14 w-auto shrink-0 object-contain mx-12 md:mx-24 hover:scale-110 transition-transform duration-500 cursor-pointer drop-shadow-[0_0_15px_rgba(255,255,255,0.05)] relative z-20"
-                  />
-                ))}
-              </React.Fragment>
-            ))}
-          </div>
-        </section>
-
-      </div>
-    </div>
+      <section className="px-6 py-28 text-center md:px-12 md:py-40">
+        <Reveal>
+          <Sparkles className="mx-auto mb-8 text-red-500" size={38} strokeWidth={1.2} />
+          <p className="eyebrow mb-6">Ready when you are</p>
+          <h2 className="mx-auto max-w-5xl text-5xl font-black uppercase leading-[0.86] tracking-tighter text-white md:text-8xl lg:text-9xl">Let your brand feel inevitable.</h2>
+          <Link to="/contact" className="mt-12 inline-flex items-center gap-4 rounded-full bg-white px-9 py-5 text-[11px] font-black uppercase tracking-[0.32em] text-black transition-all duration-500 hover:bg-red-600 hover:text-white hover:shadow-[0_0_70px_rgba(220,38,38,0.34)]">
+            Begin the Brief <Gem size={17} />
+          </Link>
+        </Reveal>
+      </section>
+    </PageShell>
   );
 }

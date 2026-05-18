@@ -1,41 +1,110 @@
 @import "tailwindcss";
 
 @theme {
-  --animate-fadeIn: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-marquee: marquee 25s linear infinite;
+  --animate-fadeIn: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #030303;
+  --crimson: #dc2626;
+  --ember: #7f1d1d;
+  --ink: #030303;
+  --panel: rgba(255, 255, 255, 0.045);
+  --line: rgba(255, 255, 255, 0.09);
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #030303; }
 body {
-  background-color: #030303; 
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(220, 38, 38, 0.16), transparent 32rem),
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.06), transparent 24rem),
+    #030303;
   color: #e7e5e4;
   overflow-x: hidden;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Memastikan semua elemen interaktif juga menyembunyikan kursor bawaan */
-a, button, input, textarea {
-  cursor: none !important;
-}
+a, button, input, textarea { cursor: none !important; }
+@media (pointer: coarse) { a, button, input, textarea { cursor: auto !important; } }
 
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+::selection { background: rgba(220, 38, 38, 0.8); color: white; }
 
-/* Efek Film Grain Mahal (Noise Sinematik) */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 .noise-overlay {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  inset: 0;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.7'/%3E%3C/svg%3E");
+}
+
+.luxury-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 35%, black, transparent 72%);
+}
+
+.aurora {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(220, 38, 38, 0.22), transparent 28rem),
+    radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 30rem),
+    radial-gradient(circle at 60% 80%, rgba(127, 29, 29, 0.18), transparent 32rem);
+  animation: auroraDrift 14s ease-in-out infinite alternate;
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255,255,255,0.085), rgba(255,255,255,0.028));
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(24px);
+}
+
+.luxury-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+  border: 1px solid rgba(255,255,255,0.09);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.28);
+  transition: transform 900ms var(--ease-luxury), border-color 900ms var(--ease-luxury), box-shadow 900ms var(--ease-luxury), background 900ms var(--ease-luxury);
+}
+.luxury-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(220, 38, 38, 0.35);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.42), 0 0 70px rgba(220,38,38,0.12);
+}
+
+.eyebrow {
+  color: rgb(248 113 113);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.46em;
+  text-transform: uppercase;
+}
+
+.text-balance { text-wrap: balance; }
+
+@keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+@keyframes auroraDrift { from { transform: translate3d(-2%, -1%, 0) scale(1); } to { transform: translate3d(2%, 2%, 0) scale(1.08); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
