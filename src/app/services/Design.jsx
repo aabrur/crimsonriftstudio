@@ -76,7 +76,7 @@ export default function Design() {
 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Logo Design <br/>& Branding</h1>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Desain Logo <br/>& Branding</h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Ciptakan identitas visual yang kuat dan profesional untuk meningkatkan nilai jual dan kepercayaan audiens terhadap bisnis Anda.</p>
         </div>
 

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const FAVICON_URL = '/favicon.png';
 
@@ -10,14 +10,14 @@ export default function Navbar() {
   const location = useLocation();
 
   const links = useMemo(() => [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'About', path: '/about' },
+    { name: 'Beranda', path: '/' },
+    { name: 'Layanan', path: '/services' },
+    { name: 'Galeri', path: '/gallery' },
+    { name: 'Tentang', path: '/about' },
   ], []);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
+    const handleScroll = () => setScrolled(window.scrollY > 28);
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -28,23 +28,22 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
-
   return (
     <>
       <nav className="fixed inset-x-0 top-0 z-[100] px-4 pt-4 md:px-8 md:pt-6">
-        <div className={`mx-auto flex max-w-[92rem] items-center justify-between rounded-full border px-4 py-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-5 ${
+        <div className={`mx-auto flex max-w-[94rem] items-center justify-between rounded-full border px-4 py-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-5 ${
           scrolled
-            ? 'border-white/10 bg-[#050505]/72 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl'
-            : 'border-white/5 bg-white/[0.025] backdrop-blur-md'
+            ? 'border-[#f4ede7]/12 bg-[#070303]/74 shadow-[0_24px_90px_rgba(0,0,0,0.54)] backdrop-blur-2xl'
+            : 'border-[#f4ede7]/8 bg-[#f4ede7]/[0.025] backdrop-blur-md'
         }`}>
-          <Link to="/" className="group flex items-center gap-3" aria-label="Crimson Rift Studio home">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] transition-all duration-500 group-hover:border-red-500/40 group-hover:shadow-[0_0_35px_rgba(220,38,38,0.2)]">
+          <Link to="/" className="group flex items-center gap-3" aria-label="Beranda Crimson Rift Studio">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#f4ede7]/12 bg-[#f4ede7]/[0.04] transition-all duration-700 group-hover:border-red-300/35 group-hover:shadow-[0_0_42px_rgba(177,18,38,0.28)]">
               <img src={FAVICON_URL} alt="" className="h-6 w-6 object-contain" />
             </span>
-            <span className="hidden text-[10px] font-black uppercase tracking-[0.38em] text-white/80 sm:block">Crimson Rift</span>
+            <span className="hidden text-[10px] font-black uppercase tracking-[0.38em] text-[#f4ede7]/82 sm:block">Crimson Rift</span>
           </Link>
 
-          <div className="hidden items-center gap-2 rounded-full border border-white/5 bg-black/20 p-1 md:flex">
+          <div className="hidden items-center gap-2 rounded-full border border-[#f4ede7]/7 bg-black/22 p-1 md:flex">
             {links.map((link) => {
               const active = location.pathname === link.path;
               return (
@@ -52,7 +51,7 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`rounded-full px-5 py-3 text-[9px] font-black uppercase tracking-[0.32em] transition-all duration-500 ${active ? 'bg-white text-black shadow-[0_0_30px_rgba(255,255,255,0.12)]' : 'text-white/45 hover:bg-white/[0.055] hover:text-white'}`}
+                  className={`rounded-full px-5 py-3 text-[9px] font-black uppercase tracking-[0.32em] transition-all duration-500 ${active ? 'bg-[#f4ede7] text-[#150507] shadow-[0_0_34px_rgba(244,237,231,0.14)]' : 'text-[#f4ede7]/46 hover:bg-[#f4ede7]/[0.055] hover:text-[#f4ede7]'}`}
                 >
                   {link.name}
                 </Link>
@@ -64,17 +63,16 @@ export default function Navbar() {
             href="https://wa.me/6281398621530"
             target="_blank"
             rel="noreferrer"
-            className="group hidden items-center gap-2 rounded-full bg-white px-5 py-3 text-[9px] font-black uppercase tracking-[0.28em] text-black transition-all duration-500 hover:bg-red-600 hover:text-white hover:shadow-[0_0_55px_rgba(220,38,38,0.38)] lg:inline-flex"
+            className="group hidden items-center gap-2 rounded-full bg-[#f4ede7] px-5 py-3 text-[9px] font-black uppercase tracking-[0.28em] text-[#120506] transition-all duration-700 hover:bg-[#b11226] hover:text-white hover:shadow-[0_0_58px_rgba(177,18,38,0.42)] lg:inline-flex"
           >
-            Start Project
-            <ArrowUpRight size={14} className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            Mulai Brief
           </a>
 
           <button
             type="button"
-            className="relative z-[120] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition-all hover:border-red-500/40 md:hidden"
+            className="relative z-[120] flex h-10 w-10 items-center justify-center rounded-full border border-[#f4ede7]/12 bg-[#f4ede7]/[0.04] text-[#f4ede7] transition-all hover:border-red-300/40 md:hidden"
             onClick={() => setIsOpen((value) => !value)}
-            aria-label="Toggle navigation"
+            aria-label="Buka navigasi"
           >
             {isOpen ? <X size={19} strokeWidth={1.5} /> : <Menu size={19} strokeWidth={1.5} />}
           </button>
@@ -82,9 +80,9 @@ export default function Navbar() {
       </nav>
 
       <div className={`fixed inset-0 z-[90] bg-[#030303]/96 backdrop-blur-2xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <div className="aurora absolute inset-0 opacity-50" />
+        <div className="aurora absolute inset-0 opacity-60" />
         <div className="relative flex h-full flex-col justify-end px-7 pb-12 pt-28">
-          <p className="eyebrow mb-8">Navigation</p>
+          <p className="eyebrow mb-8">Ruang Navigasi</p>
           <div className="space-y-3">
             {links.map((link, index) => (
               <Link
@@ -92,14 +90,14 @@ export default function Navbar() {
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 style={{ transitionDelay: `${index * 70}ms` }}
-                className={`block border-b border-white/8 py-4 text-5xl font-black uppercase leading-none tracking-tighter transition-all duration-700 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'} ${location.pathname === link.path ? 'text-white' : 'text-white/32'}`}
+                className={`block border-b border-[#f4ede7]/8 py-4 text-5xl font-black uppercase leading-none tracking-tighter transition-all duration-700 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'} ${location.pathname === link.path ? 'text-[#f4ede7]' : 'text-[#f4ede7]/34'}`}
               >
                 {link.name}
               </Link>
             ))}
           </div>
-          <a href="https://wa.me/6281398621530" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center justify-center rounded-full bg-white px-8 py-5 text-xs font-black uppercase tracking-[0.35em] text-black">
-            Begin a Brief
+          <a href="https://wa.me/6281398621530" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center justify-center rounded-full bg-[#f4ede7] px-8 py-5 text-xs font-black uppercase tracking-[0.35em] text-[#120506]">
+            Konsultasi Tenang
           </a>
         </div>
       </div>

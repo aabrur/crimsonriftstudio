@@ -18,8 +18,8 @@ export default function CustomCursor() {
     };
     const over = (event) => setActive(Boolean(event.target.closest('a, button, input, textarea, [data-cursor="magnetic"]')));
     const animate = () => {
-      ring.current.x += (pos.current.x - ring.current.x) * 0.18;
-      ring.current.y += (pos.current.y - ring.current.y) * 0.18;
+      ring.current.x += (pos.current.x - ring.current.x) * 0.16;
+      ring.current.y += (pos.current.y - ring.current.y) * 0.16;
       ringRef.current?.style.setProperty('transform', `translate3d(${ring.current.x}px, ${ring.current.y}px, 0) translate(-50%, -50%)`);
       frame = window.requestAnimationFrame(animate);
     };
@@ -38,8 +38,8 @@ export default function CustomCursor() {
 
   return (
     <>
-      <div ref={dotRef} className="fixed left-0 top-0 z-[10000] h-2 w-2 rounded-full bg-white pointer-events-none mix-blend-difference" />
-      <div ref={ringRef} className={`fixed left-0 top-0 z-[9999] rounded-full pointer-events-none border transition-[width,height,background,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${active ? 'h-20 w-20 border-red-400/35 bg-red-500/10 shadow-[0_0_50px_rgba(220,38,38,0.24)] backdrop-blur-[2px]' : 'h-9 w-9 border-white/18 bg-white/[0.015]'}`} />
+      <div ref={dotRef} className="fixed left-0 top-0 z-[10000] h-2 w-2 rounded-full bg-[#f4ede7] pointer-events-none mix-blend-difference" />
+      <div ref={ringRef} className={`fixed left-0 top-0 z-[9999] rounded-full pointer-events-none border transition-[width,height,background,border-color,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${active ? 'h-20 w-20 border-red-200/38 bg-[#b11226]/14 shadow-[0_0_60px_rgba(177,18,38,0.34)] backdrop-blur-[2px]' : 'h-9 w-9 border-[#f4ede7]/18 bg-[#f4ede7]/[0.015] opacity-80'}`} />
     </>
   );
 }

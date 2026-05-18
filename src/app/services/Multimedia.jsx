@@ -317,7 +317,7 @@ export default function Multimedia() {
 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Professional Photo <br/>& Videography</h1>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Foto Profesional <br/>& Videografi</h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Pilih dari solusi dokumentasi acara profesional, produksi visual lapangan, hingga pembuatan aset digital dengan AI.</p>
         </div>
 

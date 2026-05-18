@@ -98,7 +98,7 @@ export default function WebDev() {
 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Website Development <br/>& SEO</h1>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Pengembangan Website <br/>& SEO</h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Pilih paket pengembangan website yang paling sesuai dengan skala dan kebutuhan bisnis Anda.</p>
         </div>
 

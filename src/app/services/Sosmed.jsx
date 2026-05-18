@@ -278,7 +278,7 @@ export default function Sosmed() {
 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Social Media <br/>& Ads Agency</h1>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Media Sosial <br/>& Iklan</h1>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Tingkatkan interaksi audiens, bangun kepercayaan brand, dan dorong penjualan dengan pengelolaan media sosial yang profesional.</p>
         </div>
 
@@ -410,7 +410,7 @@ export default function Sosmed() {
         <div className="mt-24 bg-[#050505] p-8 md:p-12 rounded-3xl border border-gray-800/50 shadow-lg">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-white mb-2">Syarat & Ketentuan (T&C)</h3>
-            <p className="text-gray-500 max-w-2xl mx-auto">Untuk menjaga profesionalisme dan kualitas kerja, berikut adalah aturan tegas yang kami terapkan pada layanan Social Media Management.</p>
+            <p className="text-gray-500 max-w-2xl mx-auto">Untuk menjaga profesionalisme dan kualitas kerja, berikut adalah aturan tegas yang kami terapkan pada layanan manajemen media sosial.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
