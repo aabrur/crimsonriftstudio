@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { siteContent } from '../content/siteContent.js';
 
 export default function Preloader({ onComplete }) {
   const [exiting, setExiting] = useState(false);
+  const { shared } = siteContent;
 
   useEffect(() => {
     const exitTimer = setTimeout(() => setExiting(true), 720);
@@ -21,8 +23,8 @@ export default function Preloader({ onComplete }) {
           <div className="h-full w-full origin-left bg-gradient-to-r from-[#2a050b] via-[#b11226] to-[#f4ede7]" />
         </div>
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.64em] text-red-200">Crimson Rift</p>
-          <p className="mt-3 text-xs uppercase tracking-[0.38em] text-[#f4ede7]/36">Membuka ruang visual</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.64em] text-red-200">{shared.preloaderBrand}</p>
+          <p className="mt-3 text-xs uppercase tracking-[0.38em] text-[#f4ede7]/36">{shared.preloaderText}</p>
         </div>
       </div>
     </div>

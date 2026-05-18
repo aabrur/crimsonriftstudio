@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { siteContent } from '../content/siteContent.js';
 
 const FAVICON_URL = '/favicon.png';
 
@@ -9,12 +10,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const links = useMemo(() => [
-    { name: 'Beranda', path: '/' },
-    { name: 'Layanan', path: '/services' },
-    { name: 'Galeri', path: '/gallery' },
-    { name: 'Tentang', path: '/about' },
-  ], []);
+  const { nav, shared } = siteContent;
+  const links = useMemo(() => nav.links, [nav.links]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 28);
@@ -36,7 +33,7 @@ export default function Navbar() {
             ? 'border-[#f4ede7]/12 bg-[#070303]/74 shadow-[0_24px_90px_rgba(0,0,0,0.54)] backdrop-blur-2xl'
             : 'border-[#f4ede7]/8 bg-[#f4ede7]/[0.025] backdrop-blur-md'
         }`}>
-          <Link to="/" className="group flex items-center gap-3" aria-label="Beranda Crimson Rift Studio">
+          <Link to="/" className="group flex items-center gap-3" aria-label={nav.ariaHome}>
             <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#f4ede7]/12 bg-[#f4ede7]/[0.04] transition-all duration-700 group-hover:border-red-300/35 group-hover:shadow-[0_0_42px_rgba(177,18,38,0.28)]">
               <img src={FAVICON_URL} alt="" className="h-6 w-6 object-contain" />
             </span>
@@ -60,19 +57,19 @@ export default function Navbar() {
           </div>
 
           <a
-            href="https://wa.me/6281398621530"
+            href={shared.whatsappUrl}
             target="_blank"
             rel="noreferrer"
             className="group hidden items-center gap-2 rounded-full bg-[#f4ede7] px-5 py-3 text-[9px] font-black uppercase tracking-[0.28em] text-[#120506] transition-all duration-700 hover:bg-[#b11226] hover:text-white hover:shadow-[0_0_58px_rgba(177,18,38,0.42)] lg:inline-flex"
           >
-            Mulai Brief
+            {nav.desktopCta}
           </a>
 
           <button
             type="button"
             className="relative z-[120] flex h-10 w-10 items-center justify-center rounded-full border border-[#f4ede7]/12 bg-[#f4ede7]/[0.04] text-[#f4ede7] transition-all hover:border-red-300/40 md:hidden"
             onClick={() => setIsOpen((value) => !value)}
-            aria-label="Buka navigasi"
+            aria-label={nav.ariaToggle}
           >
             {isOpen ? <X size={19} strokeWidth={1.5} /> : <Menu size={19} strokeWidth={1.5} />}
           </button>
@@ -82,7 +79,7 @@ export default function Navbar() {
       <div className={`fixed inset-0 z-[90] bg-[#030303]/96 backdrop-blur-2xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="aurora absolute inset-0 opacity-60" />
         <div className="relative flex h-full flex-col justify-end px-7 pb-12 pt-28">
-          <p className="eyebrow mb-8">Ruang Navigasi</p>
+          <p className="eyebrow mb-8">{nav.mobileEyebrow}</p>
           <div className="space-y-3">
             {links.map((link, index) => (
               <Link
@@ -96,8 +93,8 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-          <a href="https://wa.me/6281398621530" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center justify-center rounded-full bg-[#f4ede7] px-8 py-5 text-xs font-black uppercase tracking-[0.35em] text-[#120506]">
-            Konsultasi Tenang
+          <a href={shared.whatsappUrl} target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center justify-center rounded-full bg-[#f4ede7] px-8 py-5 text-xs font-black uppercase tracking-[0.35em] text-[#120506]">
+            {nav.mobileCta}
           </a>
         </div>
       </div>

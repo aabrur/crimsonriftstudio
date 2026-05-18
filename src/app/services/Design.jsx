@@ -2,73 +2,73 @@ import { useState } from 'react';
 import { CheckCircle2, ChevronLeft, PenTool, Palette, Diamond, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function Design() {
+export default function Desain() {
   const [activeTab, setActiveTab] = useState('logo');
 
   const categories = [
-    { id: 'logo', label: 'Logo Design', icon: <PenTool size={20} strokeWidth={1.5} /> },
-    { id: 'basicBranding', label: 'Logo + Basic Branding', icon: <Palette size={20} strokeWidth={1.5} /> },
-    { id: 'fullBranding', label: 'Full Branding Package', icon: <Diamond size={20} strokeWidth={1.5} /> }
+    { id: 'logo', label: 'Desain Lambang', icon: <PenTool size={20} strokeWidth={1.5} /> },
+    { id: 'dasarPemerekan', label: 'Lambang + Pemerekan Dasar', icon: <Palette size={20} strokeWidth={1.5} /> },
+    { id: 'fullPemerekan', label: 'Paket Pemerekan Lengkap', icon: <Diamond size={20} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
     logo: {
-      target: "Target: Entry Level / Bisnis Baru / Kebutuhan Cepat",
+      target: "Target: Tahap Awal / Bisnis Baru / Kebutuhan Cepat",
       packages: [
         {
-          name: "BASIC LOGO", price: "Rp250.000", isPopular: false,
-          features: ["1 Konsep Logo Utama", "1 Alternatif Revisi Arah", "Style Sederhana (Text/Icon Basic)", "File PNG Transparan & JPG", "1 Warna + 1 Versi Hitam Putih", "Waktu Pengerjaan: 1–2 Hari", "Revisi: 2x"]
+          name: "LAMBANG DASAR", price: "Rp250.000", isPopular: false,
+          features: ["1 Konsep Lambang Utama", "1 Alternatif Revisi Arah", "Gaya sederhana (Teks/ikon dasar)", "Berkas PNG transparan & JPG", "1 Warna + 1 Versi Hitam Putih", "Waktu Pengerjaan: 1–2 Hari", "Revisi: 2x"]
         },
         {
-          name: "STANDARD LOGO", price: "Rp500.000", isPopular: true,
-          features: ["2–3 Konsep Logo", "Eksplorasi Style (Icon + Typography)", "Pemilihan Warna Dasar", "File Lengkap (PNG, JPG, SVG/Vector)", "Versi Full Color, Hitam Putih, Icon", "Waktu Pengerjaan: 2–4 Hari", "Revisi: 3–5x"]
+          name: "LAMBANG STANDAR", price: "Rp500.000", isPopular: true,
+          features: ["2–3 Konsep Lambang", "Eksplorasi gaya (Ikon + tipografi)", "Pemilihan Warna Dasar", "Berkas lengkap (PNG, JPG, SVG/vektor)", "Versi Warna penuh, Hitam Putih, Ikon", "Waktu Pengerjaan: 2–4 Hari", "Revisi: 3–5x"]
         },
         {
-          name: "PROFESSIONAL", price: "Mulai Rp900.000", isPopular: false,
-          features: ["3–5 Konsep Logo", "Riset Ringan Brand (Market + Vibe)", "Logo System (Primary, Secondary, Icon)", "Warna Brand (Basic Palette)", "File Lengkap Asli (AI/SVG/EPS)", "Mockup Preview (Baju/Kemasan/dll)", "Waktu Pengerjaan: 3–5 Hari", "Revisi: 5–7x"]
+          name: "PROFESIONAL", price: "Mulai Rp900.000", isPopular: false,
+          features: ["3–5 Konsep Lambang", "Riset ringan merek (pasar + rasa)", "Sistem lambang (utama, pendamping, Ikon)", "Warna merek (palet dasar)", "Berkas lengkap Asli (kecerdasan buatan/SVG/EPS)", "Pratinjau mokap (Baju/Kemasan/dll)", "Waktu Pengerjaan: 3–5 Hari", "Revisi: 5–7x"]
         }
       ]
     },
-    basicBranding: {
-      target: "Target: Bisnis Berkembang / Re-branding",
+    dasarPemerekan: {
+      target: "Target: Bisnis Berkembang / Re-pemerekan",
       packages: [
         {
-          name: "STARTER BRAND", price: "Rp750.000", isPopular: false,
-          features: ["2–3 Konsep Logo", "Warna Brand (Primary + Secondary)", "Font Pairing (Judul + Isi)", "Logo Usage Basic", "File Lengkap Logo", "1 Desain (Kartu Nama / IG Profile)", "Revisi: 3–5x"]
+          name: "MEREK AWAL", price: "Rp750.000", isPopular: false,
+          features: ["2–3 Konsep Lambang", "Warna merek (Utama + Pendamping)", "Pasangan huruf (Judul + Isi)", "Panduan pemakaian dasar", "Berkas lengkap Lambang", "1 Desain (Kartu Nama / IG Profesionalfil)", "Revisi: 3–5x"]
         },
         {
-          name: "BRAND IDENTITY", price: "Rp1.500.000", isPopular: true,
-          features: ["3–5 Konsep Logo", "Logo System (Primary, Secondary, Icon)", "Color Palette Lengkap", "Typography System", "Mini Brand Guideline (PDF)", "3 Aplikasi (Kartu Nama, Feed IG, Banner)", "Mockup Branding", "Revisi: 5–7x"]
+          name: "IDENTITAS MEREK", price: "Rp1.500.000", isPopular: true,
+          features: ["3–5 Konsep Lambang", "Sistem lambang (utama, pendamping, Ikon)", "Palette warna Lengkap", "Sistem tipografi", "Panduan merek ringkas (PDF)", "3 Aplikasi (Kartu Nama, Umpan IG, Spanduk)", "Mokap pemerekan", "Revisi: 5–7x"]
         }
       ]
     },
-    fullBranding: {
+    fullPemerekan: {
       target: "Target: Ekosistem Bisnis / Skala Menengah Atas",
       packages: [
         {
-          name: "BRAND PRO", price: "Mulai Rp2.500.000", isPopular: true,
-          features: ["Riset Brand & Positioning Ringan", "3–5 Konsep Logo & Logo System Lengkap", "Color System (Primary, Secondary, Accent)", "Typography Lengkap", "Brand Guideline (10–15 Halaman)", "Aplikasi: Kartu Nama, IG Template (3-6), Banner, Packaging Basic", "Mockup Profesional", "Revisi: 7x"]
+          name: "MEREK PRO", price: "Mulai Rp2.500.000", isPopular: true,
+          features: ["Riset Merek & posisi Ringan", "3–5 Konsep Lambang & Sistem lambang Lengkap", "Sistem warna (utama, pendamping, aksen)", "Tipografi Lengkap", "Panduan merek (10–15 Halaman)", "Aplikasi: Kartu Nama, Pola IG (3-6), Spanduk, Kemasan dasar", "Mokap Profesionalfesional", "Revisi: 7x"]
         },
         {
-          name: "BRAND PREMIUM", price: "Mulai Rp4.000.000", isPopular: false,
-          features: ["Brand Strategy (Positioning + Tone)", "Logo System Advanced", "Visual Identity & Color Psychology", "Typography System Advanced", "Brand Guideline Lengkap (20+ Halaman)", "Aplikasi Lengkap (Socmed Kit, Packaging, Merch)", "Visual Direction (Style Guide)", "Revisi: 7–10x"]
+          name: "MEREK PREMIUM", price: "Mulai Rp4.000.000", isPopular: false,
+          features: ["Strategi merek (posisi + nada)", "Sistem lambang lanjutan", "Identitas visual & psikologi warna", "Sistem tipografi lanjutan", "Panduan merek Lengkap (20+ Halaman)", "Aplikasi Lengkap (Perangkat media sosial, Kemasan, Cendera mata)", "Arah visual (Panduan gaya)", "Revisi: 7–10x"]
         }
       ]
     }
   };
 
   const addOns = [
-    "Logo Express 1 Hari (+Rp100.000)",
+    "Lambang ekspres 1 Hari (+Rp100.000)",
     "Tambahan Konsep (+Rp100.000 / konsep)",
     "Tambahan Revisi (+Rp50.000)",
-    "Social Media Kit 10 Post (Rp300k - Rp500k)",
-    "Packaging Design (Rp300k - Rp800k)",
-    "Brand Guideline Tambahan (Mulai Rp300k)"
+    "Perangkat media sosial 10 unggahan (Rp300k - Rp500k)",
+    "Desain kemasan (Rp300k - Rp800k)",
+    "Panduan merek tambahan (Mulai Rp300k)"
   ];
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+      <div className="maksimal-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
         <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
           <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
@@ -76,8 +76,8 @@ export default function Design() {
 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Desain Logo <br/>& Branding</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Ciptakan identitas visual yang kuat dan profesional untuk meningkatkan nilai jual dan kepercayaan audiens terhadap bisnis Anda.</p>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Desain Lambang <br/>& Pemerekan</h1>
+          <p className="text-gray-400 maksimal-w-2xl mx-auto text-lg leading-relaxed">Ciptakan identitas visual yang kuat dan profesional untuk meningkatkan nilai jual dan kepercayaan audiens terhadap bisnis Anda.</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
@@ -104,7 +104,7 @@ export default function Design() {
             </span>
           </div>
 
-          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8 mt-6`}>
+          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 maksimal-w-4xl mx-auto'} gap-8 mt-6`}>
             {pricingData[activeTab].packages.map((pkg, idx) => (
               <div 
                 key={idx} 
@@ -141,7 +141,7 @@ export default function Design() {
                   </ul>
 
                   <a 
-                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Logo%20%26%20Branding.`}
+                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Lambang%20%26%20Pemerekan.`}
                     target="_blank"
                     rel="noreferrer"
                     className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
@@ -162,8 +162,8 @@ export default function Design() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
             <div className="md:w-1/3">
-              <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Add-on)</h3>
-              <p className="text-gray-400 leading-relaxed">Sesuaikan paket desain dengan kebutuhan spesifik brand Anda saat ini.</p>
+              <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Tambahan)</h3>
+              <p className="text-gray-400 leading-relaxed">Sesuaikan paket desain dengan kebutuhan spesifik merek Anda saat ini.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {addOns.map((addon, idx) => (

@@ -6,82 +6,82 @@ export default function Multimedia() {
   const [activeTab, setActiveTab] = useState('wedding');
 
   const categories = [
-    { id: 'wedding', label: 'Wedding & Pro', icon: <HeartHandshake size={18} strokeWidth={1.5} /> },
+    { id: 'wedding', label: 'Pernikahan & Profesionalfesional', icon: <HeartHandshake size={18} strokeWidth={1.5} /> },
     { id: 'foto', label: 'Foto Produk', icon: <Camera size={18} strokeWidth={1.5} /> },
     { id: 'video', label: 'Video Produk', icon: <Video size={18} strokeWidth={1.5} /> },
-    { id: 'bundle', label: 'Bundle Foto + Video', icon: <Layers size={18} strokeWidth={1.5} /> },
-    { id: 'aifoto', label: 'AI Photo', icon: <Sparkles size={18} strokeWidth={1.5} /> },
-    { id: 'aivideo', label: 'AI Video', icon: <Film size={18} strokeWidth={1.5} /> },
-    { id: 'aichar', label: 'AI Character', icon: <UserSquare size={18} strokeWidth={1.5} /> }
+    { id: 'bundle', label: 'Paket Foto + Video', icon: <Layers size={18} strokeWidth={1.5} /> },
+    { id: 'aifoto', label: 'Foto Kecerdasan Buatan', icon: <Sparkles size={18} strokeWidth={1.5} /> },
+    { id: 'aivideo', label: 'Video Kecerdasan Buatan', icon: <Film size={18} strokeWidth={1.5} /> },
+    { id: 'aichar', label: 'Karakter Kecerdasan Buatan', icon: <UserSquare size={18} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
     wedding: {
-      target: "Target: Wedding, Prewedding, Engagement & Professional Events",
+      target: "Target: Pernikahan, Prewedding, Keterlibatan & Profesionalfesional Events",
       isComplex: true,
       sections: [
         {
-          title: "MOMENT PACKAGE",
+          title: "MOMENT PAKET",
           subtitle: "This is not the end of the story, this is the first chapter of a love i will never finish writing",
           packages: [
             {
-              name: "BRONZE PACKAGE", price: "Rp 1.900.000", isPopular: false,
-              features: ["1 Photographer", "Unlimited shoot", "ALL original photo", "50 - 100 photo edit", "file on drive", "DURATION: 2 - 4 hours"]
+              name: "BRONZE PAKET", price: "Rp 1.900.000", isPopular: false,
+              features: ["1 Fotografer", "Pengambilan tanpa batas", "Semua foto asli", "50 - 100 foto disunting", "berkas di penyimpanan awan", "DURASI: 2 - 4 jam"]
             },
             {
-              name: "SILVER PACKAGE", price: "Rp 2.900.000", isPopular: false,
-              features: ["1 Photographer", "1 Videographer", "Unlimited shoot", "ALL original photo", "50 - 100 photo edit", "Cinematic Video (2-3 minute)", "file on drive", "DURATION: 2 - 4 hours", "(engagement, prewedding, intimate, siraman, etc.)"]
+              name: "PAKET PERAK", price: "Rp 2.900.000", isPopular: false,
+              features: ["1 Fotografer", "1 Videografer", "Pengambilan tanpa batas", "Semua foto asli", "50 - 100 foto disunting", "Video sinematik (2-3 menit)", "berkas di penyimpanan awan", "DURASI: 2 - 4 jam", "(pertunangan, pra-pernikahan, intim, siraman, dan sejenisnya)"]
             },
             {
-              name: "GOLD PACKAGE", price: "Rp 4.200.000", isPopular: true,
-              features: ["1 Photographer", "1 Videographer", "Unlimited shoot", "ALL original photo", "100 - 200 photo edit", "Cinematic Video (2-3 minute)", "file on drive", "DURATION: 6 - 8 hours"]
+              name: "PAKET EMAS", price: "Rp 4.200.000", isPopular: true,
+              features: ["1 Fotografer", "1 Videografer", "Pengambilan tanpa batas", "Semua foto asli", "100 - 200 foto disunting", "Video sinematik (2-3 menit)", "berkas di penyimpanan awan", "DURASI: 6 - 8 jam"]
             },
             {
-              name: "EMERALD PACKAGE", price: "Rp 5.000.000", isPopular: false,
-              features: ["1 Photographer", "1 Videographer", "Unlimited shoot", "ALL original photo", "100 - 200 photo edit", "Portrait collage album 11 sheet + box", "Teaser Video (30 second - 1 minute)", "Cinematic Video (2-3 minute)", "file on drive", "DURATION: 6 - 8 hours"]
+              name: "PAKET ZAMRUD", price: "Rp 5.000.000", isPopular: false,
+              features: ["1 Fotografer", "1 Videografer", "Pengambilan tanpa batas", "Semua foto asli", "100 - 200 foto disunting", "kolase potret album 11 lembar + kotak", "Video cuplikan (30 detik - 1 menit)", "Video sinematik (2-3 menit)", "berkas di penyimpanan awan", "DURASI: 6 - 8 jam"]
             },
             {
-              name: "DIAMOND PACKAGE", price: "Rp 6.850.000", isPopular: false,
-              features: ["1 Photographer", "1 Videographer", "Unlimited shoot", "ALL original photo", "200 - 300 photo edit", "Portrait album 11 sheet + box", "Teaser Video (30 second - 1 minute)", "Cinematic Video (3 - 5 minute)", "file on drive", "DURATION: 10 - 12 hours"]
+              name: "PAKET BERLIAN", price: "Rp 6.850.000", isPopular: false,
+              features: ["1 Fotografer", "1 Videografer", "Pengambilan tanpa batas", "Semua foto asli", "200 - 300 foto disunting", "album potret 11 lembar + kotak", "Video cuplikan (30 detik - 1 menit)", "Video sinematik (3 - 5 menit)", "berkas di penyimpanan awan", "DURASI: 10 - 12 jam"]
             },
             {
-              name: "TITANIUM PACKAGE", price: "Rp 9.600.000", isPopular: false,
-              features: ["1 Photographer", "1 Videographer", "Unlimited shoot", "ALL original photo", "400 - 500 photo edit", "Portrait album 11 sheet + box", "1 Print Canvas photo 40x50 cm", "Teaser Video (1 - 2 minute)", "Cinematic Video (3 - 10 minute)", "file on drive", "DURATION: 14 - 16 hours"]
+              name: "PAKET TITANIUM", price: "Rp 9.600.000", isPopular: false,
+              features: ["1 Fotografer", "1 Videografer", "Pengambilan tanpa batas", "Semua foto asli", "400 - 500 foto disunting", "album potret 11 lembar + kotak", "1 Cetak kanvas foto 40x50 cm", "Video cuplikan (1 - 2 menit)", "Video sinematik (3 - 10 menit)", "berkas di penyimpanan awan", "DURASI: 14 - 16 jam"]
             }
           ]
         },
         {
-          title: "CANDID PHOTOGRAPHER",
+          title: "FOTOGRAFER KANDID",
           packages: [
             {
-              name: "CANDID I", price: "Rp 1.750.000", isPopular: false,
-              features: ["1 photographer", "Edit photo", "All file Gdrive", "Max 4 hour"]
+              name: "KANDID I", price: "Rp 1.750.000", isPopular: false,
+              features: ["1 fotografer", "Sunting foto", "Semua berkas di Google Drive", "Maksimal 4 jam"]
             },
             {
-              name: "CANDID II", price: "Rp 2.250.000", isPopular: true,
-              features: ["1 photographer", "50 edit photo", "All file Gdrive", "Max 8 hour"]
+              name: "KANDID II", price: "Rp 2.250.000", isPopular: true,
+              features: ["1 fotografer", "50 foto disunting", "Semua berkas di Google Drive", "Maksimal 8 jam"]
             },
             {
-              name: "CANDID III", price: "Rp 2.750.000", isPopular: false,
-              features: ["1 photographer", "100 edit photo", "All file Gdrive", "Max 12 hour"]
+              name: "KANDID III", price: "Rp 2.750.000", isPopular: false,
+              features: ["1 fotografer", "100 foto disunting", "Semua berkas di Google Drive", "Maksimal 12 jam"]
             }
           ]
         },
         {
-          title: "PREMIUM WEDDING PACKAGE",
+          title: "PAKET PERNIKAHAN PREMIUM",
           packages: [
             {
-              name: "LILY PACKAGE", price: "Rp 7.400.000", isPopular: false,
-              features: ["2 photographers", "1 videographer", "Crew Asistent", "200 edited photos", "1 min wedding teaser", "2-3 min cinematic clip", "All jpg unedited + edit files in USB", "DURATION: 6 - 8 hours"]
+              name: "PAKET LILY", price: "Rp 7.400.000", isPopular: false,
+              features: ["2 fotografer", "1 videografer", "Asisten kru", "200 foto tersunting", "1 menit cuplikan pernikahan", "2-3 menit klip sinematik", "Semua JPG mentah + berkas sunting di USB", "DURASI: 6 - 8 jam"]
             },
             {
-              name: "JASMINE PACKAGE", price: "Rp 9.750.000", isPopular: false,
-              features: ["2 photographers", "2 videographers", "Crew Asistent", "1 portrait album 20x30", "300 edited photos", "1 min video teaser", "3-5 min cinematic clip video", "All jpg unedited + edit files in USB", "DURATION: 6 - 8 hours"]
+              name: "PAKET JASMINE", price: "Rp 9.750.000", isPopular: false,
+              features: ["2 fotografer", "2 videografer", "Asisten kru", "1 album potret 20x30", "300 foto tersunting", "1 menit video cuplikan", "3-5 menit klip sinematik video", "Semua JPG mentah + berkas sunting di USB", "DURASI: 6 - 8 jam"]
             },
             {
-              name: "ORCHID PACKAGE", price: "Rp 12.950.000", isPopular: true,
+              name: "PAKET ORCHID", price: "Rp 12.950.000", isPopular: true,
               badge: "Best PRICE",
-              features: ["2 photographers", "1 Wedding Content Creator WCC", "2 videographers", "Crew Asistent", "2 framed photo canvas 40x50", "1 portrait albums 20x30", "400 edited photos", "1 min video teaser", "5-8 min cinematic clip video", "All jpg unedited + edit files in USB", "DURATION: 6 - 8 hours"]
+              features: ["2 fotografer", "1 Pembuat konten pernikahan", "2 videografer", "Asisten kru", "2 kanvas foto berbingkai 40x50", "1 album potret 20x30", "400 foto tersunting", "1 menit video cuplikan", "5-8 menit klip sinematik video", "Semua JPG mentah + berkas sunting di USB", "DURASI: 6 - 8 jam"]
             }
           ]
         }
@@ -108,7 +108,7 @@ export default function Multimedia() {
         {
           icon: "💰", title: "2. Pembatalan & Refund",
           points: [
-            "DP tidak dapat dikembalikan (non-refundable) dengan alasan apa pun, karena dianggap sebagai komitmen reservasi tanggal.",
+            "DP tidak dapat dikembalikan (non-pengembalian danaable) dengan alasan apa pun, karena dianggap sebagai komitmen reservasi tanggal.",
             "Jika acara diundur, tanggal baru bisa dijadwalkan ulang selama masih tersedia.",
             "Jika acara dibatalkan sepenuhnya oleh klien, maka DP hangus.",
             "Jika acara dibatalkan oleh pihak fotografer karena alasan mendesak (sakit berat, force majeure), maka DP akan dikembalikan 100%."
@@ -117,16 +117,16 @@ export default function Multimedia() {
         {
           icon: "⏰", title: "3. Durasi & Waktu Kerja",
           points: [
-            "Jam kerja tim Crimson Rift Studio terhitung dari awal shoot dekorasi dalam keadaan sudah rapih serta clear area, atau bisa saja 1 atau 2 jam sebelum acara penyambutan mempelai pria di mulai, agar tim ada waktu untuk beauty shoot di pagi hari, saat makeup masih fresh dan cahaya matahari sedang bagus-bagusnya.",
+            "Jam kerja tim Crimson Rift Studio terhitung dari awal pengambilan gambar dekorasi dalam keadaan sudah rapih serta area bersih, atau bisa saja 1 atau 2 jam sebelum acara penyambutan mempelai pria di mulai, agar tim ada waktu untuk pengambilan kecantikan di pagi hari, saat rias wajah masih segar dan cahaya matahari sedang bagus-bagusnya.",
             "Klien diharapkan menyesuaikan rundown agar dokumentasi maksimal sesuai waktu yang disepakati."
           ]
         },
         {
           icon: "📦", title: "4. Hasil & Pengiriman File",
           points: [
-            "Semua file akan dikirim melalui Google Drive / flashdisk (sesuai paket yang dipilih).",
-            "Estimasi waktu pengerjaan: Lamaran & prewedding (1 - 2 minggu kerja) | Wedding (4 - 8 minggu kerja).",
-            "Revisi hanya berlaku untuk warna & tone minor.",
+            "Semua berkas akan dikirim melalui Google Drive / flashdisk (sesuai paket yang dipilih).",
+            "Estimasi waktu pengerjaan: Lamaran & pra-pernikahan (1 - 2 minggu kerja) | Pernikahan (4 - 8 minggu kerja).",
+            "Revisi hanya berlaku untuk warna & tone kecil.",
             "File mentahan (RAW) tidak diberikan, kecuali ada perjanjian khusus sebelumnya."
           ]
         },
@@ -134,7 +134,7 @@ export default function Multimedia() {
           icon: "🚗", title: "5. Biaya Tambahan",
           points: [
             "Biaya transportasi & akomodasi di luar area Jakarta, ditanggung oleh klien.",
-            "Untuk prewedding luar kota, biaya perjalanan & izin lokasi dibebankan kepada klien.",
+            "Untuk pra-pernikahan luar kota, biaya perjalanan & izin lokasi dibebankan kepada klien.",
             "Jika acara mundur dari jadwal tanpa pemberitahuan, dikenakan biaya overtime sesuai ketentuan."
           ]
         },
@@ -156,76 +156,76 @@ export default function Multimedia() {
           icon: "📩", title: "8. Komunikasi & Koordinasi",
           points: [
             "Klien wajib memberikan informasi lengkap tentang rundown acara, lokasi, dan PIC di lapangan.",
-            "Untuk prewedding, klien disarankan melakukan meeting konsep & lokasi minimal 1 minggu sebelum sesi foto (bisa via chat dengan mengirimkan moodboard ke admin)."
+            "Untuk pra-pernikahan, klien disarankan melakukan meeting konsep & lokasi minimal 1 minggu sebelum sesi foto (bisa via chat dengan mengirimkan suasana hatiboard ke admin)."
           ]
         },
         {
           icon: "🪶", title: "9. Ketentuan Tambahan (Opsional)",
           points: [
-            "Masa kadarluarsa file yang ada di Google Drive 3 - 5 bulan.",
+            "Masa kadarluarsa berkas yang ada di Google Drive 3 - 5 bulan.",
             "Setelah lewat masa itu, Crimson Rift Studio akan menghapusnya dari Google Drive.",
-            "Untuk file asli/edit tetap kami backup di harddisk pribadi kami secara permanen.",
-            "Klien diharapkan melakukan backup mandiri segera setelah menerima file."
+            "Untuk berkas asli/sunting tetap kami cadangkan di cakram keras pribadi kami secara permanen.",
+            "Klien diharapkan melakukan cadangan mandiri segera setelah menerima berkas."
           ]
         }
       ]
     },
     foto: {
-      target: "Target: Visual Produk Profesional, Katalog & Campaign",
+      target: "Target: Visual Produk Profesionalfesional, Katalog & Kampanye",
       packages: [
         {
-          name: "BASIC PRODUCT PHOTO", price: "Rp250.000", isPopular: false,
-          features: ["1 Produk", "5 Foto Edit", "1 Angle Utama + 1-2 Detail Shot", "Background Clean/Putih/Polos", "Lighting Sederhana", "File JPG/PNG via Google Drive", "Revisi: 1x Warna/Tone"]
+          name: "DASAR PRODUCT PHOTO", price: "Rp250.000", isPopular: false,
+          features: ["1 produk", "5 Foto disunting", "1 Sudut Utama + 1-2 Pengambilan detail", "Latar Bersih/Putih/Polos", "Pencahayaan Sederhana", "File JPG/PNG via Google Drive", "Revisi: 1x Warna/nada"]
         },
         {
-          name: "STANDARD PRODUCT PHOTO", price: "Rp450.000", isPopular: true,
-          features: ["1–3 Produk", "10 Foto Edit (Beberapa Angle)", "Detail Shot + Hero Shot", "Styling Sederhana", "Background Clean / Branded Look", "File Siap Upload Marketplace", "Revisi: 1x Warna/Tone"]
+          name: "STANDAR PRODUCT PHOTO", price: "Rp450.000", isPopular: true,
+          features: ["1–3 produk", "10 Foto disunting (Beberapa Sudut)", "Pengambilan detail + Pengambilan utama", "Penataan Sederhana", "Latar Bersih / Mereked Look", "File Siap Unggah Pasar daring", "Revisi: 1x Warna/nada"]
         },
         {
           name: "CATALOG PRODUCT PHOTO", price: "Rp750.000", isPopular: false,
-          features: ["3–5 Produk", "20 Foto Edit (Variasi Angle)", "Hero, Detail & Group Shot", "Styling Visual Lebih Rapi", "File Resolusi Tinggi", "Cocok untuk Katalog & Web", "Revisi: 2x Warna/Tone"]
+          features: ["3–5 produk", "20 Foto disunting (Variasi Sudut)", "Utama, Detail & Pengambilan kelompok", "Penataan Visual Lebih Rapi", "Berkas resolusi tinggi", "Cocok untuk Katalog & Web", "Revisi: 2x Warna/nada"]
         },
         {
-          name: "PREMIUM CAMPAIGN PHOTO", price: "Rp1.250.000", isPopular: false,
-          features: ["1 Konsep Visual Campaign", "1–5 Produk (30 Foto Edit)", "Creative Direction & Styled Shoot", "Mood Visual Khusus Brand", "Foto Hero Banner / Landing Page", "File Resolusi Tinggi", "Revisi: 2x Besar + 2x Kecil"]
+          name: "PREMIUM CAMPkecerdasan buatanGN PHOTO", price: "Rp1.250.000", isPopular: false,
+          features: ["1 Konsep Kampanye Visual", "1–5 Produk (30 Foto disunting)", "Arahan kreatif & Pemotretan tertata", "Suasana visual Khusus Merek", "Foto Utama Spanduk / Halaman Arahan", "Berkas resolusi tinggi", "Revisi: 2x Besar + 2x Kecil"]
         }
       ]
     },
     video: {
-      target: "Target: Promosi Reels, TikTok & Video Iklan",
+      target: "Target: Promosisi Video pendek, TikTok & Video Iklan",
       packages: [
         {
-          name: "BASIC PRODUCT REEL", price: "Rp350.000", isPopular: false,
-          features: ["1 Video Vertikal (15–30 Detik)", "1 Produk & 1 Konsep Sederhana", "Cut Cepat & Musik Dasar", "Text Overlay Sederhana", "Format IG Reels / TikTok", "Revisi: 1x"]
+          name: "DASAR PRODUCT REEL", price: "Rp350.000", isPopular: false,
+          features: ["1 Video vertikal (15–30 detik)", "1 produk & 1 konsep Sederhana", "Potongan cepat & Musik Dasar", "Teks lapis sederhana", "Format IG video pendek / TikTok", "Revisi: 1x"]
         },
         {
-          name: "STANDARD PRODUCT PROMO", price: "Rp650.000", isPopular: true,
-          features: ["1 Video Vertikal (30–60 Detik)", "1–3 Produk", "Hook, Highlight & CTA", "Subtitle / Text Overlay", "Color Grading Basic & Sound Design", "Format IG/TikTok/Ads", "Revisi: 1x Besar + 1x Kecil"]
+          name: "STANDAR PRODUCT PROMO", price: "Rp650.000", isPopular: true,
+          features: ["1 Video vertikal (30–60 detik)", "1–3 produk", "Pemikat, Sorotan & ajakan", "Takarir / Teks lapis", "Pewarnaan dasar & Desain suara", "Format IG/TikTok/Iklan", "Revisi: 1x Besar + 1x Kecil"]
         },
         {
           name: "CINEMATIC PRODUCT VIDEO", price: "Rp1.200.000", isPopular: false,
-          features: ["1 Video Utama (45–90 Detik)", "Konsep Storytelling", "Shot Detail & Transisi Mulus", "Cinematic Color Grading", "Motion/Text Effect Ringan", "Audio Mixing Dasar", "Revisi: 2x Kecil"]
+          features: ["1 Video Utama (45–90 detik)", "Konsep Penceritaan", "Pengambilan Detail & Transisi Mulus", "Pewarnaan sinematik", "Gerak/Efek teks Ringan", "Pencampuran audio dasar", "Revisi: 2x Kecil"]
         },
         {
           name: "PRODUCT CONTENT PACK", price: "Rp1.800.000", isPopular: false,
-          features: ["2 Video Vertikal", "1 Utama (30-60s) + 1 Teaser (10-15s)", "1–3 Produk", "Hook + CTA, Edit Ritmis", "Visual Tajam & Siap Posting", "Cocok untuk Launch Campaign", "Revisi: 2x"]
+          features: ["2 Video vertikal", "1 Utama (30-60s) + 1 Cuplikan (10-15s)", "1–3 produk", "Pemikat + ajakan, Sunting Ritmis", "Visual Tajam & Siap unggah", "Cocok untuk Peluncuran Kampanye", "Revisi: 2x"]
         }
       ]
     },
     bundle: {
-      target: "Target: Paket Lengkap Sosial Media & Marketplace",
+      target: "Target: Paket Lengkap Sosial Media & Pasar daring",
       packages: [
         {
           name: "STARTER BUNDLE", price: "Rp900.000", isPopular: false,
-          features: ["1 Produk", "8 Foto Edit", "1 Video Reel (15–30 Detik)", "Background Clean", "Format Marketplace & Sosmed", "File Digital", "Revisi: 1x"]
+          features: ["1 produk", "8 Foto disunting", "1 Video pendek (15–30 detik)", "Latar Bersih", "Format Pasar daring & media sosial", "Berkas digital", "Revisi: 1x"]
         },
         {
           name: "GROWTH BUNDLE", price: "Rp1.500.000", isPopular: true,
-          features: ["1–3 Produk", "15 Foto Edit", "1 Video Promo (30–60 Detik)", "1 Video Reel Pendek", "Styling Sederhana, Visual Seragam", "File Resolusi Tinggi", "Revisi: 1x Besar + 1x Kecil"]
+          features: ["1–3 produk", "15 Foto disunting", "1 Video Promosi (30–60 detik)", "1 Video pendek", "Penataan Sederhana, Visual Seragam", "Berkas resolusi tinggi", "Revisi: 1x Besar + 1x Kecil"]
         },
         {
-          name: "CAMPAIGN BUNDLE", price: "Rp2.500.000", isPopular: false,
-          features: ["3–5 Produk", "25 Foto Edit", "2 Video Vertikal", "1 Visual Campaign", "Creative Direction", "Brand Tone Lebih Kuat", "Revisi: 2x Besar"]
+          name: "CAMPkecerdasan buatanGN BUNDLE", price: "Rp2.500.000", isPopular: false,
+          features: ["3–5 produk", "25 Foto disunting", "2 Video vertikal", "1 Kampanye Visual", "Arahan kreatif", "Nada merek lebih kuat", "Revisi: 2x Besar"]
         }
       ]
     },
@@ -233,50 +233,50 @@ export default function Multimedia() {
       target: "Target: Solusi Aset Visual Hemat & Cepat untuk UMKM",
       packages: [
         {
-          name: "AI BASIC", price: "Rp150.000", isPopular: false,
-          features: ["3 Gambar AI", "1 Produk Referensi", "1 Style Visual", "1 Background Direction", "Output Konsep Promo/Thumbnail", "File JPG / PNG", "Revisi: 1x Prompt"]
+          name: "kecerdasan buatan DASAR", price: "Rp150.000", isPopular: false,
+          features: ["3 Gambar kecerdasan buatan", "1 produk Referensi", "1 Gaya visual", "1 Latar Arah", "Keluaran Konsep Promosi/Gambar ringkas", "Berkas JPG / PNG", "Revisi: 1x Arahan"]
         },
         {
-          name: "AI STANDARD", price: "Rp300.000", isPopular: true,
-          features: ["6 Gambar AI", "2 Style Direction", "Variasi Angle & Lighting", "Visual untuk Katalog/Campaign", "Output Feed / Landing Page", "File JPG / PNG", "Revisi: 2x Prompt"]
+          name: "kecerdasan buatan STANDAR", price: "Rp300.000", isPopular: true,
+          features: ["6 Gambar kecerdasan buatan", "2 Arah gaya", "Variasi Sudut & Pencahayaan", "Visual untuk Katalog/Kampanye", "Keluaran Umpan / Halaman Arahan", "Berkas JPG / PNG", "Revisi: 2x Arahan"]
         },
         {
-          name: "AI CAMPAIGN", price: "Rp500.000", isPopular: false,
-          features: ["10 Gambar AI", "1 Konsep Campaign Penuh", "Visual Promo Banner", "Visual Landing Page Hero", "Gaya Premium / Futuristik / Clean", "File Resolusi Tinggi", "Revisi: 2x Prompt"]
+          name: "kecerdasan buatan CAMPkecerdasan buatanGN", price: "Rp500.000", isPopular: false,
+          features: ["10 Gambar kecerdasan buatan", "1 Konsep Kampanye Penuh", "Visual Promosi Spanduk", "Visual Halaman Arahan Utama", "Gaya Premium / Futuristik / Bersih", "Berkas resolusi tinggi", "Revisi: 2x Arahan"]
         }
       ]
     },
     aivideo: {
-      target: "Target: Iklan & Teaser Cepat Berbasis AI",
+      target: "Target: Iklan & Cuplikan Cepat Berbasis kecerdasan buatan",
       packages: [
         {
-          name: "AI REEL BASIC", price: "Rp250.000", isPopular: false,
-          features: ["1 Video Vertikal AI-Assisted", "Durasi 10–15 Detik", "Product Motion Style", "Text Overlay Sederhana", "Format IG Reels / TikTok", "Revisi: 1x"]
+          name: "kecerdasan buatan REEL DASAR", price: "Rp250.000", isPopular: false,
+          features: ["1 Video vertikal berbantuan kecerdasan buatan", "Durasi 10–15 detik", "Gaya gerak produk", "Teks lapis sederhana", "Format IG video pendek / TikTok", "Revisi: 1x"]
         },
         {
-          name: "AI PROMO", price: "Rp450.000", isPopular: true,
-          features: ["1 Video Vertikal", "Durasi 15–30 Detik", "Konsep Iklan Singkat", "Visual Motion AI", "Text + CTA", "Cocok untuk Soft Launch", "Revisi: 1x Besar"]
+          name: "kecerdasan buatan PROMO", price: "Rp450.000", isPopular: true,
+          features: ["1 Video vertikal", "Durasi 15–30 detik", "Konsep iklan singkat", "Visual Gerak kecerdasan buatan", "Teks + ajakan", "Cocok untuk Peluncuran halus", "Revisi: 1x Besar"]
         },
         {
-          name: "AI CAMPAIGN PRO", price: "Rp750.000", isPopular: false,
-          features: ["1 Video Utama", "Durasi 30–45 Detik", "Campaign Visual Lebih Kuat", "Scene Transition", "Ad-style Pacing", "Cocok untuk Brand Awareness", "Revisi: 2x Kecil"]
+          name: "kecerdasan buatan CAMPkecerdasan buatanGN PRO", price: "Rp750.000", isPopular: false,
+          features: ["1 Video Utama", "Durasi 30–45 detik", "Kampanye visual lebih kuat", "Transisi adegan", "Ritme iklan", "Cocok untuk kesadaran merek", "Revisi: 2x Kecil"]
         }
       ]
     },
     aichar: {
-      target: "Target: Maskot Virtual & Karakter Brand",
+      target: "Target: Maskot Virtual & Karakter Merek",
       packages: [
         {
-          name: "CHARACTER BASIC", price: "Rp200.000", isPopular: false,
-          features: ["1 Karakter Utama", "3 Pose", "2 Ekspresi", "1 Style Visual", "Cocok untuk Branding Awal", "File JPG / PNG", "Revisi: 1x Prompt"]
+          name: "CHARACTER DASAR", price: "Rp200.000", isPopular: false,
+          features: ["1 Karakter Utama", "3 Pose", "2 Ekspresi", "1 Gaya visual", "Cocok untuk Pemerekan Awal", "Berkas JPG / PNG", "Revisi: 1x Arahan"]
         },
         {
-          name: "CHARACTER PACK", price: "Rp400.000", isPopular: true,
-          features: ["1 Karakter Utama", "6 Pose", "4 Ekspresi", "2 Style Variation", "Background Transparan / Clean", "File Resolusi Tinggi", "Revisi: 2x Prompt"]
+          name: "PAKET KARAKTER", price: "Rp400.000", isPopular: true,
+          features: ["1 Karakter Utama", "6 Pose", "4 Ekspresi", "2 Variasi gaya", "Latar transparan / bersih", "Berkas resolusi tinggi", "Revisi: 2x Arahan"]
         },
         {
-          name: "MASCOT / BRAND", price: "Rp650.000", isPopular: false,
-          features: ["1 Karakter Brand", "Pose Set Lengkap", "Ekspresi Set Lengkap", "Style Guideline Sederhana", "Ready untuk Sosmed & Poster", "File Transparan Resolusi Tinggi", "Revisi: 2x Prompt"]
+          name: "MASKOT / MEREK", price: "Rp650.000", isPopular: false,
+          features: ["1 Karakter Merek", "Pose Set Lengkap", "Ekspresi Set Lengkap", "Panduan gaya Sederhana", "Siap untuk media sosial & poster", "File Transparan Resolusi Tinggi", "Revisi: 2x Arahan"]
         }
       ]
     }
@@ -284,23 +284,23 @@ export default function Multimedia() {
 
   const addOns = {
     manual: [
-      "Extra edited photo (Rp15k–25k/foto)",
-      "Extra product (Rp75k–150k/produk)",
-      "Extra short video cut (Rp100k–250k)",
-      "Same day edit (Rp300k–800k)",
-      "Rush order (Menyesuaikan slot)"
+      "Tambahan foto sunting (Rp15k–25k/foto)",
+      "Tambahan produk (Rp75k–150k/produk)",
+      "Tambahan potongan video pendek (Rp100k–250k)",
+      "Sunting hari yang sama (Rp300k–800k)",
+      "Pesanan cepat (Menyesuaikan slot)"
     ],
     ai: [
-      "Extra image (Rp25k–50k/gambar)",
-      "Extra character pose (Rp50k–100k)",
-      "Extra revision prompt (Rp25k–50k)",
-      "Style variation baru (Rp75k–150k)"
+      "Tambahan gambar (Rp25k–50k/gambar)",
+      "Tambahan pose karakter (Rp50k–100k)",
+      "Tambahan revisi arahan (Rp25k–50k)",
+      "Variasi gaya baru (Rp75k–150k)"
     ]
   };
 
   const getGridClass = (len) => {
-    if (len === 1) return 'grid-cols-1 max-w-md mx-auto';
-    if (len === 2) return 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto';
+    if (len === 1) return 'grid-cols-1 maksimal-w-md mx-auto';
+    if (len === 2) return 'grid-cols-1 md:grid-cols-2 maksimal-w-4xl mx-auto';
     if (len === 3) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
     if (len === 4) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'; 
     if (len === 6) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'; 
@@ -309,7 +309,7 @@ export default function Multimedia() {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+      <div className="maksimal-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
         <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
           <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
@@ -317,8 +317,8 @@ export default function Multimedia() {
 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Foto Profesional <br/>& Videografi</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Pilih dari solusi dokumentasi acara profesional, produksi visual lapangan, hingga pembuatan aset digital dengan AI.</p>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Foto Profesionalfesional <br/>& Videografi</h1>
+          <p className="text-gray-400 maksimal-w-2xl mx-auto text-lg leading-relaxed">Pilih dari solusi dokumentasi acara profesional, produksi visual lapangan, hingga pembuatan aset digital dengan kecerdasan buatan.</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -354,7 +354,7 @@ export default function Multimedia() {
                   <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-white tracking-widest uppercase">{sec.title}</h2>
                     {sec.subtitle && (
-                      <p className="text-red-500 italic mt-3 max-w-2xl mx-auto leading-relaxed">"{sec.subtitle}"</p>
+                      <p className="text-red-500 italic mt-3 maksimal-w-2xl mx-auto leading-relaxed">"{sec.subtitle}"</p>
                     )}
                   </div>
                   
@@ -407,10 +407,10 @@ export default function Multimedia() {
                 </div>
               ))}
 
-              {/* Additional Items Khusus Wedding */}
+              {/* Pilihan Tambahan Khusus Pernikahan */}
               <div className="bg-gradient-to-b from-[#111] to-[#0a0a0a] p-8 md:p-12 rounded-3xl border border-gray-800 relative overflow-hidden shadow-lg">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
-                <h3 className="text-2xl font-bold text-white mb-8 border-b border-gray-800 pb-4 relative z-10">Additional Items</h3>
+                <h3 className="text-2xl font-bold text-white mb-8 border-b border-gray-800 pb-4 relative z-10">Pilihan Tambahan</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                   {pricingData[activeTab].additionalItems.map((item, idx) => (
                     <div key={idx} className="flex flex-col p-5 bg-[#1a1a1a] rounded-2xl border border-gray-800 hover:border-red-900/30 transition-colors">
@@ -421,7 +421,7 @@ export default function Multimedia() {
                 </div>
               </div>
 
-              {/* Terms & Conditions Section */}
+              {/* Terms & Conditions Bagian */}
               <div className="bg-[#050505] p-8 md:p-12 rounded-3xl border border-gray-800/50 shadow-lg">
                 <div className="text-center mb-12">
                   <h3 className="text-3xl font-bold text-white mb-2">Syarat & Ketentuan</h3>
@@ -450,7 +450,7 @@ export default function Multimedia() {
 
             </div>
           ) : (
-            // --- LAYOUT STANDAR UNTUK FOTO/VIDEO PRODUK & AI ---
+            // --- LAYOUT STANDAR UNTUK FOTO/VIDEO PRODUK & kecerdasan buatan ---
             <div className={`grid ${getGridClass(pricingData[activeTab].packages.length)} gap-8 mt-6`}>
               {pricingData[activeTab].packages.map((pkg, idx) => (
                 <div key={idx} className={`relative flex flex-col bg-[#111] p-8 rounded-3xl transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-1 ${pkg.isPopular ? 'border border-red-500/30 md:-translate-y-4 hover:-translate-y-5' : 'border border-gray-800 hover:border-red-900/30'}`}>
@@ -495,21 +495,21 @@ export default function Multimedia() {
           )}
         </div>
 
-        {/* Add Ons Section (Hanya tampil jika bukan di tab wedding yang punya addons khusus) */}
+        {/* Add Ons Bagian (Hanya tampil jika bukan di tab wedding yang punya addons khusus) */}
         {!pricingData[activeTab].isComplex && (
           <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden shadow-lg">
             <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
             <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-12">
               
               <div className="lg:w-1/3">
-                <h3 className="text-2xl font-bold text-white mb-3">Layanan Tambahan (Add-on)</h3>
-                <p className="text-gray-400 leading-relaxed">Kustomisasi paket Anda sesuai dengan skala dan timeline project yang dibutuhkan.</p>
+                <h3 className="text-2xl font-bold text-white mb-3">Layanan Tambahan (Tambahan)</h3>
+                <p className="text-gray-400 leading-relaxed">Kustomisasi paket Anda sesuai dengan skala dan jadwal proyek yang dibutuhkan.</p>
               </div>
               
               <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                 <div className="bg-[#111] p-6 rounded-3xl border border-gray-800 hover:border-red-900/10 transition-colors">
                   <h4 className="text-red-500 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                    <Camera size={20} strokeWidth={1.5} /> Add-on Produksi Manual
+                    <Camera size={20} strokeWidth={1.5} /> Tambahan Produksi Manual
                   </h4>
                   <div className="space-y-3">
                     {addOns.manual.map((addon, idx) => (
@@ -523,7 +523,7 @@ export default function Multimedia() {
 
                 <div className="bg-[#111] p-6 rounded-3xl border border-gray-800 hover:border-red-900/10 transition-colors">
                   <h4 className="text-red-400 font-bold mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                    <Sparkles size={20} strokeWidth={1.5} /> Add-on Layanan AI
+                    <Sparkles size={20} strokeWidth={1.5} /> Tambahan Layanan kecerdasan buatan
                   </h4>
                   <div className="space-y-3">
                     {addOns.ai.map((addon, idx) => (

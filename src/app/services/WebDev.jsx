@@ -6,91 +6,91 @@ export default function WebDev() {
   const [activeTab, setActiveTab] = useState('landing');
 
   const categories = [
-    { id: 'landing', label: 'Landing Page', icon: <LayoutTemplate size={20} strokeWidth={1.5} /> },
-    { id: 'single', label: 'Single Page', icon: <Layers size={20} strokeWidth={1.5} /> },
-    { id: 'company', label: 'Company Profile', icon: <Building2 size={20} strokeWidth={1.5} /> },
-    { id: 'store', label: 'Toko Online', icon: <Store size={20} strokeWidth={1.5} /> }
+    { id: 'landing', label: 'Halaman Arahan', icon: <LayoutTemplate size={20} strokeWidth={1.5} /> },
+    { id: 'single', label: 'Satu Halaman', icon: <Layers size={20} strokeWidth={1.5} /> },
+    { id: 'company', label: 'Profesionalfil Perusahaan', icon: <Building2 size={20} strokeWidth={1.5} /> },
+    { id: 'store', label: 'Toko Daring', icon: <Store size={20} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
     landing: {
-      target: "Target: UMKM / Jualan Cepat / Ads Funnel",
+      target: "Target: UMKM / Jualan Cepat / Alur Iklan",
       packages: [
         {
-          name: "BASIC", price: "Rp650.000", isPopular: false,
-          features: ["1 Halaman Landing Page", "Hero Section (Headline + CTA)", "Section Produk/Jasa", "Section Keunggulan Singkat", "Section Testimoni Sederhana", "CTA WhatsApp (Click to Chat)", "Template + Custom Ringan", "Mobile Responsive", "Publish ke Hosting (Vercel/Netlify)", "Revisi: 1x"]
+          name: "DASAR", price: "Rp650.000", isPopular: false,
+          features: ["1 halaman arahan", "Bagian Utama (Judul Utama + ajakan)", "Bagian Produk/Jasa", "Bagian Keunggulan Singkat", "Bagian Testimoni Sederhana", "Ajakan WhatsApp (ketuk untuk berbincang)", "Pola siap pakai + penyesuaian ringan", "Responsif di ponsel", "Publikasi ke peladen (Vercel/Netlify)", "Revisi: 1x"]
         },
         {
-          name: "STANDARD", price: "Rp1.200.000", isPopular: true,
-          features: ["1 Landing Page (Lebih Lengkap)", "Hero (Headline + Subheadline)", "Problem vs Solution", "Detail Produk/Jasa & Benefit", "Testimoni & FAQ Section", "CTA Berulang", "Design Semi-Custom", "Copywriting Basic (Rewrite)", "Mobile Optimization", "Integrasi Form (Email/WA)", "SEO Basic (Meta Title & Desc)", "Revisi: 1x Mayor + 2x Minor"]
+          name: "STANDAR", price: "Rp1.200.000", isPopular: true,
+          features: ["1 Halaman Arahan (Lebih Lengkap)", "Utama (Judul Utama + Subjudul)", "Masalah dan solusi", "Detail Produk/Jasa & manfaat", "Bagian testimoni & tanya jawab", "Ajakan berulang", "Desain semi-kustom", "Penulisan dasar (penyusunan ulang)", "Optimasi ponsel", "Integrasi formulir (Surel/WA)", "Optimasi mesin pencari dasar (judul dan deskripsi meta)", "Revisi: 1x besar + 2x kecil"]
         },
         {
           name: "PREMIUM", price: "Mulai Rp1.800.000", isPopular: false,
-          features: ["Landing Page Full Funnel", "Hook, Pain Point, Solution", "Social Proof, Offer & Urgency", "Custom UI Design (No Template)", "Copywriting Conversion", "Visual Hierarchy Advanced", "Micro Animation / Motion Ringan", "Mobile UX Optimized", "Integrasi WA + Form Lead", "Optional Pixel (Meta/Google)", "Revisi: 2x Mayor + 3x Minor"]
+          features: ["Halaman arahan dengan alur penuh", "Pemikat, masalah, solusi", "Bukti sosial, penawaran, urgensi", "Desain antarmuka kustom (tanpa pola siap pakai)", "Penulisan konversi", "Hierarki visual lanjutan", "Animasi mikro ringan", "Pengalaman ponsel dioptimalkan", "Integrasi WA + Formulir prospek", "Piksel opsional (Meta/Google)", "Revisi: 2x besar + 3x kecil"]
         }
       ]
     },
     single: {
-      target: "Target: Personal Brand / Jasa / Portfolio",
+      target: "Target: Merek Personal / Jasa / Portofolio",
       packages: [
         {
-          name: "BASIC", price: "Rp900.000", isPopular: false,
-          features: ["1 Halaman Scroll", "Hero Section", "About", "Services", "Contact", "Design Sederhana", "Mobile Responsive", "CTA WhatsApp", "Revisi: 1x"]
+          name: "DASAR", price: "Rp900.000", isPopular: false,
+          features: ["1 Halaman Gulir", "Bagian Utama", "Tentang", "Layanan", "Kontak", "Desain sederhana", "Responsif di ponsel", "Ajakan WhatsApp", "Revisi: 1x"]
         },
         {
           name: "PRO", price: "Rp1.800.000", isPopular: true,
-          features: ["1 Halaman Scroll (Lengkap)", "Hero + Subheadline", "About (Lebih Detail)", "Services & Portfolio Showcase", "Testimoni & Contact", "UI Clean & Modern", "Copywriting & SEO Basic", "Mobile Optimization", "Revisi: 1x Mayor + 2x Minor"]
+          features: ["1 Halaman Gulir (Lengkap)", "Utama + Subjudul", "Tentang (Lebih Detail)", "Layanan & Pameran portofolio", "Testimoni & Kontak", "Antarmuka bersih dan modern", "Penulisan dan optimasi mesin pencari dasar", "Optimasi ponsel", "Revisi: 1x besar + 2x kecil"]
         },
         {
-          name: "CUSTOM", price: "Mulai Rp2.500.000", isPopular: false,
-          features: ["Fully Custom Single Page", "Layout Non-Template", "Hero Cinematic / Visual Kuat", "About Storytelling", "Services + Positioning", "Portfolio Advanced & Testimoni", "Custom UI/UX & Micro Interaction", "Copywriting Disesuaikan Brand", "Revisi: 2x Mayor + 3x Minor"]
+          name: "KUSTOM", price: "Mulai Rp2.500.000", isPopular: false,
+          features: ["Satu halaman kustom penuh", "Tata letak tanpa pola siap pakai", "Bagian utama sinematik / visual kuat", "Cerita tentang merek", "Layanan + penempatan posisi", "Portofolio lanjutan & testimoni", "Antarmuka dan pengalaman kustom dengan interaksi mikro", "Penulisan naskah disesuaikan merek", "Revisi: 2x besar + 3x kecil"]
         }
       ]
     },
     company: {
-      target: "Target: Bisnis Serius / Trust Building",
+      target: "Target: Bisnis Serius / Membangun kepercayaan",
       packages: [
         {
-          name: "BASIC", price: "Rp2.000.000", isPopular: false,
-          features: ["3–5 Halaman Website", "Home, About, Services, Contact", "Template Custom", "Mobile Responsive", "Struktur Standar Bisnis", "Revisi: 1x Mayor"]
+          name: "DASAR", price: "Rp2.000.000", isPopular: false,
+          features: ["3–5 Halaman Situs", "Beranda, Tentang, Layanan, Kontak", "Pola dengan penyesuaian", "Responsif di ponsel", "Struktur Standar Bisnis", "Revisi: 1x besar"]
         },
         {
-          name: "PROFESSIONAL", price: "Mulai Rp3.500.000", isPopular: true,
-          features: ["5–10 Halaman Website", "Home, About, Services, Portfolio", "Contact & FAQ", "Optional Blog", "UI Lebih Clean & Profesional", "Struktur Konten Lebih Rapi", "SEO Basic & Mobile Opt", "Revisi: 2x Mayor"]
+          name: "PROFESIONAL", price: "Mulai Rp3.500.000", isPopular: true,
+          features: ["5–10 Halaman Situs", "Beranda, Tentang, Layanan, Portofolio", "Kontak & tanya jawab", "Blog opsional", "Antarmuka lebih bersih dan profesional", "Struktur konten lebih rapi", "Optimasi mesin pencari dasar & ponsel", "Revisi: 2x besar"]
         },
         {
           name: "PREMIUM", price: "Mulai Rp6.000.000", isPopular: false,
-          features: ["Full Custom Website", "Home Cinematic / High Visual", "About Storytelling", "Services Positioning", "Portfolio Showcase", "Custom UI/UX (No Template)", "Visual Identity Kuat", "Experience-driven Layout", "Copywriting Disesuaikan Brand", "Micro Interaction / Animation", "Revisi: 2x Mayor + 3x Minor"]
+          features: ["Situs kustom penuh", "Beranda sinematik / visual kuat", "Cerita tentang merek", "Penempatan layanan", "Pameran portofolio", "Kustom UI/UX (No Pola siap pakai)", "Identitas visual kuat", "Tata letak berbasis pengalaman", "Penulisan naskah disesuaikan merek", "Interaksi mikro / animasi", "Revisi: 2x besar + 3x kecil"]
         }
       ]
     },
     store: {
-      target: "Target: UMKM Jualan Online",
+      target: "Target: UMKM Jualan Daring",
       packages: [
         {
-          name: "BASIC STORE", price: "Rp3.500.000", isPopular: false,
-          features: ["Platform: WooCommerce/Shopify", "Home, Shop, Product Detail", "Cart & Checkout", "Upload 10 Produk", "Struktur Kategori Sederhana", "Integrasi WhatsApp Order", "Mobile Responsive", "Revisi: 1x Mayor"]
+          name: "TOKO DASAR", price: "Rp3.500.000", isPopular: false,
+          features: ["Wadah: WooCommerce/Shopify", "Beranda, Toko, Detail Produk", "Keranjang & pembayaran", "Unggah 10 Produk", "Struktur Kategori Sederhana", "Integrasi Pesanan WhatsApp", "Responsif di ponsel", "Revisi: 1x besar"]
         },
         {
-          name: "GROWTH STORE", price: "Mulai Rp5.000.000", isPopular: true,
-          features: ["Platform: WooCommerce/Shopify", "Home, Shop, Product Detail", "Cart & Checkout", "Kategori Produk Advanced", "Upload 20 Produk", "Payment Gateway (Midtrans/Xendit)", "Integrasi Google Analytics", "SEO Basic & UX Optimal", "Mobile Optimization", "Revisi: 2x Mayor"]
+          name: "TOKO TUMBUH", price: "Mulai Rp5.000.000", isPopular: true,
+          features: ["Wadah: WooCommerce/Shopify", "Beranda, Toko, Detail Produk", "Keranjang & pembayaran", "Kategori Produk Lanjutan", "Unggah 20 Produk", "Gerbang pembayaran (Midtrans/Xendit)", "Integrasi Analitik Google", "Optimasi Mesin Pencari Dasar & UX Optimal", "Optimasi ponsel", "Revisi: 2x besar"]
         }
       ]
     }
   };
 
   const addOns = [
-    "Maintenance (Rp150k - Rp500k / bulan)",
-    "SEO Lanjutan",
-    "Copywriting Full",
-    "Branding Kit",
-    "Design Konten (IG / Ads)",
-    "Domain & Hosting Premium"
+    "Pemeliharaan (Rp150k - Rp500k / bulan)",
+    "Optimasi Mesin Pencari Lanjutan",
+    "Penulisan naskah penuh",
+    "Perangkat pemerekan",
+    "Desain konten (IG / Iklan)",
+    "Domain & peladen premium"
   ];
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+      <div className="maksimal-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
         <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
           <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
@@ -98,8 +98,8 @@ export default function WebDev() {
 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Pengembangan Website <br/>& SEO</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Pilih paket pengembangan website yang paling sesuai dengan skala dan kebutuhan bisnis Anda.</p>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Pengembangan Situs <br/>& Optimasi Mesin Pencari</h1>
+          <p className="text-gray-400 maksimal-w-2xl mx-auto text-lg leading-relaxed">Pilih paket pengembangan situs yang paling sesuai dengan skala dan kebutuhan bisnis Anda.</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
@@ -126,7 +126,7 @@ export default function WebDev() {
             </span>
           </div>
 
-          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 max-w-4xl mx-auto'} gap-8 mt-6`}>
+          <div className={`grid grid-cols-1 md:grid-cols-2 ${pricingData[activeTab].packages.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2 maksimal-w-4xl mx-auto'} gap-8 mt-6`}>
             {pricingData[activeTab].packages.map((pkg, idx) => (
               <div 
                 key={idx} 
@@ -163,7 +163,7 @@ export default function WebDev() {
                   </ul>
 
                   <a 
-                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Website%20Development.`}
+                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Situs%20Development.`}
                     target="_blank"
                     rel="noreferrer"
                     className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
@@ -184,8 +184,8 @@ export default function WebDev() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
             <div className="md:w-1/3">
-              <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Add-on)</h3>
-              <p className="text-gray-400 leading-relaxed">Tingkatkan performa website Anda dengan fitur dan layanan tambahan dari kami.</p>
+              <h3 className="text-2xl font-bold text-white mb-3">Layanan Opsional (Tambahan)</h3>
+              <p className="text-gray-400 leading-relaxed">Tingkatkan performa situs Anda dengan fitur dan layanan tambahan dari kami.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {addOns.map((addon, idx) => (

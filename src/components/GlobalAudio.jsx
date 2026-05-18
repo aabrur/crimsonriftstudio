@@ -1,9 +1,11 @@
 import { useRef, useState } from 'react';
 import { Disc, VolumeX } from 'lucide-react';
+import { siteContent } from '../content/siteContent.js';
 
 export default function GlobalAudio() {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const { shared } = siteContent;
 
   const toggleMusic = () => {
     if (!audioRef.current) return;
@@ -32,11 +34,11 @@ export default function GlobalAudio() {
             ? 'border-red-300/40 bg-[#b11226]/18 text-red-100 shadow-[0_0_36px_rgba(177,18,38,0.32)]'
             : 'border-[#f4ede7]/10 bg-[#070303]/76 text-[#f4ede7]/42 hover:border-red-200/30 hover:text-[#f4ede7]'
         }`}
-        aria-label={isPlaying ? 'Matikan ambience' : 'Nyalakan ambience'}
+        aria-label={isPlaying ? shared.audioOnAria : shared.audioOffAria}
       >
         {isPlaying ? <Disc size={22} className="animate-[spin_5s_linear_infinite]" /> : <VolumeX size={22} />}
         <span className="pointer-events-none absolute right-16 whitespace-nowrap rounded-full border border-[#f4ede7]/10 bg-black/78 px-4 py-2 text-[9px] font-black uppercase tracking-[0.28em] text-[#f4ede7]/76 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          {isPlaying ? 'Heningkan ambience' : 'Nyalakan ambience'}
+          {isPlaying ? shared.audioOn : shared.audioOff}
         </span>
       </button>
     </>

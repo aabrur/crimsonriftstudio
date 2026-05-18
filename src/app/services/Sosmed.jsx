@@ -6,170 +6,170 @@ export default function Sosmed() {
   const [activeTab, setActiveTab] = useState('starter');
 
   const categories = [
-    { id: 'starter', label: 'UMKM & Starter', icon: <Smartphone size={18} strokeWidth={1.5} /> },
-    { id: 'business', label: 'Business & Growth', icon: <TrendingUp size={18} strokeWidth={1.5} /> },
-    { id: 'premium', label: 'Premium Full Service', icon: <Crown size={18} strokeWidth={1.5} /> }
+    { id: 'starter', label: 'UMKM & Pemula', icon: <Smartphone size={18} strokeWidth={1.5} /> },
+    { id: 'business', label: 'Bisnis & Pertumbuhan', icon: <TrendingUp size={18} strokeWidth={1.5} /> },
+    { id: 'premium', label: 'Premium Layanan Penuh', icon: <Crown size={18} strokeWidth={1.5} /> }
   ];
 
   const pricingData = {
     starter: {
-      target: "Target: Mulai konsisten, branding dasar & eksistensi di sosial media",
+      target: "Target: Mulai konsisten, pemerekan dasar & eksistensi di sosial media",
       packages: [
         {
-          name: "STARTER (ENTRY UMKM)", 
+          name: "PEMULA UMKM", 
           price: "Rp650.000", 
           period: "/ bulan",
-          focus: "Fokus: 'Exist & Jalan'",
+          focus: "Fokus: 'Hadir & berjalan'",
           isPopular: false,
           features: [
-            "1 Platform (IG / TikTok)", 
-            "8 Konten Feed (Static/Carousel)", 
-            "8 Caption + Hashtag Basic", 
-            "4 Story Design", 
-            "Template-based Design", 
-            "Basic Content Planning", 
-            "Admin Posting & Scheduling"
+            "1 Wadah (IG / TikTok)", 
+            "8 Konten umpan (statis/karusel)", 
+            "8 Takarir + tagar dasar", 
+            "4 Desain cerita", 
+            "Desain berbasis pola", 
+            "Perencanaan konten dasar", 
+            "Admin unggah & penjadwalan"
           ],
           batasan: [
-            "Tidak termasuk Video Reels", 
-            "Tidak termasuk Riset Kompetitor", 
-            "Tidak termasuk DM / Komentar", 
-            "Tidak termasuk Branding Visual Custom", 
-            "Revisi hanya 1x per konten (Minor)"
+            "Tidak termasuk Video pendek", 
+            "Tidak termasuk Riset pesaing", 
+            "Tidak termasuk pesan langsung / komentar", 
+            "Tidak termasuk pemerekan visual kustom", 
+            "Revisi hanya 1x per konten (kecil)"
           ]
         },
         {
-          name: "BASIC GROWTH", 
+          name: "PERTUMBUHAN DASAR", 
           price: "Rp1.200.000", 
           period: "/ bulan",
-          focus: "Fokus: 'Mulai Naik & Lebih Rapi'",
+          focus: "Fokus: 'Mulai naik & lebih rapi'",
           isPopular: true,
           features: [
-            "1 Platform (IG / TikTok)", 
-            "12 Konten Feed & 8–12 Story", 
-            "1 Video Reels / Short", 
-            "Copywriting (Caption + Hashtag)", 
-            "Content Calendar Bulanan", 
-            "Design Semi-custom", 
-            "Admin Posting + Scheduling", 
-            "Insight Basic"
+            "1 Wadah (IG / TikTok)", 
+            "12 Konten umpan & 8–12 Cerita", 
+            "1 video pendek", 
+            "Penulisan (takarir + tagar)", 
+            "Kalender konten bulanan", 
+            "Desain semi-kustom", 
+            "Admin unggahan + penjadwalan", 
+            "Wawasan dasar"
           ],
           batasan: [
-            "Hanya 1 Video / bulan", 
-            "Belum ada strategi branding mendalam", 
-            "Tidak termasuk DM Handling & Campaign", 
-            "Revisi max 2x (Minor)"
+            "Hanya 1 Video per bulan", 
+            "Belum ada strategi pemerekan mendalam", 
+            "Tidak termasuk pengelolaan pesan & kampanye", 
+            "Revisi maksimal 2x (kecil)"
           ]
         },
         {
           name: "UMKM PRO", 
           price: "Rp2.000.000", 
           period: "/ bulan",
-          focus: "Fokus: 'Mulai Serius & Konsisten'",
+          focus: "Fokus: 'Mulai serius & konsisten'",
           isPopular: false,
           features: [
-            "1–2 Platform", 
-            "15 Konten Feed & 20–30 Story", 
-            "2 Video Reels", 
-            "Content Strategy Ringan", 
-            "Visual Custom (No Template Feel)", 
-            "Copywriting Optimized & Hashtag Research", 
-            "Admin + Posting + Scheduling", 
-            "Monthly Report"
+            "1–2 Wadah", 
+            "15 Konten umpan & 20–30 Cerita", 
+            "2 Video pendek", 
+            "Strategi konten ringan", 
+            "Visual kustom (tidak terasa pola siap pakai)", 
+            "Penulisan teroptimasi & riset tagar", 
+            "Admin + unggahan + penjadwalan", 
+            "Laporan bulanan"
           ],
           batasan: [
-            "Strategi masih basic (belum full funnel)", 
-            "Tidak termasuk Ads Management", 
-            "DM & Comment hanya monitoring", 
-            "Revisi max 2x"
+            "Strategi masih dasar (belum alur penuh)", 
+            "Tidak termasuk Manajemen iklan", 
+            "DM & Komentar hanya pemantauan", 
+            "Revisi maksimal 2x"
           ]
         }
       ]
     },
     business: {
-      target: "Target: Scale up, optimasi penjualan & audience engagement",
+      target: "Target: peningkatan skala, optimasi penjualan & keterlibatan audiens",
       packages: [
         {
-          name: "BUSINESS", 
+          name: "BISNIS", 
           price: "Rp3.500.000", 
           period: "/ bulan",
-          focus: "Fokus: 'Branding + Mulai Jualan'",
+          focus: "Fokus: 'Pemerekan + mulai menjual'",
           isPopular: false,
           features: [
-            "2 Platform (IG + TikTok)", 
-            "20 Konten Feed & 30 Story", 
-            "4 Video Reels", 
-            "Content Strategy (Branding + Selling)", 
-            "Visual Branding Konsisten", 
-            "Copywriting Conversion", 
-            "Basic Competitor Research", 
-            "Admin + Reply Comment (Basic)", 
-            "Monthly Report + Insight"
+            "2 Wadah (IG + TikTok)", 
+            "20 Konten umpan & 30 Cerita", 
+            "4 Video pendek", 
+            "Strategi konten (pemerekan + penjualan)", 
+            "Pemerekan visual konsisten", 
+            "Penulisan konversi", 
+            "Riset pesaing dasar", 
+            "Admin + Balas komentar (Dasar)", 
+            "Laporan bulanan + wawasan"
           ],
           batasan: [
-            "DM handling masih terbatas (reply basic)", 
-            "Belum termasuk Ads Management", 
-            "Belum termasuk KOL / Influencer", 
-            "Revisi max 3x"
+            "pengelolaan pesan masih terbatas (balasan dasar)", 
+            "Belum termasuk Manajemen iklan", 
+            "Belum termasuk KOL / pemengaruh", 
+            "Revisi maksimal 3x"
           ]
         },
         {
-          name: "GROWTH BRAND", 
+          name: "MEREK TUMBUH", 
           price: "Rp5.000.000", 
           period: "/ bulan",
-          focus: "Fokus: 'Scale & Growth Serius'",
+          focus: "Fokus: 'Skala & pertumbuhan serius'",
           isPopular: true,
           features: [
-            "2–3 Platform", 
-            "25 Konten Feed & 30–50 Story", 
-            "6–8 Video Reels", 
-            "Content Planning (Weekly System)", 
-            "Visual Identity Kuat", 
-            "Copywriting Storytelling + Selling", 
-            "Trend Research & Audience Targeting", 
-            "Admin + Reply DM / Comment", 
-            "Analytics + Improvement Strategy", 
-            "Monthly Report Detail"
+            "2–3 Wadah", 
+            "25 Konten umpan & 30–50 Cerita", 
+            "6–8 Video pendek", 
+            "Perencanaan konten (sistem mingguan)", 
+            "Identitas visual kuat", 
+            "Penulisan cerita + penjualan", 
+            "Riset tren & penargetan audiens", 
+            "Admin + Balas pesan / komentar", 
+            "Analitik + strategi peningkatan", 
+            "Laporan bulanan rinci"
           ],
           batasan: [
-            "Ads belum termasuk (Optional setup)", 
-            "Campaign belum full scale", 
-            "Tidak termasuk full funnel marketing system", 
-            "Revisi max 3x"
+            "Iklan belum termasuk (pengaturan opsional)", 
+            "Kampanye belum full scale", 
+            "Tidak termasuk alur penuh sistem pemasaran", 
+            "Revisi maksimal 3x"
           ]
         }
       ]
     },
     premium: {
-      target: "Target: Brand ekosistem, campaign besar & delegasi total",
+      target: "Target: Merek ekosistem, campaign besar & delegasi total",
       packages: [
         {
-          name: "PREMIUM SOCIAL BRAND", 
+          name: "MEREK SOSIAL PREMIUM", 
           price: "Rp7.500.000", 
           period: "/ bulan",
-          focus: "Fokus: 'Full Handled + Scale + Branding Kuat'",
+          focus: "Fokus: 'Ditangani penuh + skala + pemerekan kuat'",
           isPopular: true,
-          badge: "FULL SERVICE",
+          badge: "LAYANAN PENUH",
           features: [
-            "3 Platform (IG + TikTok + Optional)", 
-            "30 Konten Feed & Daily Story", 
-            "10–15 Video Reels", 
-            "Full Content Strategy & Campaign Planning", 
-            "Branding Direction (Visual + Tone)", 
-            "Content Funnel (Awareness → Conversion)", 
-            "Copywriting Advanced (Sales-driven)", 
-            "Trend + Viral System", 
-            "Admin Full Handling (DM + Comment)", 
-            "Community Management", 
-            "Performance Tracking (Weekly)", 
-            "Monthly Report + Strategy Improvement", 
-            "Brainstorming Session Bulanan",
-            "Termasuk: Positioning, Targeting & Engagement Strategy"
+            "3 Wadah (IG + TikTok + Opsional)", 
+            "30 Konten umpan & cerita harian", 
+            "10–15 Video pendek", 
+            "Strategi konten penuh & perencanaan kampanye", 
+            "Arah pemerekan (visual + nada)", 
+            "Alur konten (kesadaran → konversi)", 
+            "Penulisan lanjutan (berorientasi penjualan)", 
+            "Sistem tren + viral", 
+            "Penanganan admenit penuh (DM + Komentar)", 
+            "Pengelolaan komunitas", 
+            "Pelacakan kinerja (mingguan)", 
+            "Laporan bulanan + peningkatan strategi", 
+            "Sesi curah gagasan Bulanan",
+            "Termasuk: posisi, strategi penargetan & keterlibatan"
           ],
           batasan: [
-            "Ads Management belum termasuk budget iklan", 
-            "KOL / Influencer belum termasuk biaya talent", 
-            "Produksi foto/video skala besar = Add-on", 
+            "Manajemen iklan belum termasuk budget iklan", 
+            "KOL / pemengaruh belum termasuk biaya talent", 
+            "Produksi foto/video skala besar = Tambahan", 
             "Revisi fleksibel tapi tetap dalam scope"
           ]
         }
@@ -178,76 +178,76 @@ export default function Sosmed() {
   };
 
   const addOns = [
-    "Extra Reels: Rp150.000 – Rp300.000",
-    "Extra Design: Rp50.000 – Rp100.000",
-    "Ads Management: Rp500.000 – Rp2.000.000",
-    "KOL / Influencer Setup: Mulai Rp300.000",
-    "Photoshoot: Mulai Rp500.000",
-    "Video Shoot: Mulai Rp750.000",
-    "AI Content Pack: Rp300.000 – Rp1.000.000"
+    "Tambahan video pendek: Rp150.000 – Rp300.000",
+    "Tambahan desain: Rp50.000 – Rp100.000",
+    "Manajemen iklan: Rp500.000 – Rp2.000.000",
+    "KOL / Pengaturan pemengaruh: Mulai Rp300.000",
+    "Pemotretan: Mulai Rp500.000",
+    "Pengambilan video: Mulai Rp750.000",
+    "Paket konten kecerdasan buatan: Rp300.000 – Rp1.000.000"
   ];
 
   const terms = [
     {
       icon: "💳", title: "1. Pembayaran",
       points: [
-        "Sistem berbasis layanan bulanan (Monthly retainer).",
-        "Full payment wajib dibayarkan di awal sebelum project dimulai.",
-        "Tidak ada refund dengan alasan apa pun.",
-        "Keterlambatan pembayaran = Project delay / ditunda."
+        "Sistem berbasis layanan bulanan (retainer bulanan).",
+        "Pembayaran penuh wajib dibayarkan di awal sebelum proyek dimulai.",
+        "Tidak ada pengembalian dana dengan alasan apa pun.",
+        "Keterlambatan pembayaran = proyek tertunda / ditunda."
       ]
     },
     {
-      icon: "⏳", title: "2. Durasi & Workflow",
+      icon: "⏳", title: "2. Durasi & Alur kerja",
       points: [
-        "Masa kerja adalah 30 hari per cycle (siklus bulanan).",
-        "Posting dilakukan secara rutin mengikuti content calendar yang disepakati.",
-        "Perubahan konsep mendadak di tengah jalan dapat menyebabkan delay jadwal tayang."
+        "Masa kerja adalah 30 hari per siklus (siklus bulanan).",
+        "unggahan dilakukan secara rutin mengikuti kalender konten yang disepakati.",
+        "Perubahan konsep mendadak di tengah jalan dapat menyebabkan tertunda jadwal tayang."
       ]
     },
     {
-      icon: "📏", title: "3. Revisi (Strict Control)",
+      icon: "📏", title: "3. Revisi (Kontrol ketat)",
       points: [
         "Jumlah revisi hanya berlaku sesuai batas paket yang dipilih.",
-        "Revisi hanya berlaku untuk perubahan minor (Visual minor, typography, atau caption minor).",
-        "Revisi besar (ubah angle, ubah konsep) = Dihitung sebagai project/konten baru."
+        "Revisi hanya berlaku untuk perubahan kecil (visual kecil, tipografi, atau takarir kecil).",
+        "Revisi besar (ubah angle, ubah konsep) = Dihitung sebagai proyek/konten baru."
       ]
     },
     {
-      icon: "🛡️", title: "4. Scope Control (Sangat Penting)",
+      icon: "🛡️", title: "4. Kontrol cakupan (Sangat Penting)",
       points: [
         "Kami bekerja secara profesional, tidak menerima permintaan 'ubah konsep total' di tengah jalan.",
-        "Tidak menerima request 'ikut mood hari ini'.",
-        "Semua eksekusi harus berbasis pada brief awal yang sudah disetujui bersama."
+        "Tidak menerima permintaan 'ikut suasana hati hari ini'.",
+        "Semua eksekusi harus berbasis pada arahan awal yang sudah disetujui bersama."
       ]
     },
     {
-      icon: "📦", title: "5. Material & Konten",
+      icon: "📦", title: "5. Materi & Konten",
       points: [
-        "Klien wajib men-supply materi (foto/video mentah) jika ada.",
-        "Jika klien tidak memiliki materi, tim CRS akan men-create konten sesuai batasan paket.",
-        "Kualitas visual akhir sangat bergantung pada kualitas input/materi dari brand Anda."
+        "Klien wajib men-menyediakan materi (foto/video mentah) jika ada.",
+        "Jika klien tidak memiliki materi, tim CRS akan membuat konten sesuai batasan paket.",
+        "Kualitas visual akhir sangat bergantung pada kualitas masukan/materi dari merek Anda."
       ]
     },
     {
-      icon: "💬", title: "6. Admin & Handling",
+      icon: "💬", title: "6. Admin & Penanganan",
       points: [
-        "Paket Starter hingga Business memiliki fitur admin yang terbatas (hanya posting/monitoring).",
-        "Paket Growth dan Premium memiliki admin aktif (balas DM & Komen).",
+        "Paket Pemula hingga Bisnis memiliki fitur admenit yang terbatas (hanya posting/pemantauan).",
+        "Paket Pertumbuhan dan Premium memiliki admenit aktif (balas DM & Komen).",
         "Tidak termasuk aktivitas closing sales (Kecuali mengambil add-on khusus)."
       ]
     },
     {
       icon: "⚠️", title: "7. Result Disclaimer",
       points: [
-        "Layanan ini tidak menjamin konten pasti viral atau terjadinya sales instan.",
-        "Fokus utama kami adalah: Membangun Branding, Menjaga Consistency, dan Organic Growth jangka panjang."
+        "Layanan ini tidak menjamenit konten pasti viral atau terjadinya sales instan.",
+        "Fokus utama kami adalah: Membangun Pemerekan, Menjaga Consistency, dan Organic Pertumbuhan jangka panjang."
       ]
     },
     {
       icon: "🛑", title: "8. Termination (Pemberhentian)",
       points: [
-        "Pemberitahuan stop/berhenti layanan minimal H-7 sebelum cycle bulan baru dimulai.",
+        "Pemberitahuan stop/berhenti layanan minimal H-7 sebelum siklus bulan baru dimulai.",
         "Jika tidak ada konfirmasi H-7, sistem dianggap auto-renew untuk bulan berikutnya."
       ]
     },
@@ -262,15 +262,15 @@ export default function Sosmed() {
   ];
 
   const getGridClass = (len) => {
-    if (len === 1) return 'grid-cols-1 max-w-md mx-auto';
-    if (len === 2) return 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto';
+    if (len === 1) return 'grid-cols-1 maksimal-w-md mx-auto';
+    if (len === 2) return 'grid-cols-1 md:grid-cols-2 maksimal-w-4xl mx-auto';
     if (len === 3) return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
     return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
   };
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#0a0a0a] animate-fadeIn">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
+      <div className="maksimal-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         
         <Link to="/services" className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors mb-12 font-medium">
           <ChevronLeft size={20} strokeWidth={1.5} /> Kembali ke Layanan
@@ -279,7 +279,7 @@ export default function Sosmed() {
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-red-500 tracking-[0.2em] uppercase mb-3">Detail Harga Jasa</h2>
           <h1 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">Media Sosial <br/>& Iklan</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">Tingkatkan interaksi audiens, bangun kepercayaan brand, dan dorong penjualan dengan pengelolaan media sosial yang profesional.</p>
+          <p className="text-gray-400 maksimal-w-2xl mx-auto text-lg leading-relaxed">Tingkatkan interaksi audiens, bangun kepercayaan merek, dan dorong penjualan dengan pengelolaan media sosial yang profesional.</p>
         </div>
 
         {/* Tab Navigation */}
@@ -300,7 +300,7 @@ export default function Sosmed() {
           ))}
         </div>
 
-        {/* Content Area */}
+        {/* Konten Area */}
         <div className="animate-fadeIn">
           <div className="text-center mb-10">
             <span className="inline-block px-4 py-1.5 bg-red-900/10 text-red-500 rounded-full text-sm font-semibold border border-red-900/30">
@@ -355,10 +355,10 @@ export default function Sosmed() {
                     </ul>
                   </div>
 
-                  {/* Batasan Scope (Limitations) */}
+                  {/* Batasan Cakupan (Limitations) */}
                   {pkg.batasan && pkg.batasan.length > 0 && (
                     <div className="mt-auto mb-8 pt-6 border-t border-gray-800/60">
-                      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 block">Batasan & Scope:</span>
+                      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 block">Batasan & Cakupan:</span>
                       <ul className="space-y-3">
                         {pkg.batasan.map((bts, bIdx) => (
                           <li key={bIdx} className="flex items-start gap-3 text-gray-500">
@@ -371,7 +371,7 @@ export default function Sosmed() {
                   )}
 
                   <a 
-                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Social%20Media%20%26%20Ads.`}
+                    href={`https://wa.me/6281398621530?text=Halo%20Crimson%20Rift,%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}%20untuk%20layanan%20Social%20Media%20%26%20Iklan.`}
                     target="_blank"
                     rel="noreferrer"
                     className={`block text-center w-full py-4 rounded-xl font-bold transition-all duration-300 mt-auto ${
@@ -387,12 +387,12 @@ export default function Sosmed() {
           </div>
         </div>
 
-        {/* Add Ons Section */}
+        {/* Add Ons Bagian */}
         <div className="mt-24 p-8 md:p-12 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-3xl relative overflow-hidden shadow-lg">
           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 rounded-full blur-3xl"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
             <div className="md:w-1/3">
-              <h3 className="text-2xl font-bold text-white mb-3">Layanan Tambahan (Add-on)</h3>
+              <h3 className="text-2xl font-bold text-white mb-3">Layanan Tambahan (Tambahan)</h3>
               <p className="text-gray-400 leading-relaxed">Tingkatkan efektivitas promosi dengan aset visual tambahan dan optimasi iklan.</p>
             </div>
             <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -406,11 +406,11 @@ export default function Sosmed() {
           </div>
         </div>
 
-        {/* Terms & Conditions Section */}
+        {/* Terms & Conditions Bagian */}
         <div className="mt-24 bg-[#050505] p-8 md:p-12 rounded-3xl border border-gray-800/50 shadow-lg">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-white mb-2">Syarat & Ketentuan (T&C)</h3>
-            <p className="text-gray-500 max-w-2xl mx-auto">Untuk menjaga profesionalisme dan kualitas kerja, berikut adalah aturan tegas yang kami terapkan pada layanan manajemen media sosial.</p>
+            <p className="text-gray-500 maksimal-w-2xl mx-auto">Untuk menjaga profesionalisme dan kualitas kerja, berikut adalah aturan tegas yang kami terapkan pada layanan manajemen media sosial.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
